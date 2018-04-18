@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -301,7 +301,7 @@
             </objects>
             <point key="canvasLocation" x="-31" y="566"/>
         </scene>
-        <!--我的-->
+        <!--My View Controller-->
         <scene sceneID="I9H-44-qYS">
             <objects>
                 <viewController id="4pY-iB-zcF" customClass="MyViewController" sceneMemberID="viewController">
@@ -314,7 +314,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="我的" id="Ayi-Kn-reB"/>
+                    <navigationItem key="navigationItem" id="Ayi-Kn-reB"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n48-Ov-c6b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -33,7 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor yellowColor];
+    self.view.backgroundColor = [UIColor blackColor];
     [self configureInterface];
 }
 
@@ -111,7 +111,7 @@
     if (UI_IS_IPHONE5) {
         _activitIndicatorView.center = CGPointMake(CGRectGetWidth(self.loginBtn.frame)/2-55, 20);
     }
-    if (UI_IS_IPHONE6) {
+    if (UI_IS_IPHONE6 || iPhoneX) {
         _activitIndicatorView.center = CGPointMake(CGRectGetWidth(self.loginBtn.frame)/2-30, 20);
     }
     if (UI_IS_IPHONE6P) {

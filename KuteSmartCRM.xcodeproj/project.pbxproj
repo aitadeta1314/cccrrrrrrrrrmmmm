@@ -14,6 +14,7 @@
 		8A3072EF1EC1722900E4B19E /* RSAEncryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3072EE1EC1722900E4B19E /* RSAEncryptor.m */; };
 		8A59437F2086F3E200D122F7 /* K_NetWorkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A59437E2086F3E200D122F7 /* K_NetWorkClient.m */; };
 		8A59438320871D5600D122F7 /* UIViewController+NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A59438220871D5500D122F7 /* UIViewController+NavigationBar.m */; };
+		8A5943862087389100D122F7 /* UINavigationBar+PS.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5943852087389100D122F7 /* UINavigationBar+PS.m */; };
 		8A5B06E71EC00A17007EC66A /* UserInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5B06E61EC00A17007EC66A /* UserInfoManager.m */; };
 		8A64A5751ECE9EBB00606DF2 /* K_MyTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A64A5731ECE9EBB00606DF2 /* K_MyTableCell.m */; };
 		8A64A5761ECE9EBB00606DF2 /* K_MyTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A64A5741ECE9EBB00606DF2 /* K_MyTableCell.xib */; };
@@ -73,6 +74,8 @@
 		8A59437E2086F3E200D122F7 /* K_NetWorkClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = K_NetWorkClient.m; sourceTree = "<group>"; };
 		8A59438120871D5500D122F7 /* UIViewController+NavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+NavigationBar.h"; sourceTree = "<group>"; };
 		8A59438220871D5500D122F7 /* UIViewController+NavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+NavigationBar.m"; sourceTree = "<group>"; };
+		8A5943842087389100D122F7 /* UINavigationBar+PS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+PS.h"; sourceTree = "<group>"; };
+		8A5943852087389100D122F7 /* UINavigationBar+PS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+PS.m"; sourceTree = "<group>"; };
 		8A5B06E51EC00A17007EC66A /* UserInfoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoManager.h; sourceTree = "<group>"; };
 		8A5B06E61EC00A17007EC66A /* UserInfoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoManager.m; sourceTree = "<group>"; };
 		8A64A5721ECE9EBB00606DF2 /* K_MyTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = K_MyTableCell.h; sourceTree = "<group>"; };
@@ -213,6 +216,8 @@
 			children = (
 				8A59438120871D5500D122F7 /* UIViewController+NavigationBar.h */,
 				8A59438220871D5500D122F7 /* UIViewController+NavigationBar.m */,
+				8A5943842087389100D122F7 /* UINavigationBar+PS.h */,
+				8A5943852087389100D122F7 /* UINavigationBar+PS.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -596,6 +601,7 @@
 				8A012DA21EC2E28E00A3C1B9 /* WebDetailViewController.m in Sources */,
 				8ABED1A41ED8F933007A9B81 /* K_BasicViewController.m in Sources */,
 				8A9C64541ECD8BF700A1F152 /* K_ChangePasswordViewController.m in Sources */,
+				8A5943862087389100D122F7 /* UINavigationBar+PS.m in Sources */,
 				8A65CDAE1EBD77830037F668 /* AppDelegate.m in Sources */,
 				8A64A57D1ECEB9A400606DF2 /* MyNavViewController.m in Sources */,
 				8A59437F2086F3E200D122F7 /* K_NetWorkClient.m in Sources */,
