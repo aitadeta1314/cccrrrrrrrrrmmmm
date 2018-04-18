@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="K_PortalCell">
+            <rect key="frame" x="0.0" y="0.0" width="85" height="100"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="85" height="100"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="909-iD-bFj">
+                        <rect key="frame" x="0.0" y="0.0" width="85" height="100"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WDo-l9-f1G" userLabel="bgView">
+                        <rect key="frame" x="15" y="22.5" width="55" height="55"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cuK-y9-sIm">
+                                <rect key="frame" x="10" y="0.0" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="cuK-y9-sIm" secondAttribute="height" multiplier="1:1" id="oRX-RQ-FbX"/>
+                                    <constraint firstAttribute="width" constant="35" id="uvg-3q-deo"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标题" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4kb-a2-MfK">
+                                <rect key="frame" x="0.0" y="40" width="55" height="14.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="hj9-iJ-e8A"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cuK-y9-sIm" firstAttribute="centerX" secondItem="WDo-l9-f1G" secondAttribute="centerX" id="BkZ-ey-puz"/>
+                            <constraint firstItem="4kb-a2-MfK" firstAttribute="top" secondItem="cuK-y9-sIm" secondAttribute="bottom" constant="5" id="DBs-96-e8K"/>
+                            <constraint firstItem="cuK-y9-sIm" firstAttribute="top" secondItem="WDo-l9-f1G" secondAttribute="top" id="GUv-86-80Z"/>
+                            <constraint firstAttribute="height" constant="55" id="N9u-x7-OrN"/>
+                            <constraint firstItem="4kb-a2-MfK" firstAttribute="centerX" secondItem="WDo-l9-f1G" secondAttribute="centerX" id="QLI-7a-Zfm"/>
+                            <constraint firstItem="4kb-a2-MfK" firstAttribute="leading" secondItem="WDo-l9-f1G" secondAttribute="leading" id="m87-mK-MUS"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="WDo-l9-f1G" firstAttribute="centerY" secondItem="909-iD-bFj" secondAttribute="centerY" id="OYv-ys-yLL"/>
+                <constraint firstItem="909-iD-bFj" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="RRP-Fb-C3I"/>
+                <constraint firstItem="WDo-l9-f1G" firstAttribute="leading" secondItem="909-iD-bFj" secondAttribute="leading" constant="15" id="aks-fj-aw1"/>
+                <constraint firstAttribute="trailing" secondItem="909-iD-bFj" secondAttribute="trailing" id="dG9-K0-Ow7"/>
+                <constraint firstItem="WDo-l9-f1G" firstAttribute="centerX" secondItem="909-iD-bFj" secondAttribute="centerX" id="gyE-4M-Pmg"/>
+                <constraint firstItem="909-iD-bFj" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="tDE-Lz-8n3"/>
+                <constraint firstAttribute="bottom" secondItem="909-iD-bFj" secondAttribute="bottom" id="z8D-38-lq1"/>
+            </constraints>
+            <size key="customSize" width="85" height="96"/>
+            <connections>
+                <outlet property="PortalImgView" destination="cuK-y9-sIm" id="fBN-sl-8n1"/>
+                <outlet property="PortalTitle" destination="4kb-a2-MfK" id="Xde-oG-N6W"/>
+            </connections>
+            <point key="canvasLocation" x="42.5" y="75"/>
+        </collectionViewCell>
+    </objects>
+</document>

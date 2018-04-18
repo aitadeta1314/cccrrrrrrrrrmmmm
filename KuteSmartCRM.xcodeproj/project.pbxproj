@@ -1,0 +1,874 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8A012DA11EC2E28E00A3C1B9 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A012D9B1EC2E28E00A3C1B9 /* LoginViewController.m */; };
+		8A012DA21EC2E28E00A3C1B9 /* WebDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A012D9E1EC2E28E00A3C1B9 /* WebDetailViewController.m */; };
+		8A08F7AE1EC6A9170022D7C2 /* KTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A08F7AD1EC6A9170022D7C2 /* KTabBarController.m */; };
+		8A3072EC1EC171E900E4B19E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A3072EB1EC171E900E4B19E /* Security.framework */; };
+		8A3072EF1EC1722900E4B19E /* RSAEncryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3072EE1EC1722900E4B19E /* RSAEncryptor.m */; };
+		8A59437F2086F3E200D122F7 /* K_NetWorkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A59437E2086F3E200D122F7 /* K_NetWorkClient.m */; };
+		8A59438320871D5600D122F7 /* UIViewController+NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A59438220871D5500D122F7 /* UIViewController+NavigationBar.m */; };
+		8A5B06E71EC00A17007EC66A /* UserInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5B06E61EC00A17007EC66A /* UserInfoManager.m */; };
+		8A64A5751ECE9EBB00606DF2 /* K_MyTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A64A5731ECE9EBB00606DF2 /* K_MyTableCell.m */; };
+		8A64A5761ECE9EBB00606DF2 /* K_MyTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A64A5741ECE9EBB00606DF2 /* K_MyTableCell.xib */; };
+		8A64A57D1ECEB9A400606DF2 /* MyNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A64A57C1ECEB9A400606DF2 /* MyNavViewController.m */; };
+		8A65CD6B1EBD754F0037F668 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A65CD6A1EBD754F0037F668 /* main.m */; };
+		8A65CD741EBD754F0037F668 /* CRM.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A65CD721EBD754F0037F668 /* CRM.storyboard */; };
+		8A65CD761EBD754F0037F668 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A65CD751EBD754F0037F668 /* Assets.xcassets */; };
+		8A65CD791EBD754F0037F668 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A65CD771EBD754F0037F668 /* LaunchScreen.storyboard */; };
+		8A65CD841EBD754F0037F668 /* KuteSmartCRMTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A65CD831EBD754F0037F668 /* KuteSmartCRMTests.m */; };
+		8A65CD8F1EBD754F0037F668 /* KuteSmartCRMUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A65CD8E1EBD754F0037F668 /* KuteSmartCRMUITests.m */; };
+		8A65CDAA1EBD77490037F668 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A65CDA91EBD77490037F668 /* Info.plist */; };
+		8A65CDAE1EBD77830037F668 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A65CDAC1EBD77830037F668 /* AppDelegate.m */; };
+		8A6BC25B1EE24BD8007EE626 /* UIView+PS.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A6BC25A1EE24BD8007EE626 /* UIView+PS.m */; };
+		8A9C64471ECD4D9700A1F152 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9C64441ECD4D9700A1F152 /* MyViewController.m */; };
+		8A9C64541ECD8BF700A1F152 /* K_ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9C64531ECD8BF700A1F152 /* K_ChangePasswordViewController.m */; };
+		8AB82D371ECA9C7A00296AF3 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AB82D341ECA9C7A00296AF3 /* MainViewController.m */; };
+		8AB82D3B1ECA9DFE00296AF3 /* K_HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AB82D391ECA9DFE00296AF3 /* K_HeaderView.m */; };
+		8AB82D3C1ECA9DFE00296AF3 /* K_HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AB82D3A1ECA9DFE00296AF3 /* K_HeaderView.xib */; };
+		8AB82D401ECAA25000296AF3 /* K_PortalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AB82D3E1ECAA25000296AF3 /* K_PortalCell.m */; };
+		8AB82D411ECAA25000296AF3 /* K_PortalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AB82D3F1ECAA25000296AF3 /* K_PortalCell.xib */; };
+		8AB82D441ECAA65D00296AF3 /* K_PortalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AB82D431ECAA65D00296AF3 /* K_PortalModel.m */; };
+		8ABED1A41ED8F933007A9B81 /* K_BasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABED1A31ED8F933007A9B81 /* K_BasicViewController.m */; };
+		8E0610502064F3BD009F4C09 /* AddressBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E06104F2064F3BD009F4C09 /* AddressBookViewController.m */; };
+		8E6D4B392068C36100B58437 /* K_OrgAndPersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D4B382068C36100B58437 /* K_OrgAndPersonViewController.m */; };
+		8E6D4B3C2068C36C00B58437 /* K_PersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D4B3B2068C36C00B58437 /* K_PersonViewController.m */; };
+		9A79B4584616C5E88C1D3029 /* libPods-KuteSmartCRM.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F27B3E6E334E7DC3653ED98 /* libPods-KuteSmartCRM.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8A65CD801EBD754F0037F668 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8A65CD5E1EBD754F0037F668 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8A65CD651EBD754F0037F668;
+			remoteInfo = KuteSmartCRM;
+		};
+		8A65CD8B1EBD754F0037F668 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8A65CD5E1EBD754F0037F668 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8A65CD651EBD754F0037F668;
+			remoteInfo = KuteSmartCRM;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8A012D9A1EC2E28E00A3C1B9 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		8A012D9B1EC2E28E00A3C1B9 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		8A012D9D1EC2E28E00A3C1B9 /* WebDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebDetailViewController.h; sourceTree = "<group>"; };
+		8A012D9E1EC2E28E00A3C1B9 /* WebDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebDetailViewController.m; sourceTree = "<group>"; };
+		8A08F7AC1EC6A9170022D7C2 /* KTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTabBarController.h; sourceTree = "<group>"; };
+		8A08F7AD1EC6A9170022D7C2 /* KTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTabBarController.m; sourceTree = "<group>"; };
+		8A3072EB1EC171E900E4B19E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		8A3072ED1EC1722900E4B19E /* RSAEncryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSAEncryptor.h; sourceTree = "<group>"; };
+		8A3072EE1EC1722900E4B19E /* RSAEncryptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSAEncryptor.m; sourceTree = "<group>"; };
+		8A59437D2086F3E200D122F7 /* K_NetWorkClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = K_NetWorkClient.h; sourceTree = "<group>"; };
+		8A59437E2086F3E200D122F7 /* K_NetWorkClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = K_NetWorkClient.m; sourceTree = "<group>"; };
+		8A59438120871D5500D122F7 /* UIViewController+NavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+NavigationBar.h"; sourceTree = "<group>"; };
+		8A59438220871D5500D122F7 /* UIViewController+NavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+NavigationBar.m"; sourceTree = "<group>"; };
+		8A5B06E51EC00A17007EC66A /* UserInfoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoManager.h; sourceTree = "<group>"; };
+		8A5B06E61EC00A17007EC66A /* UserInfoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoManager.m; sourceTree = "<group>"; };
+		8A64A5721ECE9EBB00606DF2 /* K_MyTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = K_MyTableCell.h; sourceTree = "<group>"; };
+		8A64A5731ECE9EBB00606DF2 /* K_MyTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = K_MyTableCell.m; sourceTree = "<group>"; };
+		8A64A5741ECE9EBB00606DF2 /* K_MyTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = K_MyTableCell.xib; sourceTree = "<group>"; };
+		8A64A57B1ECEB9A400606DF2 /* MyNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNavViewController.h; sourceTree = "<group>"; };
+		8A64A57C1ECEB9A400606DF2 /* MyNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNavViewController.m; sourceTree = "<group>"; };
+		8A65CD661EBD754F0037F668 /* KuteSmartCRM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KuteSmartCRM.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A65CD6A1EBD754F0037F668 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8A65CD731EBD754F0037F668 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CRM.storyboard; sourceTree = "<group>"; };
+		8A65CD751EBD754F0037F668 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8A65CD781EBD754F0037F668 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8A65CD7F1EBD754F0037F668 /* KuteSmartCRMTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KuteSmartCRMTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A65CD831EBD754F0037F668 /* KuteSmartCRMTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KuteSmartCRMTests.m; sourceTree = "<group>"; };
+		8A65CD851EBD754F0037F668 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A65CD8A1EBD754F0037F668 /* KuteSmartCRMUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KuteSmartCRMUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A65CD8E1EBD754F0037F668 /* KuteSmartCRMUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KuteSmartCRMUITests.m; sourceTree = "<group>"; };
+		8A65CD901EBD754F0037F668 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A65CDA91EBD77490037F668 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A65CDAB1EBD77830037F668 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		8A65CDAC1EBD77830037F668 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		8A65CDBA1EBD91CE0037F668 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		8A6BC2591EE24BD8007EE626 /* UIView+PS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+PS.h"; sourceTree = "<group>"; };
+		8A6BC25A1EE24BD8007EE626 /* UIView+PS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PS.m"; sourceTree = "<group>"; };
+		8A9C64431ECD4D9700A1F152 /* MyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
+		8A9C64441ECD4D9700A1F152 /* MyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
+		8A9C64521ECD8BF700A1F152 /* K_ChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = K_ChangePasswordViewController.h; sourceTree = "<group>"; };
+		8A9C64531ECD8BF700A1F152 /* K_ChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = K_ChangePasswordViewController.m; sourceTree = "<group>"; };
+		8AB82D331ECA9C7A00296AF3 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		8AB82D341ECA9C7A00296AF3 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		8AB82D381ECA9DFE00296AF3 /* K_HeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = K_HeaderView.h; sourceTree = "<group>"; };
+		8AB82D391ECA9DFE00296AF3 /* K_HeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = K_HeaderView.m; sourceTree = "<group>"; };
+		8AB82D3A1ECA9DFE00296AF3 /* K_HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = K_HeaderView.xib; sourceTree = "<group>"; };
+		8AB82D3D1ECAA25000296AF3 /* K_PortalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = K_PortalCell.h; sourceTree = "<group>"; };
+		8AB82D3E1ECAA25000296AF3 /* K_PortalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = K_PortalCell.m; sourceTree = "<group>"; };
+		8AB82D3F1ECAA25000296AF3 /* K_PortalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = K_PortalCell.xib; sourceTree = "<group>"; };
+		8AB82D421ECAA65D00296AF3 /* K_PortalModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = K_PortalModel.h; sourceTree = "<group>"; };
+		8AB82D431ECAA65D00296AF3 /* K_PortalModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = K_PortalModel.m; sourceTree = "<group>"; };
+		8ABED1A21ED8F933007A9B81 /* K_BasicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = K_BasicViewController.h; sourceTree = "<group>"; };
+		8ABED1A31ED8F933007A9B81 /* K_BasicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = K_BasicViewController.m; sourceTree = "<group>"; };
+		8E06104E2064F3BD009F4C09 /* AddressBookViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressBookViewController.h; sourceTree = "<group>"; };
+		8E06104F2064F3BD009F4C09 /* AddressBookViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressBookViewController.m; sourceTree = "<group>"; };
+		8E6D4B372068C36100B58437 /* K_OrgAndPersonViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = K_OrgAndPersonViewController.h; sourceTree = "<group>"; };
+		8E6D4B382068C36100B58437 /* K_OrgAndPersonViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = K_OrgAndPersonViewController.m; sourceTree = "<group>"; };
+		8E6D4B3A2068C36C00B58437 /* K_PersonViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = K_PersonViewController.h; sourceTree = "<group>"; };
+		8E6D4B3B2068C36C00B58437 /* K_PersonViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = K_PersonViewController.m; sourceTree = "<group>"; };
+		9F27B3E6E334E7DC3653ED98 /* libPods-KuteSmartCRM.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KuteSmartCRM.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B854D9CEC6650D2D51078435 /* Pods-KuteSmartCRM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KuteSmartCRM.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KuteSmartCRM/Pods-KuteSmartCRM.debug.xcconfig"; sourceTree = "<group>"; };
+		FF69B33A6F7A9AFE84E823C3 /* Pods-KuteSmartCRM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KuteSmartCRM.release.xcconfig"; path = "Pods/Target Support Files/Pods-KuteSmartCRM/Pods-KuteSmartCRM.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8A65CD631EBD754F0037F668 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A3072EC1EC171E900E4B19E /* Security.framework in Frameworks */,
+				9A79B4584616C5E88C1D3029 /* libPods-KuteSmartCRM.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A65CD7C1EBD754F0037F668 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A65CD871EBD754F0037F668 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8A012D961EC2E28E00A3C1B9 /* kInterfaceClass */ = {
+			isa = PBXGroup;
+			children = (
+				8A012D9A1EC2E28E00A3C1B9 /* LoginViewController.h */,
+				8A012D9B1EC2E28E00A3C1B9 /* LoginViewController.m */,
+				8A012D9D1EC2E28E00A3C1B9 /* WebDetailViewController.h */,
+				8A012D9E1EC2E28E00A3C1B9 /* WebDetailViewController.m */,
+				8AB82D311ECA9C7A00296AF3 /* Portal */,
+				8A08F7B21EC6AD6C0022D7C2 /* My */,
+				8A08F7B51EC6AD6C0022D7C2 /* Address Book */,
+			);
+			path = kInterfaceClass;
+			sourceTree = "<group>";
+		};
+		8A08F7B21EC6AD6C0022D7C2 /* My */ = {
+			isa = PBXGroup;
+			children = (
+				8A6BC2591EE24BD8007EE626 /* UIView+PS.h */,
+				8A6BC25A1EE24BD8007EE626 /* UIView+PS.m */,
+				8A9C64421ECD4D9700A1F152 /* controller */,
+				8A9C64451ECD4D9700A1F152 /* model */,
+				8A9C64461ECD4D9700A1F152 /* view */,
+			);
+			path = My;
+			sourceTree = "<group>";
+		};
+		8A08F7B51EC6AD6C0022D7C2 /* Address Book */ = {
+			isa = PBXGroup;
+			children = (
+				8E06104E2064F3BD009F4C09 /* AddressBookViewController.h */,
+				8E06104F2064F3BD009F4C09 /* AddressBookViewController.m */,
+				8E6D4B372068C36100B58437 /* K_OrgAndPersonViewController.h */,
+				8E6D4B382068C36100B58437 /* K_OrgAndPersonViewController.m */,
+				8E6D4B3A2068C36C00B58437 /* K_PersonViewController.h */,
+				8E6D4B3B2068C36C00B58437 /* K_PersonViewController.m */,
+			);
+			path = "Address Book";
+			sourceTree = "<group>";
+		};
+		8A59437B2086F3A200D122F7 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				8A59438020871D5500D122F7 /* Category */,
+				8A59437C2086F3C100D122F7 /* NetWorkRequest */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		8A59437C2086F3C100D122F7 /* NetWorkRequest */ = {
+			isa = PBXGroup;
+			children = (
+				8A59437D2086F3E200D122F7 /* K_NetWorkClient.h */,
+				8A59437E2086F3E200D122F7 /* K_NetWorkClient.m */,
+			);
+			path = NetWorkRequest;
+			sourceTree = "<group>";
+		};
+		8A59438020871D5500D122F7 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				8A59438120871D5500D122F7 /* UIViewController+NavigationBar.h */,
+				8A59438220871D5500D122F7 /* UIViewController+NavigationBar.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		8A5B06E41EC009EB007EC66A /* basicClass */ = {
+			isa = PBXGroup;
+			children = (
+				8A64A57B1ECEB9A400606DF2 /* MyNavViewController.h */,
+				8A64A57C1ECEB9A400606DF2 /* MyNavViewController.m */,
+				8A5B06E51EC00A17007EC66A /* UserInfoManager.h */,
+				8A5B06E61EC00A17007EC66A /* UserInfoManager.m */,
+				8A3072ED1EC1722900E4B19E /* RSAEncryptor.h */,
+				8A3072EE1EC1722900E4B19E /* RSAEncryptor.m */,
+				8A08F7AC1EC6A9170022D7C2 /* KTabBarController.h */,
+				8A08F7AD1EC6A9170022D7C2 /* KTabBarController.m */,
+				8ABED1A21ED8F933007A9B81 /* K_BasicViewController.h */,
+				8ABED1A31ED8F933007A9B81 /* K_BasicViewController.m */,
+			);
+			path = basicClass;
+			sourceTree = "<group>";
+		};
+		8A65CD5D1EBD754F0037F668 = {
+			isa = PBXGroup;
+			children = (
+				8A65CD681EBD754F0037F668 /* KuteSmartCRM */,
+				8A65CD821EBD754F0037F668 /* KuteSmartCRMTests */,
+				8A65CD8D1EBD754F0037F668 /* KuteSmartCRMUITests */,
+				8A65CD671EBD754F0037F668 /* Products */,
+				E636C051A6F5E50C170D98E8 /* Pods */,
+				8CE8E3C6D650AC8EACD1CE14 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		8A65CD671EBD754F0037F668 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8A65CD661EBD754F0037F668 /* KuteSmartCRM.app */,
+				8A65CD7F1EBD754F0037F668 /* KuteSmartCRMTests.xctest */,
+				8A65CD8A1EBD754F0037F668 /* KuteSmartCRMUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8A65CD681EBD754F0037F668 /* KuteSmartCRM */ = {
+			isa = PBXGroup;
+			children = (
+				8A59437B2086F3A200D122F7 /* Tool */,
+				8A012D961EC2E28E00A3C1B9 /* kInterfaceClass */,
+				8A5B06E41EC009EB007EC66A /* basicClass */,
+				8A65CD721EBD754F0037F668 /* CRM.storyboard */,
+				8A65CD751EBD754F0037F668 /* Assets.xcassets */,
+				8A65CD771EBD754F0037F668 /* LaunchScreen.storyboard */,
+				8A65CD691EBD754F0037F668 /* Supporting Files */,
+			);
+			path = KuteSmartCRM;
+			sourceTree = "<group>";
+		};
+		8A65CD691EBD754F0037F668 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8A65CDAB1EBD77830037F668 /* AppDelegate.h */,
+				8A65CDAC1EBD77830037F668 /* AppDelegate.m */,
+				8A65CD6A1EBD754F0037F668 /* main.m */,
+				8A65CDA91EBD77490037F668 /* Info.plist */,
+				8A65CDBA1EBD91CE0037F668 /* PrefixHeader.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8A65CD821EBD754F0037F668 /* KuteSmartCRMTests */ = {
+			isa = PBXGroup;
+			children = (
+				8A65CD831EBD754F0037F668 /* KuteSmartCRMTests.m */,
+				8A65CD851EBD754F0037F668 /* Info.plist */,
+			);
+			path = KuteSmartCRMTests;
+			sourceTree = "<group>";
+		};
+		8A65CD8D1EBD754F0037F668 /* KuteSmartCRMUITests */ = {
+			isa = PBXGroup;
+			children = (
+				8A65CD8E1EBD754F0037F668 /* KuteSmartCRMUITests.m */,
+				8A65CD901EBD754F0037F668 /* Info.plist */,
+			);
+			path = KuteSmartCRMUITests;
+			sourceTree = "<group>";
+		};
+		8A9C64421ECD4D9700A1F152 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				8A9C64431ECD4D9700A1F152 /* MyViewController.h */,
+				8A9C64441ECD4D9700A1F152 /* MyViewController.m */,
+				8A9C64521ECD8BF700A1F152 /* K_ChangePasswordViewController.h */,
+				8A9C64531ECD8BF700A1F152 /* K_ChangePasswordViewController.m */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		8A9C64451ECD4D9700A1F152 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		8A9C64461ECD4D9700A1F152 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				8A64A5721ECE9EBB00606DF2 /* K_MyTableCell.h */,
+				8A64A5731ECE9EBB00606DF2 /* K_MyTableCell.m */,
+				8A64A5741ECE9EBB00606DF2 /* K_MyTableCell.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		8AB82D311ECA9C7A00296AF3 /* Portal */ = {
+			isa = PBXGroup;
+			children = (
+				8AB82D321ECA9C7A00296AF3 /* controller */,
+				8AB82D351ECA9C7A00296AF3 /* model */,
+				8AB82D361ECA9C7A00296AF3 /* view */,
+			);
+			path = Portal;
+			sourceTree = "<group>";
+		};
+		8AB82D321ECA9C7A00296AF3 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				8AB82D331ECA9C7A00296AF3 /* MainViewController.h */,
+				8AB82D341ECA9C7A00296AF3 /* MainViewController.m */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		8AB82D351ECA9C7A00296AF3 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				8AB82D421ECAA65D00296AF3 /* K_PortalModel.h */,
+				8AB82D431ECAA65D00296AF3 /* K_PortalModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		8AB82D361ECA9C7A00296AF3 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				8AB82D381ECA9DFE00296AF3 /* K_HeaderView.h */,
+				8AB82D391ECA9DFE00296AF3 /* K_HeaderView.m */,
+				8AB82D3A1ECA9DFE00296AF3 /* K_HeaderView.xib */,
+				8AB82D3D1ECAA25000296AF3 /* K_PortalCell.h */,
+				8AB82D3E1ECAA25000296AF3 /* K_PortalCell.m */,
+				8AB82D3F1ECAA25000296AF3 /* K_PortalCell.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		8CE8E3C6D650AC8EACD1CE14 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8A3072EB1EC171E900E4B19E /* Security.framework */,
+				9F27B3E6E334E7DC3653ED98 /* libPods-KuteSmartCRM.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E636C051A6F5E50C170D98E8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B854D9CEC6650D2D51078435 /* Pods-KuteSmartCRM.debug.xcconfig */,
+				FF69B33A6F7A9AFE84E823C3 /* Pods-KuteSmartCRM.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8A65CD651EBD754F0037F668 /* KuteSmartCRM */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8A65CD931EBD754F0037F668 /* Build configuration list for PBXNativeTarget "KuteSmartCRM" */;
+			buildPhases = (
+				8B4B02F8970EEC886987F298 /* [CP] Check Pods Manifest.lock */,
+				8A65CD621EBD754F0037F668 /* Sources */,
+				8A65CD631EBD754F0037F668 /* Frameworks */,
+				8A65CD641EBD754F0037F668 /* Resources */,
+				A37262197E5A95840DD106A6 /* [CP] Embed Pods Frameworks */,
+				68B96B36884CF771E151288E /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KuteSmartCRM;
+			productName = KuteSmartCRM;
+			productReference = 8A65CD661EBD754F0037F668 /* KuteSmartCRM.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8A65CD7E1EBD754F0037F668 /* KuteSmartCRMTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8A65CD961EBD754F0037F668 /* Build configuration list for PBXNativeTarget "KuteSmartCRMTests" */;
+			buildPhases = (
+				8A65CD7B1EBD754F0037F668 /* Sources */,
+				8A65CD7C1EBD754F0037F668 /* Frameworks */,
+				8A65CD7D1EBD754F0037F668 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8A65CD811EBD754F0037F668 /* PBXTargetDependency */,
+			);
+			name = KuteSmartCRMTests;
+			productName = KuteSmartCRMTests;
+			productReference = 8A65CD7F1EBD754F0037F668 /* KuteSmartCRMTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8A65CD891EBD754F0037F668 /* KuteSmartCRMUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8A65CD991EBD754F0037F668 /* Build configuration list for PBXNativeTarget "KuteSmartCRMUITests" */;
+			buildPhases = (
+				8A65CD861EBD754F0037F668 /* Sources */,
+				8A65CD871EBD754F0037F668 /* Frameworks */,
+				8A65CD881EBD754F0037F668 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8A65CD8C1EBD754F0037F668 /* PBXTargetDependency */,
+			);
+			name = KuteSmartCRMUITests;
+			productName = KuteSmartCRMUITests;
+			productReference = 8A65CD8A1EBD754F0037F668 /* KuteSmartCRMUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8A65CD5E1EBD754F0037F668 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = K_;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = redcollar;
+				TargetAttributes = {
+					8A65CD651EBD754F0037F668 = {
+						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = Z9T373H7D5;
+						ProvisioningStyle = Automatic;
+					};
+					8A65CD7E1EBD754F0037F668 = {
+						CreatedOnToolsVersion = 8.3.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 8A65CD651EBD754F0037F668;
+					};
+					8A65CD891EBD754F0037F668 = {
+						CreatedOnToolsVersion = 8.3.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 8A65CD651EBD754F0037F668;
+					};
+				};
+			};
+			buildConfigurationList = 8A65CD611EBD754F0037F668 /* Build configuration list for PBXProject "KuteSmartCRM" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8A65CD5D1EBD754F0037F668;
+			productRefGroup = 8A65CD671EBD754F0037F668 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8A65CD651EBD754F0037F668 /* KuteSmartCRM */,
+				8A65CD7E1EBD754F0037F668 /* KuteSmartCRMTests */,
+				8A65CD891EBD754F0037F668 /* KuteSmartCRMUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8A65CD641EBD754F0037F668 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8AB82D3C1ECA9DFE00296AF3 /* K_HeaderView.xib in Resources */,
+				8A65CDAA1EBD77490037F668 /* Info.plist in Resources */,
+				8A65CD791EBD754F0037F668 /* LaunchScreen.storyboard in Resources */,
+				8A64A5761ECE9EBB00606DF2 /* K_MyTableCell.xib in Resources */,
+				8AB82D411ECAA25000296AF3 /* K_PortalCell.xib in Resources */,
+				8A65CD761EBD754F0037F668 /* Assets.xcassets in Resources */,
+				8A65CD741EBD754F0037F668 /* CRM.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A65CD7D1EBD754F0037F668 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A65CD881EBD754F0037F668 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		68B96B36884CF771E151288E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KuteSmartCRM/Pods-KuteSmartCRM-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8B4B02F8970EEC886987F298 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A37262197E5A95840DD106A6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KuteSmartCRM/Pods-KuteSmartCRM-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8A65CD621EBD754F0037F668 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A59438320871D5600D122F7 /* UIViewController+NavigationBar.m in Sources */,
+				8A5B06E71EC00A17007EC66A /* UserInfoManager.m in Sources */,
+				8A64A5751ECE9EBB00606DF2 /* K_MyTableCell.m in Sources */,
+				8AB82D3B1ECA9DFE00296AF3 /* K_HeaderView.m in Sources */,
+				8A08F7AE1EC6A9170022D7C2 /* KTabBarController.m in Sources */,
+				8AB82D441ECAA65D00296AF3 /* K_PortalModel.m in Sources */,
+				8A3072EF1EC1722900E4B19E /* RSAEncryptor.m in Sources */,
+				8AB82D371ECA9C7A00296AF3 /* MainViewController.m in Sources */,
+				8A6BC25B1EE24BD8007EE626 /* UIView+PS.m in Sources */,
+				8E0610502064F3BD009F4C09 /* AddressBookViewController.m in Sources */,
+				8E6D4B392068C36100B58437 /* K_OrgAndPersonViewController.m in Sources */,
+				8A9C64471ECD4D9700A1F152 /* MyViewController.m in Sources */,
+				8E6D4B3C2068C36C00B58437 /* K_PersonViewController.m in Sources */,
+				8AB82D401ECAA25000296AF3 /* K_PortalCell.m in Sources */,
+				8A012DA11EC2E28E00A3C1B9 /* LoginViewController.m in Sources */,
+				8A65CD6B1EBD754F0037F668 /* main.m in Sources */,
+				8A012DA21EC2E28E00A3C1B9 /* WebDetailViewController.m in Sources */,
+				8ABED1A41ED8F933007A9B81 /* K_BasicViewController.m in Sources */,
+				8A9C64541ECD8BF700A1F152 /* K_ChangePasswordViewController.m in Sources */,
+				8A65CDAE1EBD77830037F668 /* AppDelegate.m in Sources */,
+				8A64A57D1ECEB9A400606DF2 /* MyNavViewController.m in Sources */,
+				8A59437F2086F3E200D122F7 /* K_NetWorkClient.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A65CD7B1EBD754F0037F668 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A65CD841EBD754F0037F668 /* KuteSmartCRMTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A65CD861EBD754F0037F668 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A65CD8F1EBD754F0037F668 /* KuteSmartCRMUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8A65CD811EBD754F0037F668 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8A65CD651EBD754F0037F668 /* KuteSmartCRM */;
+			targetProxy = 8A65CD801EBD754F0037F668 /* PBXContainerItemProxy */;
+		};
+		8A65CD8C1EBD754F0037F668 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8A65CD651EBD754F0037F668 /* KuteSmartCRM */;
+			targetProxy = 8A65CD8B1EBD754F0037F668 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8A65CD721EBD754F0037F668 /* CRM.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8A65CD731EBD754F0037F668 /* Base */,
+			);
+			name = CRM.storyboard;
+			sourceTree = "<group>";
+		};
+		8A65CD771EBD754F0037F668 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8A65CD781EBD754F0037F668 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8A65CD911EBD754F0037F668 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8A65CD921EBD754F0037F668 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8A65CD941EBD754F0037F668 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B854D9CEC6650D2D51078435 /* Pods-KuteSmartCRM.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = Z9T373H7D5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/KuteSmartCRM/PrefixHeader.pch";
+				INFOPLIST_FILE = KuteSmartCRM/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kutesmart.KuteSmartCRM;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+			};
+			name = Debug;
+		};
+		8A65CD951EBD754F0037F668 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF69B33A6F7A9AFE84E823C3 /* Pods-KuteSmartCRM.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = Z9T373H7D5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/KuteSmartCRM/PrefixHeader.pch";
+				INFOPLIST_FILE = KuteSmartCRM/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kutesmart.KuteSmartCRM;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+			};
+			name = Release;
+		};
+		8A65CD971EBD754F0037F668 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = KuteSmartCRMTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = kutesmart.KuteSmartCRMTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KuteSmartCRM.app/KuteSmartCRM";
+			};
+			name = Debug;
+		};
+		8A65CD981EBD754F0037F668 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = KuteSmartCRMTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = kutesmart.KuteSmartCRMTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KuteSmartCRM.app/KuteSmartCRM";
+			};
+			name = Release;
+		};
+		8A65CD9A1EBD754F0037F668 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = KuteSmartCRMUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = kutesmart.KuteSmartCRMUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = KuteSmartCRM;
+			};
+			name = Debug;
+		};
+		8A65CD9B1EBD754F0037F668 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = KuteSmartCRMUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = kutesmart.KuteSmartCRMUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = KuteSmartCRM;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8A65CD611EBD754F0037F668 /* Build configuration list for PBXProject "KuteSmartCRM" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A65CD911EBD754F0037F668 /* Debug */,
+				8A65CD921EBD754F0037F668 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8A65CD931EBD754F0037F668 /* Build configuration list for PBXNativeTarget "KuteSmartCRM" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A65CD941EBD754F0037F668 /* Debug */,
+				8A65CD951EBD754F0037F668 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8A65CD961EBD754F0037F668 /* Build configuration list for PBXNativeTarget "KuteSmartCRMTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A65CD971EBD754F0037F668 /* Debug */,
+				8A65CD981EBD754F0037F668 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8A65CD991EBD754F0037F668 /* Build configuration list for PBXNativeTarget "KuteSmartCRMUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A65CD9A1EBD754F0037F668 /* Debug */,
+				8A65CD9B1EBD754F0037F668 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8A65CD5E1EBD754F0037F668 /* Project object */;
+}
