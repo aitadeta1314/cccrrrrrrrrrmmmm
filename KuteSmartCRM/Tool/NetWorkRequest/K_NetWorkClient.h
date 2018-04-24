@@ -7,6 +7,7 @@
 //  网络请求类
 
 #import <Foundation/Foundation.h>
+#import "LoginViewController.h"
 
 typedef NS_ENUM(NSInteger, RequestMethodType){
     RequestMethodTypePost = 1,
@@ -26,5 +27,7 @@ typedef NS_ENUM(NSInteger, RequestMethodType){
 + (void)getAddressBookWithOrgID:(NSString *)orgID
                         success:(void (^)(id responseObject))success
                         failure:(void (^)(NSError *error))failure;
-
+/// 获取工作台
++ (void)getWorkbenchListInfoSuccess:(void (^)(id responseObject))success
+                            failure:(void (^)(NSError *error))failure;
 @end

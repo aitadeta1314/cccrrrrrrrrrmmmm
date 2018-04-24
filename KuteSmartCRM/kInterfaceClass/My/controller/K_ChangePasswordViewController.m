@@ -93,11 +93,11 @@
     [self.view endEditing:YES];
     
     if ([self.oldPasswordTF.text isEqualToString:@""]) {
-        [self progressHUDWithText:@"请输入旧密码"];
+        [K_GlobalUtil HUDShowMessage:@"请输入旧密码" addedToView:SharedAppDelegate.window];
         return;
     }
     if ([self.oldPasswordTF.text isEqualToString:self.passwordNewTF.text]) {
-        [self progressHUDWithText:@"请更新您的密码"];
+        [K_GlobalUtil HUDShowMessage:@"请更新您的密码" addedToView:SharedAppDelegate.window];
         return;
     }
     if ([self.passwordNewTF.text isEqualToString:self.sureNewTF.text]) {
@@ -123,41 +123,34 @@
                 if ([result_code isEqualToString:@"Y"]) {
                     // 成功
                     KUSERPASSWORD = self.passwordNewTF.text;
-                    [self progressHUDWithText:@"修改成功"];
+                    [K_GlobalUtil HUDShowMessage:@"修改成功" addedToView:SharedAppDelegate.window];
                     [self goLeft];
                 }
                 else if([result_code isEqualToString:@"W"]) {
                     // 旧密码错误
-                    [self progressHUDWithText:result_info];
+                    [K_GlobalUtil HUDShowMessage:result_info addedToView:SharedAppDelegate.window];
                 }
                 else {
-                    [self progressHUDWithText:@"修改失败"];
+                    [K_GlobalUtil HUDShowMessage:@"修改失败" addedToView:SharedAppDelegate.window];
                 }
                 
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 
-                [self progressHUDWithText:@"请检查您的网络"];
+                [K_GlobalUtil HUDShowMessage:@"请检查您的网络" addedToView:SharedAppDelegate.window];
             }];
             
         }
         else {
             // 密码格式不正确
-            [self progressHUDWithText:@"请输入6-15位新密码"];
+            [K_GlobalUtil HUDShowMessage:@"请输入6-15位新密码" addedToView:SharedAppDelegate.window];
         }
     }
     else {
         
         // 确认密码不相同
-        [self progressHUDWithText:@"请输入相同的新密码"];
+        [K_GlobalUtil HUDShowMessage:@"请输入相同的新密码" addedToView:SharedAppDelegate.window];
         return;
     }
-}
-
-- (void)progressHUDWithText:(NSString *)textStr {
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeText;
-    hud.label.text = textStr;
-    [hud hideAnimated:YES afterDelay:2];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

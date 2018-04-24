@@ -15,6 +15,7 @@
 		8A59437F2086F3E200D122F7 /* K_NetWorkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A59437E2086F3E200D122F7 /* K_NetWorkClient.m */; };
 		8A59438320871D5600D122F7 /* UIViewController+NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A59438220871D5500D122F7 /* UIViewController+NavigationBar.m */; };
 		8A5943862087389100D122F7 /* UINavigationBar+PS.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5943852087389100D122F7 /* UINavigationBar+PS.m */; };
+		8A59438A2088456E00D122F7 /* K_MapLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5943892088456E00D122F7 /* K_MapLocationViewController.m */; };
 		8A5B06E71EC00A17007EC66A /* UserInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5B06E61EC00A17007EC66A /* UserInfoManager.m */; };
 		8A64A5751ECE9EBB00606DF2 /* K_MyTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A64A5731ECE9EBB00606DF2 /* K_MyTableCell.m */; };
 		8A64A5761ECE9EBB00606DF2 /* K_MyTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A64A5741ECE9EBB00606DF2 /* K_MyTableCell.xib */; };
@@ -37,6 +38,7 @@
 		8AB82D411ECAA25000296AF3 /* K_PortalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AB82D3F1ECAA25000296AF3 /* K_PortalCell.xib */; };
 		8AB82D441ECAA65D00296AF3 /* K_PortalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AB82D431ECAA65D00296AF3 /* K_PortalModel.m */; };
 		8ABED1A41ED8F933007A9B81 /* K_BasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABED1A31ED8F933007A9B81 /* K_BasicViewController.m */; };
+		8ABF04ED208EDE6B0007CFCA /* K_GlobalUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABF04EC208EDE6B0007CFCA /* K_GlobalUtil.m */; };
 		8E0610502064F3BD009F4C09 /* AddressBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E06104F2064F3BD009F4C09 /* AddressBookViewController.m */; };
 		8E6D4B392068C36100B58437 /* K_OrgAndPersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D4B382068C36100B58437 /* K_OrgAndPersonViewController.m */; };
 		8E6D4B3C2068C36C00B58437 /* K_PersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D4B3B2068C36C00B58437 /* K_PersonViewController.m */; };
@@ -76,6 +78,8 @@
 		8A59438220871D5500D122F7 /* UIViewController+NavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+NavigationBar.m"; sourceTree = "<group>"; };
 		8A5943842087389100D122F7 /* UINavigationBar+PS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+PS.h"; sourceTree = "<group>"; };
 		8A5943852087389100D122F7 /* UINavigationBar+PS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+PS.m"; sourceTree = "<group>"; };
+		8A5943882088456E00D122F7 /* K_MapLocationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = K_MapLocationViewController.h; sourceTree = "<group>"; };
+		8A5943892088456E00D122F7 /* K_MapLocationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = K_MapLocationViewController.m; sourceTree = "<group>"; };
 		8A5B06E51EC00A17007EC66A /* UserInfoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoManager.h; sourceTree = "<group>"; };
 		8A5B06E61EC00A17007EC66A /* UserInfoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoManager.m; sourceTree = "<group>"; };
 		8A64A5721ECE9EBB00606DF2 /* K_MyTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = K_MyTableCell.h; sourceTree = "<group>"; };
@@ -116,6 +120,8 @@
 		8AB82D431ECAA65D00296AF3 /* K_PortalModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = K_PortalModel.m; sourceTree = "<group>"; };
 		8ABED1A21ED8F933007A9B81 /* K_BasicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = K_BasicViewController.h; sourceTree = "<group>"; };
 		8ABED1A31ED8F933007A9B81 /* K_BasicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = K_BasicViewController.m; sourceTree = "<group>"; };
+		8ABF04EB208EDE6B0007CFCA /* K_GlobalUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = K_GlobalUtil.h; sourceTree = "<group>"; };
+		8ABF04EC208EDE6B0007CFCA /* K_GlobalUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = K_GlobalUtil.m; sourceTree = "<group>"; };
 		8E06104E2064F3BD009F4C09 /* AddressBookViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressBookViewController.h; sourceTree = "<group>"; };
 		8E06104F2064F3BD009F4C09 /* AddressBookViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressBookViewController.m; sourceTree = "<group>"; };
 		8E6D4B372068C36100B58437 /* K_OrgAndPersonViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = K_OrgAndPersonViewController.h; sourceTree = "<group>"; };
@@ -198,6 +204,8 @@
 			children = (
 				8A59438020871D5500D122F7 /* Category */,
 				8A59437C2086F3C100D122F7 /* NetWorkRequest */,
+				8ABF04EB208EDE6B0007CFCA /* K_GlobalUtil.h */,
+				8ABF04EC208EDE6B0007CFCA /* K_GlobalUtil.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -220,6 +228,15 @@
 				8A5943852087389100D122F7 /* UINavigationBar+PS.m */,
 			);
 			path = Category;
+			sourceTree = "<group>";
+		};
+		8A5943872088452500D122F7 /* MapTracking */ = {
+			isa = PBXGroup;
+			children = (
+				8A5943882088456E00D122F7 /* K_MapLocationViewController.h */,
+				8A5943892088456E00D122F7 /* K_MapLocationViewController.m */,
+			);
+			path = MapTracking;
 			sourceTree = "<group>";
 		};
 		8A5B06E41EC009EB007EC66A /* basicClass */ = {
@@ -346,6 +363,7 @@
 		8AB82D321ECA9C7A00296AF3 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				8A5943872088452500D122F7 /* MapTracking */,
 				8AB82D331ECA9C7A00296AF3 /* MainViewController.h */,
 				8AB82D341ECA9C7A00296AF3 /* MainViewController.m */,
 			);
@@ -536,9 +554,14 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-KuteSmartCRM/Pods-KuteSmartCRM-resources.sh",
+				"${PODS_ROOT}/AMap3DMap/MAMapKit.framework/AMap.bundle",
+				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -551,13 +574,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KuteSmartCRM-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A37262197E5A95840DD106A6 /* [CP] Embed Pods Frameworks */ = {
@@ -582,6 +608,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A59438A2088456E00D122F7 /* K_MapLocationViewController.m in Sources */,
 				8A59438320871D5600D122F7 /* UIViewController+NavigationBar.m in Sources */,
 				8A5B06E71EC00A17007EC66A /* UserInfoManager.m in Sources */,
 				8A64A5751ECE9EBB00606DF2 /* K_MyTableCell.m in Sources */,
@@ -599,6 +626,7 @@
 				8A012DA11EC2E28E00A3C1B9 /* LoginViewController.m in Sources */,
 				8A65CD6B1EBD754F0037F668 /* main.m in Sources */,
 				8A012DA21EC2E28E00A3C1B9 /* WebDetailViewController.m in Sources */,
+				8ABF04ED208EDE6B0007CFCA /* K_GlobalUtil.m in Sources */,
 				8ABED1A41ED8F933007A9B81 /* K_BasicViewController.m in Sources */,
 				8A9C64541ECD8BF700A1F152 /* K_ChangePasswordViewController.m in Sources */,
 				8A5943862087389100D122F7 /* UINavigationBar+PS.m in Sources */,

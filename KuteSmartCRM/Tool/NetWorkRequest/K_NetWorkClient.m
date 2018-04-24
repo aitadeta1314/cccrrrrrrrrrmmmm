@@ -69,6 +69,16 @@
                                   failure:failure];
 }
 
+/// 工作台列表
++ (void)getWorkbenchListInfoSuccess:(void (^)(id))success
+                            failure:(void (^)(NSError *))failure {
+    [K_NetWorkClient requestWithMethod_ST:RequestMethodTypeGet
+                                      url:[NSString stringWithFormat:@"/public/microapp/getAppList"]
+                                   params:nil
+                                  success:success
+                                  failure:failure];
+}
+
 + (NSURLSessionDataTask *)requestWithMethod_ST:(RequestMethodType)methodType
                                            url:(NSString*)url
                                         params:(id)params
@@ -92,10 +102,11 @@
             task = [manager GET:url
                      parameters:params
                         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                success(responseObject);
+                            success(responseObject);
             }
                         failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                failure(error);
+                            // 如果失败的话 有可能是网络问题，再者就是用户token失效
+                            [K_NetWorkClient performCommonFailure:failure error:error];
             }];
         }
             break;
@@ -104,7 +115,7 @@
             task = [manager POST:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 success(responseObject);
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                failure(error);
+                [K_NetWorkClient performCommonFailure:failure error:error];
             }];
         }
             break;
@@ -113,6 +124,30 @@
     }
     
     return task;
+}
+
+/// 请求失败情况处理
++ (void)performCommonFailure:(void (^)(NSError* err))failure error:(NSError*)error {
+    if (failure)
+        failure(error);
+    switch (error.code) {
+        case kCFURLErrorNotConnectedToInternet:
+            [K_GlobalUtil HUDShowMessage:@"未连接网络" addedToView:SharedAppDelegate.window];
+            break;
+        case kCFURLErrorTimedOut:
+            [K_GlobalUtil HUDShowMessage:@"网络超时，请检查网络情况" addedToView:SharedAppDelegate.window];
+            break;
+        default:
+        {
+            NSString *errorStr = [NSString stringWithFormat:@"%@",error];
+            if ([errorStr containsString:@"401"]) {
+                UIStoryboard *CRMStory = [UIStoryboard storyboardWithName:@"CRM" bundle:nil];
+                LoginViewController *loginVC = [CRMStory instantiateViewControllerWithIdentifier:@"loginID"];
+                SharedAppDelegate.window.rootViewController = loginVC;
+            }
+        }
+            break;
+    }
 }
 
 

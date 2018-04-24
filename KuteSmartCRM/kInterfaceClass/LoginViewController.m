@@ -193,7 +193,7 @@
     
     if ([self.userNameTF.text isEqualToString:@""]||[self.passwordTF.text isEqualToString:@""]) {
         
-        [self progressHUDText:@"请输入用户名或密码"];
+        [K_GlobalUtil HUDShowMessage:@"请输入用户名或密码" addedToView:SharedAppDelegate.window];
     }
     else {
         [_activitIndicatorView startAnimating];
@@ -211,7 +211,7 @@
                 
                 NSDictionary *dic = responseObject[@"data"];
                 
-                [self progressHUDText:@"登录成功"];
+                [K_GlobalUtil HUDShowMessage:@"登录成功" addedToView:SharedAppDelegate.window];
                 KTOKEN = dic[@"clientDigest"];
                 KUSERNAME = dic[@"username"];
                 
@@ -231,19 +231,11 @@
         } failure:^(NSError *error) {
             [_activitIndicatorView stopAnimating];
             
-            [self progressHUDText:@"登录失败"];
+            [K_GlobalUtil HUDShowMessage:@"登录失败" addedToView:SharedAppDelegate.window];
         }];
         
     }
     
-}
-
-- (void)progressHUDText:(NSString *)text {
-    
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeText;
-    hud.label.text = text;
-    [hud hideAnimated:YES afterDelay:2];
 }
 
 // 主页面
