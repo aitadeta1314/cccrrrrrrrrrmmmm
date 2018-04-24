@@ -6,8 +6,8 @@
 //  Copyright © 2018年 redcollar. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "K_BasicViewController.h"
 
-@interface K_MapLocationViewController : UIViewController
+@interface K_MapLocationViewController : K_BasicViewController
 
 @end

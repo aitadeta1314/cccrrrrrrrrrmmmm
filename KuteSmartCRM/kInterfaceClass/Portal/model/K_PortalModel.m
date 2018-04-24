@@ -19,7 +19,7 @@
 +(JSONKeyMapper*)keyMapper
 {
     return [[JSONKeyMapper alloc] initWithDictionary:@{
-                                  @"node_name":@"sub_node_name"
+                                  @"appName":@"sub_appName"
                                                        }];
 }
 

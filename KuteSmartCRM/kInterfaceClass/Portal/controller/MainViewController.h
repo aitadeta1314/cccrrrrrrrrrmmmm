@@ -6,7 +6,6 @@
 //  Copyright © 2017年 redcollar. All rights reserved.
 //
 
-//#import <UIKit/UIKit.h>
 #import "K_BasicViewController.h"
 
 @interface MainViewController : K_BasicViewController

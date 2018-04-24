@@ -6,11 +6,11 @@
 //  Copyright © 2017年 redcollar. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "K_BasicViewController.h"
 #import <NJKWebViewProgress.h>
 #import <NJKWebViewProgressView.h>
 
-@interface WebDetailViewController : UIViewController
+@interface WebDetailViewController : K_BasicViewController
 
 /**
  * html

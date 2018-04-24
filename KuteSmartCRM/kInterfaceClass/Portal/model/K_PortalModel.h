@@ -15,27 +15,35 @@
 /**
  *  分区名
  */
-@property (nonatomic, strong) NSString *node_name;
+@property (nonatomic, strong) NSString <Optional>*appName;
 /**
  *  array
  */
-@property (nonatomic, strong) NSMutableArray<SublistModel> *sublist;
+@property (nonatomic, strong) NSMutableArray<SublistModel> *subAppList;
 
 @end
 
 @interface SublistModel : JSONModel
 /**
- *  img url
+   img url
  */
-@property (nonatomic, strong) NSString *menu_icon;
+@property (nonatomic, copy) NSString <Optional> *appIcon;
 /**
- *  name
+   name
  */
-@property (nonatomic, strong) NSString *sub_node_name;
+@property (nonatomic, copy) NSString <Optional> *sub_appName;
 /**
- *  menu_url
+   menu_url
  */
-@property (nonatomic, strong) NSString *menu_url;
+@property (nonatomic, copy) NSString <Optional> *appUrl;
+/**
+ web or ative
+ */
+@property (nonatomic, copy) NSString <Optional> *appType;
+/**
+  url 参数
+ */
+@property (nonatomic,copy) NSString <Optional> *urlParams;
 
 @end
 

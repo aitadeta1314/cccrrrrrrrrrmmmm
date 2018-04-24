@@ -16,9 +16,8 @@
 }
 
 - (void)setModel:(SublistModel *)model {
-    self.PortalTitle.text = model.sub_node_name;
-    NSLog(@"model.menu_url:%@",model.menu_icon);
-    [self.PortalImgView sd_setImageWithURL:[NSURL URLWithString:model.menu_icon]];
+    self.PortalTitle.text = model.sub_appName;
+    [self.PortalImgView sd_setImageWithURL:[NSURL URLWithString:model.appIcon]];
     
 }
 

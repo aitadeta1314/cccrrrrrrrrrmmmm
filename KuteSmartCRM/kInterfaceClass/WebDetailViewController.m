@@ -56,9 +56,6 @@
 /** 布局*/
 - (void)configureForInterface {
     
-    // 添加左边返回按钮
-    [self addLeftButton];
-    
     self.navigationController.interactivePopGestureRecognizer.delegate = self;
     
     // 添加进度条

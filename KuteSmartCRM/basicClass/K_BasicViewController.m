@@ -21,6 +21,7 @@
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
     self.navigationController.navigationBar.barTintColor = NavigationBarBGColor;
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    [self addBackButton];
 }
 
 - (void)didReceiveMemoryWarning {

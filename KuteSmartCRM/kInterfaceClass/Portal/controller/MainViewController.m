@@ -12,6 +12,7 @@
 #import "K_PortalCell.h"
 #import "K_PortalModel.h"
 #import "RSAEncryptor.h"
+#import "K_MapLocationViewController.h"
 
 @interface MainViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
@@ -52,14 +53,13 @@
 - (SublistModel *)emptyData {
     if (!_emptyData) {
         SublistModel *model = [[SublistModel alloc] init];
-        model.sub_node_name = @"";
-        model.menu_icon = @"";
-        model.menu_url = @"";
+        model.sub_appName = @"";
+        model.appIcon  = @"";
+        model.appUrl = @"";
         _emptyData = model;
     }
     return _emptyData;
 }
-
 
 /**
  布局
@@ -94,69 +94,24 @@
 }
 
 - (void)makeDataFromNet {
+    weakObjc(self);
     [K_NetWorkClient getWorkbenchListInfoSuccess:^(id responseObject) {
-        NSLog(@"responseObject:%@", responseObject);
-        
-    }
-                                         failure:^(NSError *error) {
-                                             NSLog(@"请求失败");
+
+        NSArray *data = responseObject[@"data"];
+        NSArray *dataModelArr = [K_PortalModel arrayOfModelsFromDictionaries:data error:nil];
+        [weakself.dataArray addObjectsFromArray:dataModelArr];
+        [weakself.collectionView reloadData];
+        [weakself.collectionView.mj_header endRefreshing];
+    } failure:^(NSError *error) {
+        [weakself.collectionView.mj_header endRefreshing];
     }];
-//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-//    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-//    NSDictionary *params = @{@"userid":KUSERID};
-//    [manager GET:KMENUHTTP parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//
-//        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
-//        NSString *result_code = dic[@"result_code"];
-//
-//        if ([result_code isEqualToString:@"Y"]) {
-//
-//            NSString *result_info = dic[@"result_info"];
-//            // Convert to JSON object:
-//            NSArray *jsonObject = [NSJSONSerialization JSONObjectWithData:[result_info dataUsingEncoding:NSUTF8StringEncoding] options:0 error:NULL];
-//            NSLog(@"jsonObject:%@",jsonObject);
-////            for (NSDictionary *subDic in jsonObject) {
-////                K_PortalModel *model = [[K_PortalModel alloc] initWithDictionary:subDic error:nil];
-////                 NSUInteger count = model.sublist.count;
-////                if (UI_IS_IPHONE5) {
-////                    if (count%3 != 0) {
-////                        for (int i=0; i<(3-count%3); i++) {
-////                            [model.sublist addObject:self.emptyData];
-////                        }
-////                    }
-////                }
-////                else {
-////                    if (count%4 != 0) {
-////                        for (int i=0; i<(4-count%4); i++) {
-////                            [model.sublist addObject:self.emptyData];
-////                        }
-////                    }
-////                }
-////
-////                [self.dataArray addObject:model];
-////            }
-//
-//        }
-//        else {
-//            [self progressHUD];
-//        }
-//
-//        [self.collectionView reloadData];
-//
-//        [self.collectionView.mj_header endRefreshing];
-//
-//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//
-//        [self.collectionView.mj_header endRefreshing];
-//        [self progressHUD];
-//    }];
 
 }
 
 #pragma mark - UICollectionView delegate / data source
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     K_PortalCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    SublistModel *model = ((K_PortalModel *)self.dataArray[indexPath.section]).sublist[indexPath.row];
+    SublistModel *model = ((K_PortalModel *)self.dataArray[indexPath.section]).subAppList[indexPath.row];
     cell.model = model;
     return cell;
 }
@@ -164,13 +119,7 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
 
     K_PortalModel *model = self.dataArray[section];
-    if (UI_IS_IPHONE5) {
-        return model.sublist.count;
-    }
-    else {
-        return model.sublist.count;
-    }
-
+    return model.subAppList.count;
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -182,7 +131,7 @@
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
         K_HeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header" forIndexPath:indexPath];
-        headerView.lbHeader.text = ((K_PortalModel *)self.dataArray[indexPath.section]).node_name;
+        headerView.lbHeader.text = ((K_PortalModel *)self.dataArray[indexPath.section]).appName;
         return headerView;
     }
     return nil;
@@ -191,24 +140,37 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
-    WebDetailViewController *webDetailVC = [[WebDetailViewController alloc] init];
-    SublistModel *sublist = ((K_PortalModel *)self.dataArray[indexPath.section]).sublist[indexPath.row];
-    if (![sublist.menu_url isEqualToString:@""]) {
-        if ([sublist.sub_node_name isEqualToString:@"CRM"]) {
-            webDetailVC.htmlUrl = [NSString stringWithFormat:@"%@?login_username=%@&login_password=%@&system=%@",sublist.menu_url,KUSERNAME,[RSAEncryptor encryptString:KUSERPASSWORD publicKey:KRSA_PUBLIC_KEY],@"IOS"];
-            NSLog(@"url:%@",webDetailVC.htmlUrl);
-        }
-        if ([sublist.sub_node_name isEqualToString:@"B2M"]) {
-            webDetailVC.htmlUrl = [NSString stringWithFormat:@"http://%@",sublist.menu_url];
-        }
-        else {
-            webDetailVC.htmlUrl = sublist.menu_url;
-        }
-
+    SublistModel *sublist = ((K_PortalModel *)self.dataArray[indexPath.section]).subAppList[indexPath.row];
+    if ([sublist.appType isEqualToString:@"web"]) {
+        // 跳转到html
+        WebDetailViewController *webDetailVC = [[WebDetailViewController alloc] init];
+        webDetailVC.htmlUrl = sublist.appUrl;
         self.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:webDetailVC animated:YES];
         self.hidesBottomBarWhenPushed = NO;
+    } else if ([sublist.appType isEqualToString:@"native"]) {
+        UIViewController *subAppVC = nil;
+        // 跳转到原生页面
+        if ([sublist.sub_appName isEqualToString:@"移动追踪"]) {
+            K_MapLocationViewController *mapLocationVC = [[K_MapLocationViewController alloc] init];
+            subAppVC = mapLocationVC;
+        }
+        
+        self.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:subAppVC animated:YES];
+        self.hidesBottomBarWhenPushed = NO;
     }
+//    if (![sublist.menu_url isEqualToString:@""]) {
+//        if ([sublist.sub_node_name isEqualToString:@"CRM"]) {
+//            webDetailVC.htmlUrl = [NSString stringWithFormat:@"%@?login_username=%@&login_password=%@&system=%@",sublist.menu_url,KUSERNAME,[RSAEncryptor encryptString:KUSERPASSWORD publicKey:KRSA_PUBLIC_KEY],@"IOS"];
+//            NSLog(@"url:%@",webDetailVC.htmlUrl);
+//        }
+//        if ([sublist.sub_node_name isEqualToString:@"B2M"]) {
+//            webDetailVC.htmlUrl = [NSString stringWithFormat:@"http://%@",sublist.menu_url];
+//        }
+//        else {
+//            webDetailVC.htmlUrl = sublist.menu_url;
+//        }
 
 }
 
