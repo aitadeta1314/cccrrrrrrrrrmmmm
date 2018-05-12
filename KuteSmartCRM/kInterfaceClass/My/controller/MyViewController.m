@@ -197,7 +197,7 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = RGBA(245, 245, 245, 1);
-//    self.navigationItem.title = @"我的";
+    self.navigationItem.title = @"我的";
     
     [self resetHeaderView];
     
@@ -460,50 +460,50 @@
 
  @param scrollView tableView
  */
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    
-    CGFloat offset_Y = scrollView.contentOffset.y;
-    
-    //1.处理图片放大
-    CGFloat imageH = self.headBackView.size.height;
-    CGFloat imageW = kDeviceWidth;
-    
-    //下拉
-    if (offset_Y < 0) {
-        
-        CGFloat totalOffset = imageH + ABS(offset_Y);
-        CGFloat f = totalOffset / imageH;
-        
-        //如果想下拉固定头部视图不动，y和h 是要等比都设置。如不需要则y可为0
-        self.headImageView.frame = CGRectMake(-(imageW * f - imageW) * 0.5, offset_Y, imageW * f, totalOffset);
-    }
-    else {
-        self.headImageView.frame = self.headBackView.bounds;
-    }
-    
-    //2.处理导航颜色渐变  3.底部工具栏动画
-    if (offset_Y > Max_OffsetY) {
-        
-        CGFloat alpha = MIN(1, 1 - ((Max_OffsetY + INVALID_VIEW_HEIGHT - offset_Y) / INVALID_VIEW_HEIGHT));
-
-        [self.navigationController.navigationBar ps_setBackgroundColor:[NavigationBarBGColor colorWithAlphaComponent:alpha]];
-
-        if (offset_Y - _lastPosition > 5) {
-            //向上滚动
-            _lastPosition = offset_Y;
-            
-        }
-        else if (_lastPosition - offset_Y > 5) {
-            // 向下滚动
-            _lastPosition = offset_Y;
-        }
-        self.navigationItem.title = alpha > 0.8? @"我的":@"";
-    }
-    else {
-        [self.navigationController.navigationBar ps_setBackgroundColor:[NavigationBarBGColor colorWithAlphaComponent:0]];
-    }
-    
-}
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+//
+//    CGFloat offset_Y = scrollView.contentOffset.y;
+//
+//    //1.处理图片放大
+//    CGFloat imageH = self.headBackView.size.height;
+//    CGFloat imageW = kDeviceWidth;
+//
+//    //下拉
+//    if (offset_Y < 0) {
+//
+//        CGFloat totalOffset = imageH + ABS(offset_Y);
+//        CGFloat f = totalOffset / imageH;
+//
+//        //如果想下拉固定头部视图不动，y和h 是要等比都设置。如不需要则y可为0
+//        self.headImageView.frame = CGRectMake(-(imageW * f - imageW) * 0.5, offset_Y, imageW * f, totalOffset);
+//    }
+//    else {
+//        self.headImageView.frame = self.headBackView.bounds;
+//    }
+//
+//    //2.处理导航颜色渐变  3.底部工具栏动画
+//    if (offset_Y > Max_OffsetY) {
+//
+//        CGFloat alpha = MIN(1, 1 - ((Max_OffsetY + INVALID_VIEW_HEIGHT - offset_Y) / INVALID_VIEW_HEIGHT));
+//
+//        [self.navigationController.navigationBar ps_setBackgroundColor:[NavigationBarBGColor colorWithAlphaComponent:alpha]];
+//
+//        if (offset_Y - _lastPosition > 5) {
+//            //向上滚动
+//            _lastPosition = offset_Y;
+//
+//        }
+//        else if (_lastPosition - offset_Y > 5) {
+//            // 向下滚动
+//            _lastPosition = offset_Y;
+//        }
+//        self.navigationItem.title = alpha > 0.8? @"我的":@"";
+//    }
+//    else {
+//        [self.navigationController.navigationBar ps_setBackgroundColor:[NavigationBarBGColor colorWithAlphaComponent:0]];
+//    }
+//
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

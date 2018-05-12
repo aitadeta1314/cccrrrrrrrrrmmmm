@@ -22,8 +22,18 @@
 #import "UIViewController+NavigationBar.h"
 #import "UINavigationBar+PS.h"
 #import "K_GlobalUtil.h"
+#import <AMapFoundationKit/AMapFoundationKit.h>
+#import <MAMapKit/MAMapKit.h>
+#import <Bugly/Bugly.h>
+#import <Masonry.h>
 
 #endif
+
+/// 高德地图apikey
+#define AMAP_API_key @"745a697348e62548b29618c6ddd9415e"
+/// Bugly APP_id
+#define BUGLY_APP_id @"2da1b89840"
+
 
 // 判断设备型号
 #define UI_IS_LANDSCAPE  ([UIDevice currentDevice].orientation == UIDeviceOrientationLandscapeLeft || [UIDevice currentDevice].orientation == UIDeviceOrientationLandscapeRight)

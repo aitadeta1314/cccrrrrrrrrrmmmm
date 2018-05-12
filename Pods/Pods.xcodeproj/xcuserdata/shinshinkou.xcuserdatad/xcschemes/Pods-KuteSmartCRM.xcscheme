@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '6577552AEA4D11BD2132F70BC6CA8E61'
-               BlueprintName = 'Pods-KuteSmartCRM'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libPods-KuteSmartCRM.a'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A81B03670A3ED300DBC3E43ECAC6D711"
+               BlueprintName = "Pods-KuteSmartCRM"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "libPods-KuteSmartCRM.a">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

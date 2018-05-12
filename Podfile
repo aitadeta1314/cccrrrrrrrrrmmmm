@@ -9,6 +9,8 @@ target 'KuteSmartCRM' do
 	pod 'JSONModel'
 	pod 'SDAutoLayout','~> 2.1.3'
 	pod 'MJRefresh'
-	pod 'AMap3DMap'  #3D地图SDK
 	pod 'AMapLocation' #定位SDK
+	pod 'AMap3DMap'  #3D地图SDK
+	pod 'Bugly'
+	pod 'Masonry'
 end

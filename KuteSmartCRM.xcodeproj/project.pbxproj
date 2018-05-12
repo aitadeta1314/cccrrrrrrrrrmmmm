@@ -29,6 +29,15 @@
 		8A65CDAA1EBD77490037F668 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A65CDA91EBD77490037F668 /* Info.plist */; };
 		8A65CDAE1EBD77830037F668 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A65CDAC1EBD77830037F668 /* AppDelegate.m */; };
 		8A6BC25B1EE24BD8007EE626 /* UIView+PS.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A6BC25A1EE24BD8007EE626 /* UIView+PS.m */; };
+		8A83145920A14A5C00D675D3 /* FileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A83145720A14A5B00D675D3 /* FileHelper.m */; };
+		8A83145C20A14ABE00D675D3 /* TipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A83145B20A14ABE00D675D3 /* TipView.m */; };
+		8A83146D20A5154800D675D3 /* HWWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A83146C20A5154800D675D3 /* HWWeakTimer.m */; };
+		8A83147020A51C5200D675D3 /* DisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A83146E20A51C5100D675D3 /* DisplayViewController.m */; };
+		8A83147520A5405A00D675D3 /* K_DatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A83147420A5405900D675D3 /* K_DatePickerView.m */; };
+		8A83147B20A55DE100D675D3 /* K_CustomPinView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A83147920A55DE100D675D3 /* K_CustomPinView.m */; };
+		8A83147C20A55DE100D675D3 /* CustomCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A83147A20A55DE100D675D3 /* CustomCalloutView.m */; };
+		8A83147F20A55E0C00D675D3 /* K_InputTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A83147E20A55E0C00D675D3 /* K_InputTimeView.m */; };
+		8A83148120A55E2900D675D3 /* K_InputTimeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A83148020A55E2900D675D3 /* K_InputTimeView.xib */; };
 		8A9C64471ECD4D9700A1F152 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9C64441ECD4D9700A1F152 /* MyViewController.m */; };
 		8A9C64541ECD8BF700A1F152 /* K_ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9C64531ECD8BF700A1F152 /* K_ChangePasswordViewController.m */; };
 		8AB82D371ECA9C7A00296AF3 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AB82D341ECA9C7A00296AF3 /* MainViewController.m */; };
@@ -39,6 +48,7 @@
 		8AB82D441ECAA65D00296AF3 /* K_PortalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AB82D431ECAA65D00296AF3 /* K_PortalModel.m */; };
 		8ABED1A41ED8F933007A9B81 /* K_BasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABED1A31ED8F933007A9B81 /* K_BasicViewController.m */; };
 		8ABF04ED208EDE6B0007CFCA /* K_GlobalUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABF04EC208EDE6B0007CFCA /* K_GlobalUtil.m */; };
+		8ABF04F1209016500007CFCA /* AMapRouteRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABF04EF2090164F0007CFCA /* AMapRouteRecord.m */; };
 		8E0610502064F3BD009F4C09 /* AddressBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E06104F2064F3BD009F4C09 /* AddressBookViewController.m */; };
 		8E6D4B392068C36100B58437 /* K_OrgAndPersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D4B382068C36100B58437 /* K_OrgAndPersonViewController.m */; };
 		8E6D4B3C2068C36C00B58437 /* K_PersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D4B3B2068C36C00B58437 /* K_PersonViewController.m */; };
@@ -104,6 +114,23 @@
 		8A65CDBA1EBD91CE0037F668 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		8A6BC2591EE24BD8007EE626 /* UIView+PS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+PS.h"; sourceTree = "<group>"; };
 		8A6BC25A1EE24BD8007EE626 /* UIView+PS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PS.m"; sourceTree = "<group>"; };
+		8A83145720A14A5B00D675D3 /* FileHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHelper.m; sourceTree = "<group>"; };
+		8A83145820A14A5B00D675D3 /* FileHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHelper.h; sourceTree = "<group>"; };
+		8A83145A20A14ABE00D675D3 /* TipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipView.h; sourceTree = "<group>"; };
+		8A83145B20A14ABE00D675D3 /* TipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipView.m; sourceTree = "<group>"; };
+		8A83146B20A5154800D675D3 /* HWWeakTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWWeakTimer.h; sourceTree = "<group>"; };
+		8A83146C20A5154800D675D3 /* HWWeakTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWWeakTimer.m; sourceTree = "<group>"; };
+		8A83146E20A51C5100D675D3 /* DisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayViewController.m; sourceTree = "<group>"; };
+		8A83146F20A51C5200D675D3 /* DisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayViewController.h; sourceTree = "<group>"; };
+		8A83147320A5405900D675D3 /* K_DatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = K_DatePickerView.h; sourceTree = "<group>"; };
+		8A83147420A5405900D675D3 /* K_DatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = K_DatePickerView.m; sourceTree = "<group>"; };
+		8A83147720A55DE100D675D3 /* K_CustomPinView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = K_CustomPinView.h; sourceTree = "<group>"; };
+		8A83147820A55DE100D675D3 /* CustomCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCalloutView.h; sourceTree = "<group>"; };
+		8A83147920A55DE100D675D3 /* K_CustomPinView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = K_CustomPinView.m; sourceTree = "<group>"; };
+		8A83147A20A55DE100D675D3 /* CustomCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCalloutView.m; sourceTree = "<group>"; };
+		8A83147D20A55E0C00D675D3 /* K_InputTimeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = K_InputTimeView.h; sourceTree = "<group>"; };
+		8A83147E20A55E0C00D675D3 /* K_InputTimeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = K_InputTimeView.m; sourceTree = "<group>"; };
+		8A83148020A55E2900D675D3 /* K_InputTimeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = K_InputTimeView.xib; sourceTree = "<group>"; };
 		8A9C64431ECD4D9700A1F152 /* MyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
 		8A9C64441ECD4D9700A1F152 /* MyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
 		8A9C64521ECD8BF700A1F152 /* K_ChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = K_ChangePasswordViewController.h; sourceTree = "<group>"; };
@@ -122,6 +149,8 @@
 		8ABED1A31ED8F933007A9B81 /* K_BasicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = K_BasicViewController.m; sourceTree = "<group>"; };
 		8ABF04EB208EDE6B0007CFCA /* K_GlobalUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = K_GlobalUtil.h; sourceTree = "<group>"; };
 		8ABF04EC208EDE6B0007CFCA /* K_GlobalUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = K_GlobalUtil.m; sourceTree = "<group>"; };
+		8ABF04EF2090164F0007CFCA /* AMapRouteRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMapRouteRecord.m; sourceTree = "<group>"; };
+		8ABF04F02090164F0007CFCA /* AMapRouteRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMapRouteRecord.h; sourceTree = "<group>"; };
 		8E06104E2064F3BD009F4C09 /* AddressBookViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressBookViewController.h; sourceTree = "<group>"; };
 		8E06104F2064F3BD009F4C09 /* AddressBookViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressBookViewController.m; sourceTree = "<group>"; };
 		8E6D4B372068C36100B58437 /* K_OrgAndPersonViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = K_OrgAndPersonViewController.h; sourceTree = "<group>"; };
@@ -206,6 +235,10 @@
 				8A59437C2086F3C100D122F7 /* NetWorkRequest */,
 				8ABF04EB208EDE6B0007CFCA /* K_GlobalUtil.h */,
 				8ABF04EC208EDE6B0007CFCA /* K_GlobalUtil.m */,
+				8A83146B20A5154800D675D3 /* HWWeakTimer.h */,
+				8A83146C20A5154800D675D3 /* HWWeakTimer.m */,
+				8A83147320A5405900D675D3 /* K_DatePickerView.h */,
+				8A83147420A5405900D675D3 /* K_DatePickerView.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -230,13 +263,17 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
-		8A5943872088452500D122F7 /* MapTracking */ = {
+		8A5943872088452500D122F7 /* MapTracking(轨迹巡更) */ = {
 			isa = PBXGroup;
 			children = (
+				8A83147620A55DE100D675D3 /* View */,
+				8ABF04EE2090164F0007CFCA /* TrackManagerFile */,
+				8A83146F20A51C5200D675D3 /* DisplayViewController.h */,
+				8A83146E20A51C5100D675D3 /* DisplayViewController.m */,
 				8A5943882088456E00D122F7 /* K_MapLocationViewController.h */,
 				8A5943892088456E00D122F7 /* K_MapLocationViewController.m */,
 			);
-			path = MapTracking;
+			path = "MapTracking(轨迹巡更)";
 			sourceTree = "<group>";
 		};
 		8A5B06E41EC009EB007EC66A /* basicClass */ = {
@@ -322,6 +359,20 @@
 			path = KuteSmartCRMUITests;
 			sourceTree = "<group>";
 		};
+		8A83147620A55DE100D675D3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8A83147720A55DE100D675D3 /* K_CustomPinView.h */,
+				8A83147920A55DE100D675D3 /* K_CustomPinView.m */,
+				8A83147820A55DE100D675D3 /* CustomCalloutView.h */,
+				8A83147A20A55DE100D675D3 /* CustomCalloutView.m */,
+				8A83147D20A55E0C00D675D3 /* K_InputTimeView.h */,
+				8A83147E20A55E0C00D675D3 /* K_InputTimeView.m */,
+				8A83148020A55E2900D675D3 /* K_InputTimeView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		8A9C64421ECD4D9700A1F152 /* controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -363,7 +414,7 @@
 		8AB82D321ECA9C7A00296AF3 /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				8A5943872088452500D122F7 /* MapTracking */,
+				8A5943872088452500D122F7 /* MapTracking(轨迹巡更) */,
 				8AB82D331ECA9C7A00296AF3 /* MainViewController.h */,
 				8AB82D341ECA9C7A00296AF3 /* MainViewController.m */,
 			);
@@ -390,6 +441,19 @@
 				8AB82D3F1ECAA25000296AF3 /* K_PortalCell.xib */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		8ABF04EE2090164F0007CFCA /* TrackManagerFile */ = {
+			isa = PBXGroup;
+			children = (
+				8A83145A20A14ABE00D675D3 /* TipView.h */,
+				8A83145B20A14ABE00D675D3 /* TipView.m */,
+				8A83145820A14A5B00D675D3 /* FileHelper.h */,
+				8A83145720A14A5B00D675D3 /* FileHelper.m */,
+				8ABF04F02090164F0007CFCA /* AMapRouteRecord.h */,
+				8ABF04EF2090164F0007CFCA /* AMapRouteRecord.m */,
+			);
+			path = TrackManagerFile;
 			sourceTree = "<group>";
 		};
 		8CE8E3C6D650AC8EACD1CE14 /* Frameworks */ = {
@@ -421,7 +485,6 @@
 				8A65CD621EBD754F0037F668 /* Sources */,
 				8A65CD631EBD754F0037F668 /* Frameworks */,
 				8A65CD641EBD754F0037F668 /* Resources */,
-				A37262197E5A95840DD106A6 /* [CP] Embed Pods Frameworks */,
 				68B96B36884CF771E151288E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -481,7 +544,7 @@
 				TargetAttributes = {
 					8A65CD651EBD754F0037F668 = {
 						CreatedOnToolsVersion = 8.3.1;
-						DevelopmentTeam = Z9T373H7D5;
+						DevelopmentTeam = 5MPLF388EQ;
 						ProvisioningStyle = Automatic;
 					};
 					8A65CD7E1EBD754F0037F668 = {
@@ -521,6 +584,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A83148120A55E2900D675D3 /* K_InputTimeView.xib in Resources */,
 				8AB82D3C1ECA9DFE00296AF3 /* K_HeaderView.xib in Resources */,
 				8A65CDAA1EBD77490037F668 /* Info.plist in Resources */,
 				8A65CD791EBD754F0037F668 /* LaunchScreen.storyboard in Resources */,
@@ -561,7 +625,9 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AMap.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -586,21 +652,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A37262197E5A95840DD106A6 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KuteSmartCRM/Pods-KuteSmartCRM-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -612,20 +663,28 @@
 				8A59438320871D5600D122F7 /* UIViewController+NavigationBar.m in Sources */,
 				8A5B06E71EC00A17007EC66A /* UserInfoManager.m in Sources */,
 				8A64A5751ECE9EBB00606DF2 /* K_MyTableCell.m in Sources */,
+				8A83145C20A14ABE00D675D3 /* TipView.m in Sources */,
 				8AB82D3B1ECA9DFE00296AF3 /* K_HeaderView.m in Sources */,
 				8A08F7AE1EC6A9170022D7C2 /* KTabBarController.m in Sources */,
+				8A83147020A51C5200D675D3 /* DisplayViewController.m in Sources */,
 				8AB82D441ECAA65D00296AF3 /* K_PortalModel.m in Sources */,
 				8A3072EF1EC1722900E4B19E /* RSAEncryptor.m in Sources */,
+				8A83145920A14A5C00D675D3 /* FileHelper.m in Sources */,
 				8AB82D371ECA9C7A00296AF3 /* MainViewController.m in Sources */,
 				8A6BC25B1EE24BD8007EE626 /* UIView+PS.m in Sources */,
 				8E0610502064F3BD009F4C09 /* AddressBookViewController.m in Sources */,
 				8E6D4B392068C36100B58437 /* K_OrgAndPersonViewController.m in Sources */,
 				8A9C64471ECD4D9700A1F152 /* MyViewController.m in Sources */,
 				8E6D4B3C2068C36C00B58437 /* K_PersonViewController.m in Sources */,
+				8A83147520A5405A00D675D3 /* K_DatePickerView.m in Sources */,
 				8AB82D401ECAA25000296AF3 /* K_PortalCell.m in Sources */,
+				8A83147B20A55DE100D675D3 /* K_CustomPinView.m in Sources */,
+				8ABF04F1209016500007CFCA /* AMapRouteRecord.m in Sources */,
 				8A012DA11EC2E28E00A3C1B9 /* LoginViewController.m in Sources */,
 				8A65CD6B1EBD754F0037F668 /* main.m in Sources */,
 				8A012DA21EC2E28E00A3C1B9 /* WebDetailViewController.m in Sources */,
+				8A83147F20A55E0C00D675D3 /* K_InputTimeView.m in Sources */,
+				8A83147C20A55DE100D675D3 /* CustomCalloutView.m in Sources */,
 				8ABF04ED208EDE6B0007CFCA /* K_GlobalUtil.m in Sources */,
 				8ABED1A41ED8F933007A9B81 /* K_BasicViewController.m in Sources */,
 				8A9C64541ECD8BF700A1F152 /* K_ChangePasswordViewController.m in Sources */,
@@ -633,6 +692,7 @@
 				8A65CDAE1EBD77830037F668 /* AppDelegate.m in Sources */,
 				8A64A57D1ECEB9A400606DF2 /* MyNavViewController.m in Sources */,
 				8A59437F2086F3E200D122F7 /* K_NetWorkClient.m in Sources */,
+				8A83146D20A5154800D675D3 /* HWWeakTimer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -785,7 +845,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = Z9T373H7D5;
+				DEVELOPMENT_TEAM = 5MPLF388EQ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/KuteSmartCRM/PrefixHeader.pch";
 				INFOPLIST_FILE = KuteSmartCRM/Info.plist;
@@ -804,7 +864,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = Z9T373H7D5;
+				DEVELOPMENT_TEAM = 5MPLF388EQ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/KuteSmartCRM/PrefixHeader.pch";
 				INFOPLIST_FILE = KuteSmartCRM/Info.plist;
