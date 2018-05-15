@@ -162,7 +162,6 @@
         MAPolygonRenderer *pol = [[MAPolygonRenderer alloc] initWithPolygon:overlay];
         
         pol.lineWidth = 5.f;
-        NSLog(@"多边形的title:%@", overlay.title);
         NSString *areaStr = overlay.title;
         pol.strokeColor =  [UIColor blueColor];
         pol.fillColor = [UIColor colorWithRed:158/255.0 green:230/255.0 blue:252/255.0 alpha:0.5];
@@ -236,7 +235,7 @@
     if (self.isRecording)
     {
         [self.tipView showTip:@"Start recording"];
-        self.navigationItem.rightBarButtonItems[1].image = [UIImage imageNamed:@"icon_stop.png"];
+        self.navigationItem.rightBarButtonItem.image = [UIImage imageNamed:@"icon_stop.png"];
         
         if (self.currentRecord == nil)
         {
@@ -248,7 +247,7 @@
     }
     else
     {
-        self.navigationItem.rightBarButtonItems[1].image = [UIImage imageNamed:@"icon_play.png"];
+        self.navigationItem.rightBarButtonItem.image = [UIImage imageNamed:@"icon_play.png"];
         [self.tipView showTip:@"recording stoppod"];
         
         [self setBackgroundModeEnable:NO];
@@ -283,14 +282,6 @@
     {
         [self.mapView setUserTrackingMode:MAUserTrackingModeFollow];
     }
-}
-
-- (void)actionShowList
-{
-//    UIViewController *recordController = [[RecordViewController alloc] init];
-//    recordController.title = @"Records";
-//
-//    [self.navigationController pushViewController:recordController animated:YES];
 }
 
 #pragma mark - Utility
@@ -690,10 +681,7 @@
     
     UIBarButtonItem *beginItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_play"] style:UIBarButtonItemStylePlain target:self action:@selector(actionRecordAndStop)];
     
-    UIBarButtonItem *listButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_list"] style:UIBarButtonItemStylePlain target:self action:@selector(actionShowList)];
-    
-    NSArray *array = [[NSArray alloc] initWithObjects:listButton, beginItem, nil];
-    self.navigationItem.rightBarButtonItems = array;
+    self.navigationItem.rightBarButtonItem = beginItem;
     
     self.isRecording = NO;
     
