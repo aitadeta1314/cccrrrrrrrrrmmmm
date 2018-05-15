@@ -11,8 +11,17 @@
 #import "LoginViewController.h"
 #import "MainViewController.h"
 #import "KTabBarController.h"
+#import <AMapLocationKit/AMapLocationKit.h>
 
-@interface AppDelegate ()
+@interface AppDelegate () <AMapLocationManagerDelegate>
+/**
+ 定时器
+ */
+@property (nonatomic, strong) NSTimer *timer;
+/**
+ 定位管理者
+ */
+@property (nonatomic, strong) AMapLocationManager *locationManager;
 
 @end
 
@@ -30,8 +39,35 @@
     
     [self loginInit];
     NSLog(@"phoneType:%@",KPHONETYPE);
-    
+    [self initLocationManager];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:6 target:self selector:@selector(timerAction:) userInfo:nil repeats:YES];
     return YES;
+}
+
+- (void)timerAction:(NSTimer *)timer {
+    NSLog(@"timer action");
+    
+}
+
+- (void)initLocationManager {
+    self.locationManager = [[AMapLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    self.locationManager.pausesLocationUpdatesAutomatically = NO;
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 9) {
+        self.locationManager.allowsBackgroundLocationUpdates = YES;
+    }
+    //开始持续定位
+    [self.locationManager startUpdatingLocation];
+}
+
+#pragma mark - AMapLocationManagerDelegate
+- (void)amapLocationManager:(AMapLocationManager *)manager didUpdateLocation:(CLLocation *)location reGeocode:(AMapLocationReGeocode *)reGeocode {
+    NSLog(@"location:{lat:%f; lon:%f; accuracy:%f}", location.coordinate.latitude, location.coordinate.longitude, location.horizontalAccuracy);
+    
+    if (reGeocode)
+    {
+        NSLog(@"reGeocode:%@", reGeocode);
+    }
 }
 
 // 登录初始化

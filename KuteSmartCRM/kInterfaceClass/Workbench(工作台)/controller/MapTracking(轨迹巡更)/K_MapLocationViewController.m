@@ -71,10 +71,10 @@
         return;
     }
     
-    if (!self.isRecording)
-    {
-        return;
-    }
+//    if (!self.isRecording)
+//    {
+//        return;
+//    }
     
     if (userLocation.location.horizontalAccuracy < 100 && userLocation.location.horizontalAccuracy > 0)
     {
@@ -147,13 +147,13 @@
         return view;
     }
     
-    if ([overlay isKindOfClass:[MAPolyline class]])
-    {
-        MAPolylineRenderer *view = [[MAPolylineRenderer alloc] initWithPolyline:overlay];
-        view.lineWidth = 10.0;
-        view.strokeColor = [[UIColor darkGrayColor] colorWithAlphaComponent:0.8];
-        return view;
-    }
+//    if ([overlay isKindOfClass:[MAPolyline class]])
+//    {
+//        MAPolylineRenderer *view = [[MAPolylineRenderer alloc] initWithPolyline:overlay];
+//        view.lineWidth = 10.0;
+//        view.strokeColor = [[UIColor darkGrayColor] colorWithAlphaComponent:0.8];
+//        return view;
+//    }
     
     //多边形
     if ([overlay isKindOfClass:[MAPolygon class]])
@@ -222,44 +222,55 @@
 
 #pragma mark - Handle Action
 
-- (void)actionRecordAndStop
-{
-    if (self.isSaving)
+- (void)startRecordTrack {
+    if (self.currentRecord == nil)
     {
-        NSLog(@"保存结果中。。。");
-        return;
+        self.currentRecord = [[AMapRouteRecord alloc] init];
     }
-    
-    self.isRecording = !self.isRecording;
-    
-    if (self.isRecording)
-    {
-        [self.tipView showTip:@"Start recording"];
-        self.navigationItem.rightBarButtonItem.image = [UIImage imageNamed:@"icon_stop.png"];
-        
-        if (self.currentRecord == nil)
-        {
-            self.currentRecord = [[AMapRouteRecord alloc] init];
-        }
-        
-        [self.mapView removeOverlays:self.tracedPolylines];
-        [self setBackgroundModeEnable:YES];
-    }
-    else
-    {
-        self.navigationItem.rightBarButtonItem.image = [UIImage imageNamed:@"icon_play.png"];
-        [self.tipView showTip:@"recording stoppod"];
-        
-        [self setBackgroundModeEnable:NO];
-        
-        [self actionSave];
-    }
+    // 清空轨迹路线
+//    [self.mapView removeOverlays:self.tracedPolylines];
+    [self setBackgroundModeEnable:YES];
 }
 
+//- (void)actionRecordAndStop
+//{
+//    if (self.isSaving)
+//    {
+//        NSLog(@"保存结果中。。。");
+//        return;
+//    }
+//
+//    self.isRecording = !self.isRecording;
+//
+//    if (self.isRecording)
+//    {
+//        [self.tipView showTip:@"Start recording"];
+//        self.navigationItem.rightBarButtonItem.image = [UIImage imageNamed:@"icon_stop.png"];
+//
+//        if (self.currentRecord == nil)
+//        {
+//            self.currentRecord = [[AMapRouteRecord alloc] init];
+//        }
+//
+//        [self.mapView removeOverlays:self.tracedPolylines];
+//        [self setBackgroundModeEnable:YES];
+//    }
+//    else
+//    {
+//        self.navigationItem.rightBarButtonItem.image = [UIImage imageNamed:@"icon_play.png"];
+//        [self.tipView showTip:@"recording stoppod"];
+//
+//        [self setBackgroundModeEnable:NO];
+//
+//        [self actionSave];
+//    }
+//}
+
+/// 还原轨迹路线最初始
 - (void)actionSave
 {
-    self.isRecording = NO;
-    self.isSaving = YES;
+//    self.isRecording = NO;
+//    self.isSaving = YES;
     [self.locationsArray removeAllObjects];
     
     [self.mapView removeOverlay:self.polyline];
@@ -327,7 +338,7 @@
     
     if (saving) {
         self.totalTraceLength = 0.0;
-        self.isSaving = NO;
+//        self.isSaving = NO;
         
         if ([self saveRoute])
         {
@@ -685,9 +696,9 @@
     
     self.navigationItem.rightBarButtonItem = beginItem;
     
-    self.isRecording = NO;
+//    self.isRecording = NO;
     
-    self.isSaving = NO;
+//    self.isSaving = NO;
 }
 
 - (void)initLocationButton
@@ -713,7 +724,7 @@
     
     self.title = @"轨迹巡更";
     [self addBackButton];
-    [self initNavigationBar];
+//    [self initNavigationBar];
     
     [self initMapView];
     [self initPolygonArea];
@@ -727,6 +738,8 @@
     
     [self initAnnotation];
     [self initTimer];
+    /// 开始记录轨迹路线
+    [self startRecordTrack];
 }
 
 - (void)viewDidAppear:(BOOL)animated
