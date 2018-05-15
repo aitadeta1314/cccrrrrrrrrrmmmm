@@ -43,6 +43,7 @@
 @property (nonatomic, strong) UIImage *imageLocated;
 @property (nonatomic, strong) UIImage *imageNotLocate;
 
+// 是否在记录中...
 @property (nonatomic, assign) BOOL isRecording;
 @property (atomic, assign) BOOL isSaving;
 
@@ -122,7 +123,6 @@
         }
     }
     
-    //    [self.statusView showStatusWith:userLocation.location];
 }
 
 - (void)mapView:(MAMapView *)mapView didChangeUserTrackingMode:(MAUserTrackingMode)mode animated:(BOOL)animated
@@ -309,10 +309,12 @@
 
 - (void)setBackgroundModeEnable:(BOOL)enable
 {
+    ///指定定位是否会被系统自动暂停 可直接设置为NO
     self.mapView.pausesLocationUpdatesAutomatically = !enable;
     
     if ([[UIDevice currentDevice].systemVersion floatValue] >= 9.0)
     {
+        ///是否允许后台定位。  直接设置为YES
         self.mapView.allowsBackgroundLocationUpdates = enable;
     }
 }
@@ -383,11 +385,11 @@
     return polyline;
 }
 
-- (void)updateUserlocationTitleWithDistance:(double)distance
-{
-    self.totalTraceLength += distance;
-    self.mapView.userLocation.title = [NSString stringWithFormat:@"距离：%.0f 米", self.totalTraceLength];
-}
+//- (void)updateUserlocationTitleWithDistance:(double)distance
+//{
+//    self.totalTraceLength += distance;
+//    self.mapView.userLocation.title = [NSString stringWithFormat:@"距离：%.0f 米", self.totalTraceLength];
+//}
 
 - (BOOL)saveRoute
 {
