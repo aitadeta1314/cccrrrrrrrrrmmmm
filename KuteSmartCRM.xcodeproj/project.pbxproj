@@ -10,15 +10,38 @@
 		8A012DA11EC2E28E00A3C1B9 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A012D9B1EC2E28E00A3C1B9 /* LoginViewController.m */; };
 		8A012DA21EC2E28E00A3C1B9 /* WebDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A012D9E1EC2E28E00A3C1B9 /* WebDetailViewController.m */; };
 		8A08F7AE1EC6A9170022D7C2 /* KTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A08F7AD1EC6A9170022D7C2 /* KTabBarController.m */; };
+		8A1DA7A820A92AED000D323A /* UIView+PS.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1DA77220A92AED000D323A /* UIView+PS.m */; };
+		8A1DA7A920A92AED000D323A /* K_ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1DA77620A92AED000D323A /* K_ChangePasswordViewController.m */; };
+		8A1DA7AA20A92AED000D323A /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1DA77720A92AED000D323A /* MyViewController.m */; };
+		8A1DA7AB20A92AED000D323A /* K_MyTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A1DA77A20A92AED000D323A /* K_MyTableCell.xib */; };
+		8A1DA7AC20A92AED000D323A /* K_MyTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1DA77B20A92AED000D323A /* K_MyTableCell.m */; };
+		8A1DA7AD20A92AED000D323A /* K_MapLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1DA78120A92AED000D323A /* K_MapLocationViewController.m */; };
+		8A1DA7AE20A92AED000D323A /* DisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1DA78220A92AED000D323A /* DisplayViewController.m */; };
+		8A1DA7AF20A92AED000D323A /* K_InputTimeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A1DA78820A92AED000D323A /* K_InputTimeView.xib */; };
+		8A1DA7B020A92AED000D323A /* K_InputTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1DA78920A92AED000D323A /* K_InputTimeView.m */; };
+		8A1DA7B120A92AED000D323A /* K_CustomPinView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1DA78A20A92AED000D323A /* K_CustomPinView.m */; };
+		8A1DA7B220A92AED000D323A /* CustomCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1DA78B20A92AED000D323A /* CustomCalloutView.m */; };
+		8A1DA7B320A92AED000D323A /* AMapRouteRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1DA78E20A92AED000D323A /* AMapRouteRecord.m */; };
+		8A1DA7B420A92AED000D323A /* FileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1DA78F20A92AED000D323A /* FileHelper.m */; };
+		8A1DA7B520A92AED000D323A /* TipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1DA79220A92AED000D323A /* TipView.m */; };
+		8A1DA7B620A92AED000D323A /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1DA79520A92AED000D323A /* MainViewController.m */; };
+		8A1DA7B720A92AED000D323A /* K_PortalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1DA79920A92AED000D323A /* K_PortalModel.m */; };
+		8A1DA7B820A92AED000D323A /* K_PortalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A1DA79B20A92AED000D323A /* K_PortalCell.xib */; };
+		8A1DA7B920A92AED000D323A /* K_HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A1DA79C20A92AED000D323A /* K_HeaderView.xib */; };
+		8A1DA7BA20A92AED000D323A /* K_HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1DA79F20A92AED000D323A /* K_HeaderView.m */; };
+		8A1DA7BB20A92AED000D323A /* K_PortalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1DA7A020A92AED000D323A /* K_PortalCell.m */; };
+		8A1DA7BC20A92AEE000D323A /* K_PersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1DA7A420A92AED000D323A /* K_PersonViewController.m */; };
+		8A1DA7BD20A92AEE000D323A /* K_OrgAndPersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1DA7A520A92AED000D323A /* K_OrgAndPersonViewController.m */; };
+		8A1DA7BE20A92AEE000D323A /* AddressBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1DA7A620A92AED000D323A /* AddressBookViewController.m */; };
+		8A1DA7C120A92B68000D323A /* K_MessageListsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1DA7C020A92B68000D323A /* K_MessageListsViewController.m */; };
+		8A1DA7C820A987C0000D323A /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1DA7C720A987C0000D323A /* NSString+Extension.m */; };
+		8A1DA7CB20A9889B000D323A /* NSObject+WN_Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1DA7CA20A9889B000D323A /* NSObject+WN_Extension.m */; };
 		8A3072EC1EC171E900E4B19E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A3072EB1EC171E900E4B19E /* Security.framework */; };
 		8A3072EF1EC1722900E4B19E /* RSAEncryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3072EE1EC1722900E4B19E /* RSAEncryptor.m */; };
 		8A59437F2086F3E200D122F7 /* K_NetWorkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A59437E2086F3E200D122F7 /* K_NetWorkClient.m */; };
 		8A59438320871D5600D122F7 /* UIViewController+NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A59438220871D5500D122F7 /* UIViewController+NavigationBar.m */; };
 		8A5943862087389100D122F7 /* UINavigationBar+PS.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5943852087389100D122F7 /* UINavigationBar+PS.m */; };
-		8A59438A2088456E00D122F7 /* K_MapLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5943892088456E00D122F7 /* K_MapLocationViewController.m */; };
 		8A5B06E71EC00A17007EC66A /* UserInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5B06E61EC00A17007EC66A /* UserInfoManager.m */; };
-		8A64A5751ECE9EBB00606DF2 /* K_MyTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A64A5731ECE9EBB00606DF2 /* K_MyTableCell.m */; };
-		8A64A5761ECE9EBB00606DF2 /* K_MyTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A64A5741ECE9EBB00606DF2 /* K_MyTableCell.xib */; };
 		8A64A57D1ECEB9A400606DF2 /* MyNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A64A57C1ECEB9A400606DF2 /* MyNavViewController.m */; };
 		8A65CD6B1EBD754F0037F668 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A65CD6A1EBD754F0037F668 /* main.m */; };
 		8A65CD741EBD754F0037F668 /* CRM.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A65CD721EBD754F0037F668 /* CRM.storyboard */; };
@@ -28,30 +51,10 @@
 		8A65CD8F1EBD754F0037F668 /* KuteSmartCRMUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A65CD8E1EBD754F0037F668 /* KuteSmartCRMUITests.m */; };
 		8A65CDAA1EBD77490037F668 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A65CDA91EBD77490037F668 /* Info.plist */; };
 		8A65CDAE1EBD77830037F668 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A65CDAC1EBD77830037F668 /* AppDelegate.m */; };
-		8A6BC25B1EE24BD8007EE626 /* UIView+PS.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A6BC25A1EE24BD8007EE626 /* UIView+PS.m */; };
-		8A83145920A14A5C00D675D3 /* FileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A83145720A14A5B00D675D3 /* FileHelper.m */; };
-		8A83145C20A14ABE00D675D3 /* TipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A83145B20A14ABE00D675D3 /* TipView.m */; };
 		8A83146D20A5154800D675D3 /* HWWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A83146C20A5154800D675D3 /* HWWeakTimer.m */; };
-		8A83147020A51C5200D675D3 /* DisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A83146E20A51C5100D675D3 /* DisplayViewController.m */; };
 		8A83147520A5405A00D675D3 /* K_DatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A83147420A5405900D675D3 /* K_DatePickerView.m */; };
-		8A83147B20A55DE100D675D3 /* K_CustomPinView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A83147920A55DE100D675D3 /* K_CustomPinView.m */; };
-		8A83147C20A55DE100D675D3 /* CustomCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A83147A20A55DE100D675D3 /* CustomCalloutView.m */; };
-		8A83147F20A55E0C00D675D3 /* K_InputTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A83147E20A55E0C00D675D3 /* K_InputTimeView.m */; };
-		8A83148120A55E2900D675D3 /* K_InputTimeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A83148020A55E2900D675D3 /* K_InputTimeView.xib */; };
-		8A9C64471ECD4D9700A1F152 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9C64441ECD4D9700A1F152 /* MyViewController.m */; };
-		8A9C64541ECD8BF700A1F152 /* K_ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9C64531ECD8BF700A1F152 /* K_ChangePasswordViewController.m */; };
-		8AB82D371ECA9C7A00296AF3 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AB82D341ECA9C7A00296AF3 /* MainViewController.m */; };
-		8AB82D3B1ECA9DFE00296AF3 /* K_HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AB82D391ECA9DFE00296AF3 /* K_HeaderView.m */; };
-		8AB82D3C1ECA9DFE00296AF3 /* K_HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AB82D3A1ECA9DFE00296AF3 /* K_HeaderView.xib */; };
-		8AB82D401ECAA25000296AF3 /* K_PortalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AB82D3E1ECAA25000296AF3 /* K_PortalCell.m */; };
-		8AB82D411ECAA25000296AF3 /* K_PortalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AB82D3F1ECAA25000296AF3 /* K_PortalCell.xib */; };
-		8AB82D441ECAA65D00296AF3 /* K_PortalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AB82D431ECAA65D00296AF3 /* K_PortalModel.m */; };
 		8ABED1A41ED8F933007A9B81 /* K_BasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABED1A31ED8F933007A9B81 /* K_BasicViewController.m */; };
 		8ABF04ED208EDE6B0007CFCA /* K_GlobalUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABF04EC208EDE6B0007CFCA /* K_GlobalUtil.m */; };
-		8ABF04F1209016500007CFCA /* AMapRouteRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABF04EF2090164F0007CFCA /* AMapRouteRecord.m */; };
-		8E0610502064F3BD009F4C09 /* AddressBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E06104F2064F3BD009F4C09 /* AddressBookViewController.m */; };
-		8E6D4B392068C36100B58437 /* K_OrgAndPersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D4B382068C36100B58437 /* K_OrgAndPersonViewController.m */; };
-		8E6D4B3C2068C36C00B58437 /* K_PersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D4B3B2068C36C00B58437 /* K_PersonViewController.m */; };
 		9A79B4584616C5E88C1D3029 /* libPods-KuteSmartCRM.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F27B3E6E334E7DC3653ED98 /* libPods-KuteSmartCRM.a */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +82,54 @@
 		8A012D9E1EC2E28E00A3C1B9 /* WebDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebDetailViewController.m; sourceTree = "<group>"; };
 		8A08F7AC1EC6A9170022D7C2 /* KTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTabBarController.h; sourceTree = "<group>"; };
 		8A08F7AD1EC6A9170022D7C2 /* KTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTabBarController.m; sourceTree = "<group>"; };
+		8A1DA77220A92AED000D323A /* UIView+PS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PS.m"; sourceTree = "<group>"; };
+		8A1DA77420A92AED000D323A /* K_ChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = K_ChangePasswordViewController.h; sourceTree = "<group>"; };
+		8A1DA77520A92AED000D323A /* MyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
+		8A1DA77620A92AED000D323A /* K_ChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = K_ChangePasswordViewController.m; sourceTree = "<group>"; };
+		8A1DA77720A92AED000D323A /* MyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
+		8A1DA77A20A92AED000D323A /* K_MyTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = K_MyTableCell.xib; sourceTree = "<group>"; };
+		8A1DA77B20A92AED000D323A /* K_MyTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = K_MyTableCell.m; sourceTree = "<group>"; };
+		8A1DA77C20A92AED000D323A /* K_MyTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = K_MyTableCell.h; sourceTree = "<group>"; };
+		8A1DA77D20A92AED000D323A /* UIView+PS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+PS.h"; sourceTree = "<group>"; };
+		8A1DA78120A92AED000D323A /* K_MapLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = K_MapLocationViewController.m; sourceTree = "<group>"; };
+		8A1DA78220A92AED000D323A /* DisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayViewController.m; sourceTree = "<group>"; };
+		8A1DA78420A92AED000D323A /* K_MapLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = K_MapLocationViewController.h; sourceTree = "<group>"; };
+		8A1DA78620A92AED000D323A /* K_CustomPinView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = K_CustomPinView.h; sourceTree = "<group>"; };
+		8A1DA78720A92AED000D323A /* CustomCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCalloutView.h; sourceTree = "<group>"; };
+		8A1DA78820A92AED000D323A /* K_InputTimeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = K_InputTimeView.xib; sourceTree = "<group>"; };
+		8A1DA78920A92AED000D323A /* K_InputTimeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = K_InputTimeView.m; sourceTree = "<group>"; };
+		8A1DA78A20A92AED000D323A /* K_CustomPinView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = K_CustomPinView.m; sourceTree = "<group>"; };
+		8A1DA78B20A92AED000D323A /* CustomCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCalloutView.m; sourceTree = "<group>"; };
+		8A1DA78C20A92AED000D323A /* K_InputTimeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = K_InputTimeView.h; sourceTree = "<group>"; };
+		8A1DA78E20A92AED000D323A /* AMapRouteRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMapRouteRecord.m; sourceTree = "<group>"; };
+		8A1DA78F20A92AED000D323A /* FileHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHelper.m; sourceTree = "<group>"; };
+		8A1DA79020A92AED000D323A /* TipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipView.h; sourceTree = "<group>"; };
+		8A1DA79120A92AED000D323A /* AMapRouteRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMapRouteRecord.h; sourceTree = "<group>"; };
+		8A1DA79220A92AED000D323A /* TipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipView.m; sourceTree = "<group>"; };
+		8A1DA79320A92AED000D323A /* FileHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHelper.h; sourceTree = "<group>"; };
+		8A1DA79420A92AED000D323A /* DisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayViewController.h; sourceTree = "<group>"; };
+		8A1DA79520A92AED000D323A /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		8A1DA79620A92AED000D323A /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		8A1DA79820A92AED000D323A /* K_PortalModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = K_PortalModel.h; sourceTree = "<group>"; };
+		8A1DA79920A92AED000D323A /* K_PortalModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = K_PortalModel.m; sourceTree = "<group>"; };
+		8A1DA79B20A92AED000D323A /* K_PortalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = K_PortalCell.xib; sourceTree = "<group>"; };
+		8A1DA79C20A92AED000D323A /* K_HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = K_HeaderView.xib; sourceTree = "<group>"; };
+		8A1DA79D20A92AED000D323A /* K_HeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = K_HeaderView.h; sourceTree = "<group>"; };
+		8A1DA79E20A92AED000D323A /* K_PortalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = K_PortalCell.h; sourceTree = "<group>"; };
+		8A1DA79F20A92AED000D323A /* K_HeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = K_HeaderView.m; sourceTree = "<group>"; };
+		8A1DA7A020A92AED000D323A /* K_PortalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = K_PortalCell.m; sourceTree = "<group>"; };
+		8A1DA7A220A92AED000D323A /* AddressBookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressBookViewController.h; sourceTree = "<group>"; };
+		8A1DA7A320A92AED000D323A /* K_OrgAndPersonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = K_OrgAndPersonViewController.h; sourceTree = "<group>"; };
+		8A1DA7A420A92AED000D323A /* K_PersonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = K_PersonViewController.m; sourceTree = "<group>"; };
+		8A1DA7A520A92AED000D323A /* K_OrgAndPersonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = K_OrgAndPersonViewController.m; sourceTree = "<group>"; };
+		8A1DA7A620A92AED000D323A /* AddressBookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressBookViewController.m; sourceTree = "<group>"; };
+		8A1DA7A720A92AED000D323A /* K_PersonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = K_PersonViewController.h; sourceTree = "<group>"; };
+		8A1DA7BF20A92B68000D323A /* K_MessageListsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = K_MessageListsViewController.h; sourceTree = "<group>"; };
+		8A1DA7C020A92B68000D323A /* K_MessageListsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = K_MessageListsViewController.m; sourceTree = "<group>"; };
+		8A1DA7C620A987C0000D323A /* NSString+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
+		8A1DA7C720A987C0000D323A /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
+		8A1DA7C920A9889A000D323A /* NSObject+WN_Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+WN_Extension.h"; sourceTree = "<group>"; };
+		8A1DA7CA20A9889B000D323A /* NSObject+WN_Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+WN_Extension.m"; sourceTree = "<group>"; };
 		8A3072EB1EC171E900E4B19E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		8A3072ED1EC1722900E4B19E /* RSAEncryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSAEncryptor.h; sourceTree = "<group>"; };
 		8A3072EE1EC1722900E4B19E /* RSAEncryptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSAEncryptor.m; sourceTree = "<group>"; };
@@ -88,13 +139,8 @@
 		8A59438220871D5500D122F7 /* UIViewController+NavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+NavigationBar.m"; sourceTree = "<group>"; };
 		8A5943842087389100D122F7 /* UINavigationBar+PS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+PS.h"; sourceTree = "<group>"; };
 		8A5943852087389100D122F7 /* UINavigationBar+PS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+PS.m"; sourceTree = "<group>"; };
-		8A5943882088456E00D122F7 /* K_MapLocationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = K_MapLocationViewController.h; sourceTree = "<group>"; };
-		8A5943892088456E00D122F7 /* K_MapLocationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = K_MapLocationViewController.m; sourceTree = "<group>"; };
 		8A5B06E51EC00A17007EC66A /* UserInfoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoManager.h; sourceTree = "<group>"; };
 		8A5B06E61EC00A17007EC66A /* UserInfoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoManager.m; sourceTree = "<group>"; };
-		8A64A5721ECE9EBB00606DF2 /* K_MyTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = K_MyTableCell.h; sourceTree = "<group>"; };
-		8A64A5731ECE9EBB00606DF2 /* K_MyTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = K_MyTableCell.m; sourceTree = "<group>"; };
-		8A64A5741ECE9EBB00606DF2 /* K_MyTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = K_MyTableCell.xib; sourceTree = "<group>"; };
 		8A64A57B1ECEB9A400606DF2 /* MyNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNavViewController.h; sourceTree = "<group>"; };
 		8A64A57C1ECEB9A400606DF2 /* MyNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNavViewController.m; sourceTree = "<group>"; };
 		8A65CD661EBD754F0037F668 /* KuteSmartCRM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KuteSmartCRM.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,51 +158,14 @@
 		8A65CDAB1EBD77830037F668 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8A65CDAC1EBD77830037F668 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		8A65CDBA1EBD91CE0037F668 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		8A6BC2591EE24BD8007EE626 /* UIView+PS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+PS.h"; sourceTree = "<group>"; };
-		8A6BC25A1EE24BD8007EE626 /* UIView+PS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PS.m"; sourceTree = "<group>"; };
-		8A83145720A14A5B00D675D3 /* FileHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHelper.m; sourceTree = "<group>"; };
-		8A83145820A14A5B00D675D3 /* FileHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHelper.h; sourceTree = "<group>"; };
-		8A83145A20A14ABE00D675D3 /* TipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipView.h; sourceTree = "<group>"; };
-		8A83145B20A14ABE00D675D3 /* TipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipView.m; sourceTree = "<group>"; };
 		8A83146B20A5154800D675D3 /* HWWeakTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWWeakTimer.h; sourceTree = "<group>"; };
 		8A83146C20A5154800D675D3 /* HWWeakTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWWeakTimer.m; sourceTree = "<group>"; };
-		8A83146E20A51C5100D675D3 /* DisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayViewController.m; sourceTree = "<group>"; };
-		8A83146F20A51C5200D675D3 /* DisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayViewController.h; sourceTree = "<group>"; };
 		8A83147320A5405900D675D3 /* K_DatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = K_DatePickerView.h; sourceTree = "<group>"; };
 		8A83147420A5405900D675D3 /* K_DatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = K_DatePickerView.m; sourceTree = "<group>"; };
-		8A83147720A55DE100D675D3 /* K_CustomPinView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = K_CustomPinView.h; sourceTree = "<group>"; };
-		8A83147820A55DE100D675D3 /* CustomCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCalloutView.h; sourceTree = "<group>"; };
-		8A83147920A55DE100D675D3 /* K_CustomPinView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = K_CustomPinView.m; sourceTree = "<group>"; };
-		8A83147A20A55DE100D675D3 /* CustomCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCalloutView.m; sourceTree = "<group>"; };
-		8A83147D20A55E0C00D675D3 /* K_InputTimeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = K_InputTimeView.h; sourceTree = "<group>"; };
-		8A83147E20A55E0C00D675D3 /* K_InputTimeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = K_InputTimeView.m; sourceTree = "<group>"; };
-		8A83148020A55E2900D675D3 /* K_InputTimeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = K_InputTimeView.xib; sourceTree = "<group>"; };
-		8A9C64431ECD4D9700A1F152 /* MyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
-		8A9C64441ECD4D9700A1F152 /* MyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
-		8A9C64521ECD8BF700A1F152 /* K_ChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = K_ChangePasswordViewController.h; sourceTree = "<group>"; };
-		8A9C64531ECD8BF700A1F152 /* K_ChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = K_ChangePasswordViewController.m; sourceTree = "<group>"; };
-		8AB82D331ECA9C7A00296AF3 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		8AB82D341ECA9C7A00296AF3 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		8AB82D381ECA9DFE00296AF3 /* K_HeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = K_HeaderView.h; sourceTree = "<group>"; };
-		8AB82D391ECA9DFE00296AF3 /* K_HeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = K_HeaderView.m; sourceTree = "<group>"; };
-		8AB82D3A1ECA9DFE00296AF3 /* K_HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = K_HeaderView.xib; sourceTree = "<group>"; };
-		8AB82D3D1ECAA25000296AF3 /* K_PortalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = K_PortalCell.h; sourceTree = "<group>"; };
-		8AB82D3E1ECAA25000296AF3 /* K_PortalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = K_PortalCell.m; sourceTree = "<group>"; };
-		8AB82D3F1ECAA25000296AF3 /* K_PortalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = K_PortalCell.xib; sourceTree = "<group>"; };
-		8AB82D421ECAA65D00296AF3 /* K_PortalModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = K_PortalModel.h; sourceTree = "<group>"; };
-		8AB82D431ECAA65D00296AF3 /* K_PortalModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = K_PortalModel.m; sourceTree = "<group>"; };
 		8ABED1A21ED8F933007A9B81 /* K_BasicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = K_BasicViewController.h; sourceTree = "<group>"; };
 		8ABED1A31ED8F933007A9B81 /* K_BasicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = K_BasicViewController.m; sourceTree = "<group>"; };
 		8ABF04EB208EDE6B0007CFCA /* K_GlobalUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = K_GlobalUtil.h; sourceTree = "<group>"; };
 		8ABF04EC208EDE6B0007CFCA /* K_GlobalUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = K_GlobalUtil.m; sourceTree = "<group>"; };
-		8ABF04EF2090164F0007CFCA /* AMapRouteRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMapRouteRecord.m; sourceTree = "<group>"; };
-		8ABF04F02090164F0007CFCA /* AMapRouteRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMapRouteRecord.h; sourceTree = "<group>"; };
-		8E06104E2064F3BD009F4C09 /* AddressBookViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressBookViewController.h; sourceTree = "<group>"; };
-		8E06104F2064F3BD009F4C09 /* AddressBookViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressBookViewController.m; sourceTree = "<group>"; };
-		8E6D4B372068C36100B58437 /* K_OrgAndPersonViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = K_OrgAndPersonViewController.h; sourceTree = "<group>"; };
-		8E6D4B382068C36100B58437 /* K_OrgAndPersonViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = K_OrgAndPersonViewController.m; sourceTree = "<group>"; };
-		8E6D4B3A2068C36C00B58437 /* K_PersonViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = K_PersonViewController.h; sourceTree = "<group>"; };
-		8E6D4B3B2068C36C00B58437 /* K_PersonViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = K_PersonViewController.m; sourceTree = "<group>"; };
 		9F27B3E6E334E7DC3653ED98 /* libPods-KuteSmartCRM.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KuteSmartCRM.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B854D9CEC6650D2D51078435 /* Pods-KuteSmartCRM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KuteSmartCRM.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KuteSmartCRM/Pods-KuteSmartCRM.debug.xcconfig"; sourceTree = "<group>"; };
 		FF69B33A6F7A9AFE84E823C3 /* Pods-KuteSmartCRM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KuteSmartCRM.release.xcconfig"; path = "Pods/Target Support Files/Pods-KuteSmartCRM/Pods-KuteSmartCRM.release.xcconfig"; sourceTree = "<group>"; };
@@ -192,40 +201,168 @@
 		8A012D961EC2E28E00A3C1B9 /* kInterfaceClass */ = {
 			isa = PBXGroup;
 			children = (
+				8A1DA77020A92AED000D323A /* Message(消息) */,
+				8A1DA77E20A92AED000D323A /* Workbench(工作台) */,
+				8A1DA7A120A92AED000D323A /* Address Book(通讯录) */,
+				8A1DA77120A92AED000D323A /* My(我的) */,
 				8A012D9A1EC2E28E00A3C1B9 /* LoginViewController.h */,
 				8A012D9B1EC2E28E00A3C1B9 /* LoginViewController.m */,
 				8A012D9D1EC2E28E00A3C1B9 /* WebDetailViewController.h */,
 				8A012D9E1EC2E28E00A3C1B9 /* WebDetailViewController.m */,
-				8AB82D311ECA9C7A00296AF3 /* Portal */,
-				8A08F7B21EC6AD6C0022D7C2 /* My */,
-				8A08F7B51EC6AD6C0022D7C2 /* Address Book */,
 			);
 			path = kInterfaceClass;
 			sourceTree = "<group>";
 		};
-		8A08F7B21EC6AD6C0022D7C2 /* My */ = {
+		8A1DA77020A92AED000D323A /* Message(消息) */ = {
 			isa = PBXGroup;
 			children = (
-				8A6BC2591EE24BD8007EE626 /* UIView+PS.h */,
-				8A6BC25A1EE24BD8007EE626 /* UIView+PS.m */,
-				8A9C64421ECD4D9700A1F152 /* controller */,
-				8A9C64451ECD4D9700A1F152 /* model */,
-				8A9C64461ECD4D9700A1F152 /* view */,
+				8A1DA7BF20A92B68000D323A /* K_MessageListsViewController.h */,
+				8A1DA7C020A92B68000D323A /* K_MessageListsViewController.m */,
 			);
-			path = My;
+			path = "Message(消息)";
 			sourceTree = "<group>";
 		};
-		8A08F7B51EC6AD6C0022D7C2 /* Address Book */ = {
+		8A1DA77120A92AED000D323A /* My(我的) */ = {
 			isa = PBXGroup;
 			children = (
-				8E06104E2064F3BD009F4C09 /* AddressBookViewController.h */,
-				8E06104F2064F3BD009F4C09 /* AddressBookViewController.m */,
-				8E6D4B372068C36100B58437 /* K_OrgAndPersonViewController.h */,
-				8E6D4B382068C36100B58437 /* K_OrgAndPersonViewController.m */,
-				8E6D4B3A2068C36C00B58437 /* K_PersonViewController.h */,
-				8E6D4B3B2068C36C00B58437 /* K_PersonViewController.m */,
+				8A1DA77220A92AED000D323A /* UIView+PS.m */,
+				8A1DA77320A92AED000D323A /* controller */,
+				8A1DA77820A92AED000D323A /* model */,
+				8A1DA77920A92AED000D323A /* view */,
+				8A1DA77D20A92AED000D323A /* UIView+PS.h */,
 			);
-			path = "Address Book";
+			path = "My(我的)";
+			sourceTree = "<group>";
+		};
+		8A1DA77320A92AED000D323A /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				8A1DA77420A92AED000D323A /* K_ChangePasswordViewController.h */,
+				8A1DA77620A92AED000D323A /* K_ChangePasswordViewController.m */,
+				8A1DA77520A92AED000D323A /* MyViewController.h */,
+				8A1DA77720A92AED000D323A /* MyViewController.m */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		8A1DA77820A92AED000D323A /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		8A1DA77920A92AED000D323A /* view */ = {
+			isa = PBXGroup;
+			children = (
+				8A1DA77A20A92AED000D323A /* K_MyTableCell.xib */,
+				8A1DA77B20A92AED000D323A /* K_MyTableCell.m */,
+				8A1DA77C20A92AED000D323A /* K_MyTableCell.h */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		8A1DA77E20A92AED000D323A /* Workbench(工作台) */ = {
+			isa = PBXGroup;
+			children = (
+				8A1DA77F20A92AED000D323A /* controller */,
+				8A1DA79720A92AED000D323A /* model */,
+				8A1DA79A20A92AED000D323A /* view */,
+			);
+			path = "Workbench(工作台)";
+			sourceTree = "<group>";
+		};
+		8A1DA77F20A92AED000D323A /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				8A1DA78020A92AED000D323A /* MapTracking(轨迹巡更) */,
+				8A1DA79620A92AED000D323A /* MainViewController.h */,
+				8A1DA79520A92AED000D323A /* MainViewController.m */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		8A1DA78020A92AED000D323A /* MapTracking(轨迹巡更) */ = {
+			isa = PBXGroup;
+			children = (
+				8A1DA79420A92AED000D323A /* DisplayViewController.h */,
+				8A1DA78220A92AED000D323A /* DisplayViewController.m */,
+				8A1DA78420A92AED000D323A /* K_MapLocationViewController.h */,
+				8A1DA78120A92AED000D323A /* K_MapLocationViewController.m */,
+				8A1DA78320A92AED000D323A /* Polygon */,
+				8A1DA78520A92AED000D323A /* View */,
+				8A1DA78D20A92AED000D323A /* TrackManagerFile */,
+			);
+			path = "MapTracking(轨迹巡更)";
+			sourceTree = "<group>";
+		};
+		8A1DA78320A92AED000D323A /* Polygon */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Polygon;
+			sourceTree = "<group>";
+		};
+		8A1DA78520A92AED000D323A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8A1DA78620A92AED000D323A /* K_CustomPinView.h */,
+				8A1DA78A20A92AED000D323A /* K_CustomPinView.m */,
+				8A1DA78720A92AED000D323A /* CustomCalloutView.h */,
+				8A1DA78B20A92AED000D323A /* CustomCalloutView.m */,
+				8A1DA78C20A92AED000D323A /* K_InputTimeView.h */,
+				8A1DA78920A92AED000D323A /* K_InputTimeView.m */,
+				8A1DA78820A92AED000D323A /* K_InputTimeView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8A1DA78D20A92AED000D323A /* TrackManagerFile */ = {
+			isa = PBXGroup;
+			children = (
+				8A1DA79120A92AED000D323A /* AMapRouteRecord.h */,
+				8A1DA78E20A92AED000D323A /* AMapRouteRecord.m */,
+				8A1DA79020A92AED000D323A /* TipView.h */,
+				8A1DA79220A92AED000D323A /* TipView.m */,
+				8A1DA79320A92AED000D323A /* FileHelper.h */,
+				8A1DA78F20A92AED000D323A /* FileHelper.m */,
+			);
+			path = TrackManagerFile;
+			sourceTree = "<group>";
+		};
+		8A1DA79720A92AED000D323A /* model */ = {
+			isa = PBXGroup;
+			children = (
+				8A1DA79820A92AED000D323A /* K_PortalModel.h */,
+				8A1DA79920A92AED000D323A /* K_PortalModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		8A1DA79A20A92AED000D323A /* view */ = {
+			isa = PBXGroup;
+			children = (
+				8A1DA79D20A92AED000D323A /* K_HeaderView.h */,
+				8A1DA79F20A92AED000D323A /* K_HeaderView.m */,
+				8A1DA79C20A92AED000D323A /* K_HeaderView.xib */,
+				8A1DA79E20A92AED000D323A /* K_PortalCell.h */,
+				8A1DA7A020A92AED000D323A /* K_PortalCell.m */,
+				8A1DA79B20A92AED000D323A /* K_PortalCell.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		8A1DA7A120A92AED000D323A /* Address Book(通讯录) */ = {
+			isa = PBXGroup;
+			children = (
+				8A1DA7A220A92AED000D323A /* AddressBookViewController.h */,
+				8A1DA7A620A92AED000D323A /* AddressBookViewController.m */,
+				8A1DA7A320A92AED000D323A /* K_OrgAndPersonViewController.h */,
+				8A1DA7A520A92AED000D323A /* K_OrgAndPersonViewController.m */,
+				8A1DA7A720A92AED000D323A /* K_PersonViewController.h */,
+				8A1DA7A420A92AED000D323A /* K_PersonViewController.m */,
+			);
+			path = "Address Book(通讯录)";
 			sourceTree = "<group>";
 		};
 		8A59437B2086F3A200D122F7 /* Tool */ = {
@@ -255,25 +392,16 @@
 		8A59438020871D5500D122F7 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				8A1DA7C920A9889A000D323A /* NSObject+WN_Extension.h */,
+				8A1DA7CA20A9889B000D323A /* NSObject+WN_Extension.m */,
+				8A1DA7C620A987C0000D323A /* NSString+Extension.h */,
+				8A1DA7C720A987C0000D323A /* NSString+Extension.m */,
 				8A59438120871D5500D122F7 /* UIViewController+NavigationBar.h */,
 				8A59438220871D5500D122F7 /* UIViewController+NavigationBar.m */,
 				8A5943842087389100D122F7 /* UINavigationBar+PS.h */,
 				8A5943852087389100D122F7 /* UINavigationBar+PS.m */,
 			);
 			path = Category;
-			sourceTree = "<group>";
-		};
-		8A5943872088452500D122F7 /* MapTracking(轨迹巡更) */ = {
-			isa = PBXGroup;
-			children = (
-				8A83147620A55DE100D675D3 /* View */,
-				8ABF04EE2090164F0007CFCA /* TrackManagerFile */,
-				8A83146F20A51C5200D675D3 /* DisplayViewController.h */,
-				8A83146E20A51C5100D675D3 /* DisplayViewController.m */,
-				8A5943882088456E00D122F7 /* K_MapLocationViewController.h */,
-				8A5943892088456E00D122F7 /* K_MapLocationViewController.m */,
-			);
-			path = "MapTracking(轨迹巡更)";
 			sourceTree = "<group>";
 		};
 		8A5B06E41EC009EB007EC66A /* basicClass */ = {
@@ -357,103 +485,6 @@
 				8A65CD901EBD754F0037F668 /* Info.plist */,
 			);
 			path = KuteSmartCRMUITests;
-			sourceTree = "<group>";
-		};
-		8A83147620A55DE100D675D3 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				8A83147720A55DE100D675D3 /* K_CustomPinView.h */,
-				8A83147920A55DE100D675D3 /* K_CustomPinView.m */,
-				8A83147820A55DE100D675D3 /* CustomCalloutView.h */,
-				8A83147A20A55DE100D675D3 /* CustomCalloutView.m */,
-				8A83147D20A55E0C00D675D3 /* K_InputTimeView.h */,
-				8A83147E20A55E0C00D675D3 /* K_InputTimeView.m */,
-				8A83148020A55E2900D675D3 /* K_InputTimeView.xib */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		8A9C64421ECD4D9700A1F152 /* controller */ = {
-			isa = PBXGroup;
-			children = (
-				8A9C64431ECD4D9700A1F152 /* MyViewController.h */,
-				8A9C64441ECD4D9700A1F152 /* MyViewController.m */,
-				8A9C64521ECD8BF700A1F152 /* K_ChangePasswordViewController.h */,
-				8A9C64531ECD8BF700A1F152 /* K_ChangePasswordViewController.m */,
-			);
-			path = controller;
-			sourceTree = "<group>";
-		};
-		8A9C64451ECD4D9700A1F152 /* model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = model;
-			sourceTree = "<group>";
-		};
-		8A9C64461ECD4D9700A1F152 /* view */ = {
-			isa = PBXGroup;
-			children = (
-				8A64A5721ECE9EBB00606DF2 /* K_MyTableCell.h */,
-				8A64A5731ECE9EBB00606DF2 /* K_MyTableCell.m */,
-				8A64A5741ECE9EBB00606DF2 /* K_MyTableCell.xib */,
-			);
-			path = view;
-			sourceTree = "<group>";
-		};
-		8AB82D311ECA9C7A00296AF3 /* Portal */ = {
-			isa = PBXGroup;
-			children = (
-				8AB82D321ECA9C7A00296AF3 /* controller */,
-				8AB82D351ECA9C7A00296AF3 /* model */,
-				8AB82D361ECA9C7A00296AF3 /* view */,
-			);
-			path = Portal;
-			sourceTree = "<group>";
-		};
-		8AB82D321ECA9C7A00296AF3 /* controller */ = {
-			isa = PBXGroup;
-			children = (
-				8A5943872088452500D122F7 /* MapTracking(轨迹巡更) */,
-				8AB82D331ECA9C7A00296AF3 /* MainViewController.h */,
-				8AB82D341ECA9C7A00296AF3 /* MainViewController.m */,
-			);
-			path = controller;
-			sourceTree = "<group>";
-		};
-		8AB82D351ECA9C7A00296AF3 /* model */ = {
-			isa = PBXGroup;
-			children = (
-				8AB82D421ECAA65D00296AF3 /* K_PortalModel.h */,
-				8AB82D431ECAA65D00296AF3 /* K_PortalModel.m */,
-			);
-			path = model;
-			sourceTree = "<group>";
-		};
-		8AB82D361ECA9C7A00296AF3 /* view */ = {
-			isa = PBXGroup;
-			children = (
-				8AB82D381ECA9DFE00296AF3 /* K_HeaderView.h */,
-				8AB82D391ECA9DFE00296AF3 /* K_HeaderView.m */,
-				8AB82D3A1ECA9DFE00296AF3 /* K_HeaderView.xib */,
-				8AB82D3D1ECAA25000296AF3 /* K_PortalCell.h */,
-				8AB82D3E1ECAA25000296AF3 /* K_PortalCell.m */,
-				8AB82D3F1ECAA25000296AF3 /* K_PortalCell.xib */,
-			);
-			path = view;
-			sourceTree = "<group>";
-		};
-		8ABF04EE2090164F0007CFCA /* TrackManagerFile */ = {
-			isa = PBXGroup;
-			children = (
-				8A83145A20A14ABE00D675D3 /* TipView.h */,
-				8A83145B20A14ABE00D675D3 /* TipView.m */,
-				8A83145820A14A5B00D675D3 /* FileHelper.h */,
-				8A83145720A14A5B00D675D3 /* FileHelper.m */,
-				8ABF04F02090164F0007CFCA /* AMapRouteRecord.h */,
-				8ABF04EF2090164F0007CFCA /* AMapRouteRecord.m */,
-			);
-			path = TrackManagerFile;
 			sourceTree = "<group>";
 		};
 		8CE8E3C6D650AC8EACD1CE14 /* Frameworks */ = {
@@ -544,7 +575,7 @@
 				TargetAttributes = {
 					8A65CD651EBD754F0037F668 = {
 						CreatedOnToolsVersion = 8.3.1;
-						DevelopmentTeam = 5MPLF388EQ;
+						DevelopmentTeam = 3KQY2K7HQZ;
 						ProvisioningStyle = Automatic;
 					};
 					8A65CD7E1EBD754F0037F668 = {
@@ -584,14 +615,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A83148120A55E2900D675D3 /* K_InputTimeView.xib in Resources */,
-				8AB82D3C1ECA9DFE00296AF3 /* K_HeaderView.xib in Resources */,
+				8A1DA7AF20A92AED000D323A /* K_InputTimeView.xib in Resources */,
 				8A65CDAA1EBD77490037F668 /* Info.plist in Resources */,
+				8A1DA7AB20A92AED000D323A /* K_MyTableCell.xib in Resources */,
+				8A1DA7B820A92AED000D323A /* K_PortalCell.xib in Resources */,
 				8A65CD791EBD754F0037F668 /* LaunchScreen.storyboard in Resources */,
-				8A64A5761ECE9EBB00606DF2 /* K_MyTableCell.xib in Resources */,
-				8AB82D411ECAA25000296AF3 /* K_PortalCell.xib in Resources */,
 				8A65CD761EBD754F0037F668 /* Assets.xcassets in Resources */,
 				8A65CD741EBD754F0037F668 /* CRM.storyboard in Resources */,
+				8A1DA7B920A92AED000D323A /* K_HeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -659,38 +690,41 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A59438A2088456E00D122F7 /* K_MapLocationViewController.m in Sources */,
+				8A1DA7B220A92AED000D323A /* CustomCalloutView.m in Sources */,
+				8A1DA7BA20A92AED000D323A /* K_HeaderView.m in Sources */,
+				8A1DA7AD20A92AED000D323A /* K_MapLocationViewController.m in Sources */,
+				8A1DA7B720A92AED000D323A /* K_PortalModel.m in Sources */,
 				8A59438320871D5600D122F7 /* UIViewController+NavigationBar.m in Sources */,
+				8A1DA7AC20A92AED000D323A /* K_MyTableCell.m in Sources */,
 				8A5B06E71EC00A17007EC66A /* UserInfoManager.m in Sources */,
-				8A64A5751ECE9EBB00606DF2 /* K_MyTableCell.m in Sources */,
-				8A83145C20A14ABE00D675D3 /* TipView.m in Sources */,
-				8AB82D3B1ECA9DFE00296AF3 /* K_HeaderView.m in Sources */,
+				8A1DA7C820A987C0000D323A /* NSString+Extension.m in Sources */,
+				8A1DA7B020A92AED000D323A /* K_InputTimeView.m in Sources */,
+				8A1DA7B120A92AED000D323A /* K_CustomPinView.m in Sources */,
+				8A1DA7BB20A92AED000D323A /* K_PortalCell.m in Sources */,
+				8A1DA7AE20A92AED000D323A /* DisplayViewController.m in Sources */,
 				8A08F7AE1EC6A9170022D7C2 /* KTabBarController.m in Sources */,
-				8A83147020A51C5200D675D3 /* DisplayViewController.m in Sources */,
-				8AB82D441ECAA65D00296AF3 /* K_PortalModel.m in Sources */,
+				8A1DA7B420A92AED000D323A /* FileHelper.m in Sources */,
 				8A3072EF1EC1722900E4B19E /* RSAEncryptor.m in Sources */,
-				8A83145920A14A5C00D675D3 /* FileHelper.m in Sources */,
-				8AB82D371ECA9C7A00296AF3 /* MainViewController.m in Sources */,
-				8A6BC25B1EE24BD8007EE626 /* UIView+PS.m in Sources */,
-				8E0610502064F3BD009F4C09 /* AddressBookViewController.m in Sources */,
-				8E6D4B392068C36100B58437 /* K_OrgAndPersonViewController.m in Sources */,
-				8A9C64471ECD4D9700A1F152 /* MyViewController.m in Sources */,
-				8E6D4B3C2068C36C00B58437 /* K_PersonViewController.m in Sources */,
+				8A1DA7CB20A9889B000D323A /* NSObject+WN_Extension.m in Sources */,
+				8A1DA7C120A92B68000D323A /* K_MessageListsViewController.m in Sources */,
+				8A1DA7BD20A92AEE000D323A /* K_OrgAndPersonViewController.m in Sources */,
+				8A1DA7B620A92AED000D323A /* MainViewController.m in Sources */,
+				8A1DA7BE20A92AEE000D323A /* AddressBookViewController.m in Sources */,
+				8A1DA7A920A92AED000D323A /* K_ChangePasswordViewController.m in Sources */,
 				8A83147520A5405A00D675D3 /* K_DatePickerView.m in Sources */,
-				8AB82D401ECAA25000296AF3 /* K_PortalCell.m in Sources */,
-				8A83147B20A55DE100D675D3 /* K_CustomPinView.m in Sources */,
-				8ABF04F1209016500007CFCA /* AMapRouteRecord.m in Sources */,
 				8A012DA11EC2E28E00A3C1B9 /* LoginViewController.m in Sources */,
+				8A1DA7B320A92AED000D323A /* AMapRouteRecord.m in Sources */,
+				8A1DA7BC20A92AEE000D323A /* K_PersonViewController.m in Sources */,
 				8A65CD6B1EBD754F0037F668 /* main.m in Sources */,
 				8A012DA21EC2E28E00A3C1B9 /* WebDetailViewController.m in Sources */,
-				8A83147F20A55E0C00D675D3 /* K_InputTimeView.m in Sources */,
-				8A83147C20A55DE100D675D3 /* CustomCalloutView.m in Sources */,
 				8ABF04ED208EDE6B0007CFCA /* K_GlobalUtil.m in Sources */,
 				8ABED1A41ED8F933007A9B81 /* K_BasicViewController.m in Sources */,
-				8A9C64541ECD8BF700A1F152 /* K_ChangePasswordViewController.m in Sources */,
 				8A5943862087389100D122F7 /* UINavigationBar+PS.m in Sources */,
+				8A1DA7AA20A92AED000D323A /* MyViewController.m in Sources */,
 				8A65CDAE1EBD77830037F668 /* AppDelegate.m in Sources */,
 				8A64A57D1ECEB9A400606DF2 /* MyNavViewController.m in Sources */,
+				8A1DA7A820A92AED000D323A /* UIView+PS.m in Sources */,
+				8A1DA7B520A92AED000D323A /* TipView.m in Sources */,
 				8A59437F2086F3E200D122F7 /* K_NetWorkClient.m in Sources */,
 				8A83146D20A5154800D675D3 /* HWWeakTimer.m in Sources */,
 			);
@@ -845,7 +879,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 5MPLF388EQ;
+				DEVELOPMENT_TEAM = 3KQY2K7HQZ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/KuteSmartCRM/PrefixHeader.pch";
 				INFOPLIST_FILE = KuteSmartCRM/Info.plist;
@@ -864,7 +898,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 5MPLF388EQ;
+				DEVELOPMENT_TEAM = 3KQY2K7HQZ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/KuteSmartCRM/PrefixHeader.pch";
 				INFOPLIST_FILE = KuteSmartCRM/Info.plist;

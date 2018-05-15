@@ -167,6 +167,7 @@
     NSString *hour = self.hour.length == 3 ? [NSString stringWithFormat:@"%ld", self.hour.integerValue] : [NSString stringWithFormat:@"0%ld", self.hour.integerValue];
     NSString *minute = self.minute.length == 3 ? [NSString stringWithFormat:@"%ld", self.minute.integerValue] : [NSString stringWithFormat:@"0%ld", self.minute.integerValue];
     
+//    self.selectStr = [NSString stringWithFormat:@"%ld-%@-%@  %@:%@", [self.year integerValue], month, day, hour, minute];
     self.selectStr = [NSString stringWithFormat:@"%@-%@  %@:%@", month, day, hour, minute];
     if ([self.delegate respondsToSelector:@selector(saveClick:)]) {
         [self.delegate saveClick:self.selectStr];

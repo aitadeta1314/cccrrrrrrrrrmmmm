@@ -85,7 +85,7 @@
 
     self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, kDeviceWidth, kDeviceHeight) collectionViewLayout:flow];
     [self.view addSubview:self.collectionView];
-    self.collectionView.backgroundColor = RGBA(245, 245, 245, 1);
+    self.collectionView.backgroundColor = UIColor.whiteColor;
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     
@@ -165,14 +165,13 @@
     } else if ([sublist.appType isEqualToString:@"native"]) {
         UIViewController *subAppVC = nil;
         // 跳转到原生页面
-        if ([sublist.sub_appName isEqualToString:@"移动追踪"]) {
+        if ([sublist.sub_appName isEqualToString:@"移动巡更"]) {
             K_MapLocationViewController *mapLocationVC = [[K_MapLocationViewController alloc] init];
             subAppVC = mapLocationVC;
         }
         
-        self.hidesBottomBarWhenPushed = YES;
+        subAppVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:subAppVC animated:YES];
-        self.hidesBottomBarWhenPushed = NO;
     }
 //    if (![sublist.menu_url isEqualToString:@""]) {
 //        if ([sublist.sub_node_name isEqualToString:@"CRM"]) {
@@ -195,7 +194,7 @@
 #pragma mark - flow layout
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
-    return CGSizeMake(kDeviceWidth, 25);
+    return CGSizeMake(kDeviceWidth, 40);
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {

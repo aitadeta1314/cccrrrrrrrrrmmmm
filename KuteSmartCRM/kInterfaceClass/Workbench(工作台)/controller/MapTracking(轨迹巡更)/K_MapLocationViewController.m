@@ -16,6 +16,7 @@
 #define kTempTraceLocationCount 20
 
 @interface K_MapLocationViewController() <MAMapViewDelegate>
+
 /**
  NSTimer
  */
@@ -161,10 +162,26 @@
         MAPolygonRenderer *pol = [[MAPolygonRenderer alloc] initWithPolygon:overlay];
         
         pol.lineWidth = 5.f;
-        
+        NSLog(@"多边形的title:%@", overlay.title);
+        NSString *areaStr = overlay.title;
         pol.strokeColor =  [UIColor blueColor];
-        
         pol.fillColor = [UIColor colorWithRed:158/255.0 green:230/255.0 blue:252/255.0 alpha:0.5];
+        if ([areaStr isEqualToString:@"停车场"]) {
+            pol.fillColor = RGBA(0, 255, 0, 0.5);    // 绿色
+        } else if ([areaStr isEqualToString:@"办公室"]) {
+            pol.fillColor = RGBA(0, 0, 255, 0.5);    // 蓝色
+        } else if ([areaStr isEqualToString:@"工厂"]) {
+            pol.fillColor = RGBA(128, 128, 128, 0.5);// 灰色
+        } else if ([areaStr isEqualToString:@"超市"]) {
+            pol.fillColor = RGBA(255, 255, 0, 0.5);  // 黄色
+        } else if ([areaStr isEqualToString:@"宾馆"]) {
+            pol.fillColor = RGBA(128, 0, 128, 0.5);  // 紫色
+        } else if ([areaStr isEqualToString:@"公寓"]) {
+            pol.fillColor = RGBA(0, 0, 0, 0.7);      // 黑色
+        } else if ([areaStr isEqualToString:@"食堂"]) {
+            pol.fillColor = RGBA(255, 165, 0, 0.5);  // 橙色
+        }
+        
         
         pol.lineDashType = kMALineDashTypeDot;//YES表示虚线绘制，NO表示实线绘制
         return pol;
@@ -184,6 +201,7 @@
             pinView = [[K_CustomPinView alloc] initWithAnnotation:annotation reuseIdentifier:customPinReuseIdentifier];
             pinView.canShowCallout = NO;
             pinView.draggable = NO;
+            
         }
         for (NSDictionary *subDic in self.dataSourcePinCoordsInfo) {
             double latitude = [[subDic valueForKey:@"latitude"] doubleValue];
@@ -314,54 +332,25 @@
         return;
     }
     
-    NSMutableArray *mArr = [NSMutableArray array];
-    for(CLLocation *loc in locations)
-    {
-        MATraceLocation *tLoc = [[MATraceLocation alloc] init];
-        tLoc.loc = loc.coordinate;
+    if (saving) {
+        self.totalTraceLength = 0.0;
+        self.isSaving = NO;
         
-        tLoc.speed = loc.speed * 3.6; //m/s  转 km/h
-        tLoc.time = [loc.timestamp timeIntervalSince1970] * 1000;
-        tLoc.angle = loc.course;
-        [mArr addObject:tLoc];
+        if ([self saveRoute])
+        {
+            [self.tipView showTip:@"recording save succeeded"];
+        }
+        else
+        {
+            [self.tipView showTip:@"recording save failed"];
+        }
     }
     
-    __weak typeof(self) weakSelf = self;
-    // 获取纠偏后的经纬度点集
-    __unused NSOperation *op = [self.traceManager queryProcessedTraceWith:mArr type:-1 processingCallback:nil  finishCallback:^(NSArray<MATracePoint *> *points, double distance) {
-        
-        NSLog(@"trace query done!");
-        
-        if (saving) {
-            weakSelf.totalTraceLength = 0.0;
-            [weakSelf.currentRecord updateTracedLocations:points]; // 更新轨迹坐标  // 我们不需要纠偏之后的坐标，所以这里也就不需要更新了。
-            weakSelf.isSaving = NO;
-            
-//            [weakSelf saveRoute];
-            if ([weakSelf saveRoute])
-            {
-                [weakSelf.tipView showTip:@"recording save succeeded"];
-            }
-            else
-            {
-                [weakSelf.tipView showTip:@"recording save failed"];
-            }
-        }
-        
-        [weakSelf updateUserlocationTitleWithDistance:distance];
-        [weakSelf addFullTrace:points];
-        
-    } failedCallback:^(int errorCode, NSString *errorDesc) {
-        
-        NSLog(@"query trace point failed :%@", errorDesc);
-        if (saving) {
-            weakSelf.isSaving = NO;
-        }
-    }];
+    [self addFullTrace:locations];
     
 }
 
-- (void)addFullTrace:(NSArray<MATracePoint*> *)tracePoints
+- (void)addFullTrace:(NSArray<CLLocation*> *)tracePoints
 {
     MAPolyline *polyline = [self makePolylineWith:tracePoints];
     if(!polyline)
@@ -373,7 +362,8 @@
     [self.mapView addOverlay:polyline];
 }
 
-- (MAPolyline *)makePolylineWith:(NSArray<MATracePoint*> *)tracePoints
+
+- (MAPolyline *)makePolylineWith:(NSArray<CLLocation*> *)tracePoints
 {
     if(tracePoints.count < 2)
     {
@@ -386,10 +376,10 @@
     }
     
     for(int i = 0; i < tracePoints.count; ++i) {
-        MATracePoint *p = [tracePoints objectAtIndex:i];
+        CLLocation *p = [tracePoints objectAtIndex:i];
         CLLocationCoordinate2D *pCur = pCoords + i;
-        pCur->latitude = p.latitude;
-        pCur->longitude = p.longitude;
+        pCur->latitude = p.coordinate.latitude;
+        pCur->longitude = p.coordinate.longitude;
     }
     
     MAPolyline *polyline = [MAPolyline polylineWithCoordinates:pCoords count:tracePoints.count];
@@ -454,6 +444,7 @@
         mainProductCoords[i].longitude = [mainCoordsLongitude[i] doubleValue];
     }
     MAPolygon *mainProductPolygon = [MAPolygon polygonWithCoordinates:mainProductCoords count:mainCoordsLongitude.count];
+    mainProductPolygon.title = @"工厂";
     [polygonArr addObject:mainProductPolygon];
     
     // 行政楼
@@ -470,6 +461,7 @@
     coordsAdmin[3].latitude = 36.3453720000;
     coordsAdmin[3].longitude = 120.4338360000;
     MAPolygon *polygonWithAdmin = [MAPolygon polygonWithCoordinates:coordsAdmin count:4];
+    polygonWithAdmin.title = @"办公室";
     [polygonArr addObject:polygonWithAdmin];
     
     
@@ -506,6 +498,7 @@
     coordsPark[9].longitude = 120.4339460000;
     
     MAPolygon *polygonWithPark = [MAPolygon polygonWithCoordinates:coordsPark count:10];
+    polygonWithPark.title = @"停车场";
     [polygonArr addObject:polygonWithPark];
     
     
@@ -548,6 +541,7 @@
     coordsThreeRoom[11].longitude = 120.4331300000;
     
     MAPolygon *polygonWithThreeRoom = [MAPolygon polygonWithCoordinates:coordsThreeRoom count:12];
+    polygonWithThreeRoom.title = @"公寓";
     [polygonArr addObject:polygonWithThreeRoom];
     
     
@@ -566,6 +560,7 @@
     coordsHotel[3].longitude = 120.4340171814;
     
     MAPolygon *polygonWithHotel = [MAPolygon polygonWithCoordinates:coordsHotel count:4];
+    polygonWithHotel.title = @"宾馆";
     [polygonArr addObject:polygonWithHotel];
     
     
@@ -587,6 +582,7 @@
     coordsCanteen[4].longitude = 120.4331052303;
     
     MAPolygon *polygonWithCanteen = [MAPolygon polygonWithCoordinates:coordsCanteen count:5];
+    polygonWithCanteen.title = @"食堂";
     [polygonArr addObject:polygonWithCanteen];
     
     /// 2号公寓
@@ -604,6 +600,7 @@
     coordsTwoRoom[3].longitude = 120.4328745604;
     
     MAPolygon *polygonWithTwoRoom = [MAPolygon polygonWithCoordinates:coordsTwoRoom count:4];
+    polygonWithTwoRoom.title = @"公寓";
     [polygonArr addObject:polygonWithTwoRoom];
     
     
@@ -628,6 +625,7 @@
     coordsMarket[5].longitude = 120.4325044155;
     
     MAPolygon *polygonWithMarket = [MAPolygon polygonWithCoordinates:coordsMarket count:6];
+    polygonWithMarket.title = @"超市";
     [polygonArr addObject:polygonWithMarket];
     
     
@@ -646,6 +644,7 @@
     coordsFiveRoom[3].longitude = 120.4321074486;
     
     MAPolygon *polygonWithFiveRoom = [MAPolygon polygonWithCoordinates:coordsFiveRoom count:4];
+    polygonWithFiveRoom.title = @"公寓";
     [polygonArr addObject:polygonWithFiveRoom];
     
     /// 西裤厂
@@ -663,6 +662,7 @@
     coordsPants[3].longitude = 120.4327297211;
     
     MAPolygon *polygonWithPants = [MAPolygon polygonWithCoordinates:coordsPants count:4];
+    polygonWithPants.title = @"工厂";
     [polygonArr addObject:polygonWithPants];
     
     [_mapView addOverlays:polygonArr];
@@ -770,7 +770,7 @@
     for (int i = 0; i < 5; i ++) {
         NSMutableDictionary *dic = [NSMutableDictionary dictionary];
         [dic setValue:nameArr[i] forKey:@"name"];
-        [dic setValue:@"emoji-test" forKey:@"imageName"];
+        [dic setValue:@"警察" forKey:@"imageName"];
         [dic setValue:[NSNumber numberWithDouble:coords[i].longitude] forKey:@"longitude"];
         [dic setValue:[NSNumber numberWithDouble:coords[i].latitude] forKey:@"latitude"];
         [self.dataSourcePinCoordsInfo addObject:dic];

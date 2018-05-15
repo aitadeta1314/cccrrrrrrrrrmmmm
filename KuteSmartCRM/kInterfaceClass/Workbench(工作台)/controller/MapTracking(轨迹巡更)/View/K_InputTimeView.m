@@ -30,10 +30,6 @@
     self.sure.layer.masksToBounds = YES;
 }
 
-- (IBAction)sureClick:(UIButton *)sender {
-    NSLog(@"beginTextField:%@",self.beginTextfield.text);
-    NSLog(@"endTextField:%@",self.endTextfield.text);
-}
 
 
 @end

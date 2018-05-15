@@ -30,4 +30,13 @@ typedef NS_ENUM(NSInteger, RequestMethodType){
 /// 获取工作台
 + (void)getWorkbenchListInfoSuccess:(void (^)(id responseObject))success
                             failure:(void (^)(NSError *error))failure;
+
+/// 获取用户位置信息
++ (void)getUserLocationInfoSuccess:(void (^)(id responseObject))success
+                           failure:(void (^)(NSError *error))failure;
+
+/// 上传位置坐标信息
++ (void)uploadLocationCoordinates:(NSDictionary *)locaDic
+                          success:(void (^)(id response))success
+                          failure:(void (^)(NSError *error))failure;
 @end

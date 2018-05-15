@@ -12,17 +12,12 @@
 #import "K_InputTimeView.h"
 #import "K_DatePickerView.h"
 
-@interface DisplayViewController()<MAMapViewDelegate, UITextFieldDelegate, KDatePickerViewDelegate>
+@interface DisplayViewController()<MAMapViewDelegate>
 {
     CLLocationCoordinate2D *_traceCoordinate;
     NSUInteger _traceCount;
     CFTimeInterval _duration;
 }
-
-/**
- 时间选择器
- */
-@property (nonatomic, strong) K_DatePickerView *dateView;
 
 @property (nonatomic, strong) AMapRouteRecord *record;
 
@@ -31,15 +26,6 @@
 @property (nonatomic, strong) MAAnimatedAnnotation *myLocation;
 
 @property (nonatomic, assign) BOOL isPlaying;
-
-/**
- 时间段view
- */
-@property (nonatomic, strong) K_InputTimeView *timeView;
-/**
- beginTextField选中弹出timePicker
- */
-@property (nonatomic, assign) BOOL beginTFSelected;
 
 @end
 
@@ -78,59 +64,6 @@
     _record = record;
 }
 
-#pragma mark - KDatePickerViewDelegate
-/**
- 保存
-
- @param timer 保存
- */
-- (void)saveClick:(NSString *)timer {
-    if (self.beginTFSelected) {
-        
-        self.timeView.beginTextfield.text = timer;
-    } else {
-        self.timeView.endTextfield.text = timer;
-    }    
-    [UIView animateWithDuration:0.3 animations:^{
-        self.dateView.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 300);
-        self.dateView = nil;
-    }];
-}
-
-/**
- 取消
- */
-- (void)cancelClick {
-    [UIView animateWithDuration:0.3 animations:^{
-        self.dateView.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 300);
-        
-        self.dateView = nil;
-    }];
-}
-
-#pragma mark - UITextFieldDelegate
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    if (self.dateView == nil) {
-        K_DatePickerView *dateView = [[K_DatePickerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 300)];
-        dateView.delegate = self;
-        dateView.title = @"请选择时间";
-        [self.view addSubview:dateView];
-        self.dateView = dateView;
-    }
-    if (textField == self.timeView.beginTextfield) {
-        self.beginTFSelected = YES;
-    } else {
-        self.beginTFSelected = NO;
-    }
-    [UIView animateWithDuration:0.3 animations:^{
-        self.dateView.frame = CGRectMake(0, self.view.frame.size.height - 300, self.view.frame.size.width, 300);
-        [self.dateView show];
-    }];
-    
-    
-    return NO;
-}
-
 #pragma mark - mapViewDelegate
 
 - (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation
@@ -163,7 +96,7 @@
         }
         poiAnnotationView.canShowCallout = YES;
 //        poiAnnotationView.image = [UIImage imageNamed: @"car1"];
-        return poiAnnotationView;
+        return nil;
     }
     
     return nil;
@@ -175,7 +108,7 @@
     {
         MAMultiColoredPolylineRenderer *view = [[MAMultiColoredPolylineRenderer alloc] initWithPolyline:overlay];
         view.gradient = YES;
-        view.lineWidth = 8;
+        view.lineWidth = 2;
         view.strokeColors = @[[UIColor greenColor], [UIColor redColor]];
         
         return view;
@@ -250,14 +183,18 @@
 {
     self.mapView = [[MAMapView alloc] initWithFrame:self.view.bounds];
     self.mapView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    self.mapView.showsUserLocation = YES;
     self.mapView.delegate = self;
+    self.mapView.userTrackingMode = MAUserTrackingModeFollow;
     self.mapView.showsIndoorMap = NO;
+    self.mapView.zoomLevel = 17.f;
     [self.view addSubview:self.mapView];
 }
 
 - (void)initDisplayRoutePolyline
 {
-    NSArray<MATracePoint *> *tracePoints = self.record.tracedLocations;
+    NSArray<CLLocation *> *tracePoints = self.record.locations;
+//    NSArray<MATracePoint *> *tracePoints = self.record.tracedLocations;
     
     if (tracePoints.count < 2)
     {
@@ -265,12 +202,12 @@
     }
     
     MAPointAnnotation *startPoint = [[MAPointAnnotation alloc] init];
-    startPoint.coordinate = CLLocationCoordinate2DMake(tracePoints.firstObject.latitude, tracePoints.firstObject.longitude);
+    startPoint.coordinate = CLLocationCoordinate2DMake(tracePoints.firstObject.coordinate.latitude, tracePoints.firstObject.coordinate.longitude);
     startPoint.title = @"start";
     [self.mapView addAnnotation:startPoint];
     
     MAPointAnnotation *endPoint = [[MAPointAnnotation alloc] init];
-    endPoint.coordinate = CLLocationCoordinate2DMake(tracePoints.lastObject.latitude, tracePoints.lastObject.longitude);
+    endPoint.coordinate = CLLocationCoordinate2DMake(tracePoints.lastObject.coordinate.latitude, tracePoints.lastObject.coordinate.longitude);
     endPoint.title = @"end";
     [self.mapView addAnnotation:endPoint];
     
@@ -278,7 +215,7 @@
     
     for (int i = 0; i < tracePoints.count; i++)
     {
-        coords[i] = CLLocationCoordinate2DMake(tracePoints[i].latitude, tracePoints[i].longitude);
+        coords[i] = CLLocationCoordinate2DMake(tracePoints[i].coordinate.latitude, tracePoints[i].coordinate.longitude);
     }
     
     NSInteger drawIndex = tracePoints.count - 1;
@@ -296,7 +233,8 @@
 
 - (void)initDisplayTrackingCoords
 {
-    NSArray<MATracePoint *> *points = self.record.tracedLocations;
+    NSArray<CLLocation *> *points = self.record.locations;
+//    NSArray<MATracePoint *> *points = self.record.tracedLocations;
     _traceCount = points.count;
     
     if (_traceCount < 2)
@@ -308,7 +246,7 @@
     
     for (int i = 0; i < _traceCount; ++i)
     {
-        coords[i] = CLLocationCoordinate2DMake(points[i].latitude, points[i].longitude);
+        coords[i] = CLLocationCoordinate2DMake(points[i].coordinate.latitude, points[i].coordinate.longitude);
     }
     
     _traceCoordinate = coords;
@@ -321,7 +259,7 @@
 {
     [super viewDidLoad];
     [self addBackButton];
-    self.beginTFSelected = NO;
+
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.title = @"轨迹回放";
     
@@ -331,8 +269,8 @@
     
     [self showRoute];
     
-    [self.mapView addSubview:self.timeView];
 }
+
 
 - (void)dealloc
 {
@@ -341,15 +279,6 @@
         free(_traceCoordinate);
         _traceCoordinate = NULL;
     }
-}
-
-- (K_InputTimeView *)timeView {
-    if (!_timeView) {
-        _timeView = [[K_InputTimeView alloc] initWithFrame:CGRectMake(10, 10, 200, 150)];
-        _timeView.beginTextfield.delegate = self;
-        _timeView.endTextfield.delegate = self;
-    }
-    return _timeView;
 }
 
 @end

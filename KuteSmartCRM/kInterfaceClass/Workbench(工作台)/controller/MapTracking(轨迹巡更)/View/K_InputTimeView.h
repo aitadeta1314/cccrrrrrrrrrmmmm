@@ -15,5 +15,4 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *endTextfield;
 @property (weak, nonatomic) IBOutlet UIButton *sure;
-
 @end

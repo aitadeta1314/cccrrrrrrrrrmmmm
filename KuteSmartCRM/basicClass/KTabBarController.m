@@ -19,6 +19,17 @@
     
     [[UITabBar appearance] setBarTintColor:[UIColor whiteColor]];
     
+//    NSMutableDictionary *atts=[NSMutableDictionary dictionary];
+//    atts[NSFontAttributeName]=[UIFont systemFontOfSize:12];
+//    atts[NSForegroundColorAttributeName]=[UIColor darkGrayColor];
+    /// 更改文字颜色
+    NSMutableDictionary *selectedAtts=[NSMutableDictionary dictionary];
+//    selectedAtts[NSFontAttributeName]=[UIFont systemFontOfSize:12];
+    selectedAtts[NSForegroundColorAttributeName] = NavigationBarBGColor;
+    
+    for (UIViewController *viewC in self.viewControllers) {
+        [viewC.tabBarItem setTitleTextAttributes:selectedAtts forState:UIControlStateSelected];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

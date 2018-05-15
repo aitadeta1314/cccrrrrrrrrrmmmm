@@ -79,6 +79,28 @@
                                   failure:failure];
 }
 
+/// 获取用户位置信息
++ (void)getUserLocationInfoSuccess:(void (^)(id))success
+                           failure:(void (^)(NSError *))failure {
+    [K_NetWorkClient requestWithMethod_ST:RequestMethodTypeGet
+                                      url:[NSString stringWithFormat:@""]
+                                   params:nil
+                                  success:success
+                                  failure:failure];
+}
+
+
+/// 上传位置坐标信息
++ (void)uploadLocationCoordinates:(NSDictionary *)locaDic
+                          success:(void (^)(id))success
+                          failure:(void (^)(NSError *))failure {
+    [K_NetWorkClient requestWithMethod_ST:RequestMethodTypePost
+                                      url:[NSString stringWithFormat:@"/"]
+                                   params:locaDic
+                                  success:success
+                                  failure:success];
+}
+
 + (NSURLSessionDataTask *)requestWithMethod_ST:(RequestMethodType)methodType
                                            url:(NSString*)url
                                         params:(id)params

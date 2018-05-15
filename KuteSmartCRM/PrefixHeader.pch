@@ -26,6 +26,8 @@
 #import <MAMapKit/MAMapKit.h>
 #import <Bugly/Bugly.h>
 #import <Masonry.h>
+#import "NSString+Extension.h"
+#import "NSObject+WN_Extension.h"
 
 #endif
 
@@ -51,7 +53,7 @@
 
 
 //#define KHOST  @"http://123123.iask.in/PortalAdmin/"
-#define KHOST  @"http://web01.collegeofeva.edu.pl:8888"
+#define KHOST  @"http://dev.frp.collegeofeva.edu.pl:8888/"
 // 登录页网址
 #define KLOGINHTTP @"http://web01.collegeofeva.edu.pl:8888/user/login"
 //通讯录
@@ -69,7 +71,7 @@
 #define NavigationBarBGColor FUIColorFromRGB(0x1296db, 1)
 
 
-
+#define SharedAppDelegate ((AppDelegate*)[[UIApplication sharedApplication] delegate])
 
 
 //屏幕宽高

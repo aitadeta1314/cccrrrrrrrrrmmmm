@@ -43,7 +43,7 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor yellowColor];
-    
+    [self addBackButton];
     [self configureForInterface];
 }
 
