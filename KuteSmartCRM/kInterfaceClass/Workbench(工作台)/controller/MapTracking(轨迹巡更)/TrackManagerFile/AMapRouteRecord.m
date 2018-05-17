@@ -112,7 +112,8 @@
 
 - (NSTimeInterval)totalDuration
 {
-    return [self.endTime timeIntervalSinceDate:self.startTime];
+//    return [self.endTime timeIntervalSinceDate:self.startTime];
+    return 20.0;
 }
 
 - (NSInteger)numOfLocations;

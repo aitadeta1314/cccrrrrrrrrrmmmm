@@ -22,11 +22,11 @@
  */
 @property (nonatomic, strong) NSTimer *timer;
 /**
- 大头针坐标
+ 大头针坐标(每一分钟更新大头针坐标  移除之前的坐标信息)
  */
 @property (nonatomic, strong) NSMutableArray *pinAnnotation;
 /**
- 数据源大头针坐标信息
+ 数据源大头针坐标信息(每分钟更新大头针坐标  移除之前的信息)
  */
 @property (nonatomic, strong) NSMutableArray *dataSourcePinCoordsInfo;
 
@@ -207,8 +207,9 @@
             double longitude = [[subDic valueForKey:@"longitude"] doubleValue];
             if (annotation.coordinate.latitude == latitude && annotation.coordinate.longitude == longitude) {
                 
-                pinView.portraitUrl = [NSString stringWithFormat:@"www"];
+                pinView.portraitUrl = [NSString stringWithFormat:@""];
                 pinView.name = [subDic valueForKey:@"name"];
+                pinView.employeeNumber = [subDic valueForKey:@"employeeNumber"];
                 break;
             }
         }
@@ -749,47 +750,66 @@
 }
 
 /**
- 大头针显示     测试数据呢 ！!--—__---
+ 大头针显示
  */
 - (void)initAnnotation {
-    // 大头针位置经纬度
-    CLLocationCoordinate2D coords[5] = {
-        {36.3448360000,120.4336480000},
-        {36.3453520000,120.4338490000},
-        {36.3454730000,120.4329640000},
-        {36.3459570000,120.4331250000},
-        {36.3456720000,120.4321810000}
-    };
+    NSLog(@"大头针移除");
+    /// 移除大头针标注
+    [self.mapView removeAnnotations:self.pinAnnotation];
+    /// 移除大头针数据源数据
+    [self.dataSourcePinCoordsInfo removeAllObjects];
+    /// 移除大头针标注组
+    [self.pinAnnotation removeAllObjects];
     
-    for (int i = 0; i < 5; i ++) {
-        MAPointAnnotation *pointAnnotation = [[MAPointAnnotation alloc] init];
-        pointAnnotation.coordinate = coords[i];
-        pointAnnotation.title = [NSString stringWithFormat:@"coord:%d", i];
-        [self.pinAnnotation addObject:pointAnnotation];
-    }
-    [self.mapView addAnnotations:self.pinAnnotation];
+    weakObjc(self);
+    [K_NetWorkClient getUserLocationInfoSuccess:^(id responseObject) {
+        NSLog(@"大头针请求成功:%@", responseObject);
+        NSDictionary *responseDic = responseObject;
+        if ([responseDic[@"code"] integerValue] == 200) {
+            NSLog(@"请求成功");
+            NSArray *data = responseDic[@"data"];
+            /// 大头针经纬度坐标
+            CLLocationCoordinate2D *coords = malloc(data.count*sizeof(CLLocationCoordinate2D));
+            for (NSInteger i = 0; i < data.count; i ++) {
+                coords[i].latitude = [data[i][@"latitude"] doubleValue];
+                coords[i].longitude = [data[i][@"longitude"] doubleValue];
+            }
+            
+            for (NSDictionary *everyone in data) {
+                NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+                [dic setValue:everyone[@"displayName"] forKey:@"name"];
+                [dic setValue:everyone[@"employeeNumber"] forKey:@"employeeNumber"];
+                [dic setValue:@"警察" forKey:@"imageName"];
+                [dic setValue:everyone[@"longitude"] forKey:@"longitude"];
+                [dic setValue:everyone[@"latitude"] forKey:@"latitude"];
+                [weakself.dataSourcePinCoordsInfo addObject:dic];
+            }
+            
+            for (NSInteger i = 0; i < data.count; i ++) {
+                MAPointAnnotation *pointAnnotation = [[MAPointAnnotation alloc] init];
+                pointAnnotation.coordinate = coords[i];
+//                pointAnnotation.title = [NSString stringWithFormat:@"coord:%d", i];
+                [weakself.pinAnnotation addObject:pointAnnotation];
+            }
+            [weakself.mapView addAnnotations:weakself.pinAnnotation];
+            
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"大头针错误：%@", error);
+    }];
     
-    NSArray *nameArr = @[@"张三",@"李四",@"王五",@"赵六",@"王八"];
-    for (int i = 0; i < 5; i ++) {
-        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-        [dic setValue:nameArr[i] forKey:@"name"];
-        [dic setValue:@"警察" forKey:@"imageName"];
-        [dic setValue:[NSNumber numberWithDouble:coords[i].longitude] forKey:@"longitude"];
-        [dic setValue:[NSNumber numberWithDouble:coords[i].latitude] forKey:@"latitude"];
-        [self.dataSourcePinCoordsInfo addObject:dic];
-    }
 }
 
 - (void)initTimer {
-    /// 每隔一分钟上传位置坐标集  每隔一分钟获取最新位置坐标
+    /// 每隔一分钟上传位置坐标集(已经移至AppDelegate)  每隔一分钟获取其他人员最新位置坐标(在此实现)
     self.timer = [HWWeakTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(timerAction:) userInfo:nil repeats:YES];
     
     
 }
 
 - (void)timerAction:(NSTimer *)timer {
-    NSLog(@"timer action");
-    
+    NSLog(@"+++获取大头针timerAction+++");
+    [self initAnnotation];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

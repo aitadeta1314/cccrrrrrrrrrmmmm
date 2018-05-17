@@ -25,6 +25,19 @@ static UserInfoManager *_userInfoManager = nil;
     return [UserInfoManager shareUserInfoManager];
 }
 
+- (NSString *)displayName {
+    return [kUserDefaults objectForKey:@"DISPLAYNAME"];
+}
+
+- (void)setDisplayName:(NSString *)displayName {
+    if (displayName) {
+        [kUserDefaults setObject:displayName forKey:@"DISPLAYNAME"];
+    } else {
+        [kUserDefaults removeObjectForKey:@"DISPLAYNAME"];
+    }
+    [kUserDefaults synchronize];
+}
+
 /** 用户名*/
 - (NSString *)theUserName {
     return [kUserDefaults objectForKey:@"THEUSERNAME"];

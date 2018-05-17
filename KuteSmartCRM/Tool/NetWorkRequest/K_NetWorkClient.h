@@ -39,4 +39,11 @@ typedef NS_ENUM(NSInteger, RequestMethodType){
 + (void)uploadLocationCoordinates:(NSDictionary *)locaDic
                           success:(void (^)(id response))success
                           failure:(void (^)(NSError *error))failure;
+
+/// 查询某个人某个时间段位置信息
++ (void)searchSomeoneATimePeriodDateFrom:(NSString *)dateFrom
+                                  dateTo:(NSString *)dateTo
+                          employeeNumber:(NSString *)employeeNumber
+                                 success:(void (^)(id response))success
+                                 failure:(void (^)(NSError *error))failure;
 @end

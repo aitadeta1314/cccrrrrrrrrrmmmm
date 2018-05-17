@@ -15,6 +15,10 @@
  */
 @property (nonatomic,copy) NSString *name;
 /**
+ 人员工号
+ */
+@property (nonatomic,copy) NSString *employeeNumber;
+/**
  人员头像 url
  */
 @property (nonatomic, copy) NSString *portraitUrl;

@@ -19,17 +19,17 @@
     
     [[UITabBar appearance] setBarTintColor:[UIColor whiteColor]];
     
-//    NSMutableDictionary *atts=[NSMutableDictionary dictionary];
-//    atts[NSFontAttributeName]=[UIFont systemFontOfSize:12];
-//    atts[NSForegroundColorAttributeName]=[UIColor darkGrayColor];
     /// 更改文字颜色
     NSMutableDictionary *selectedAtts=[NSMutableDictionary dictionary];
-//    selectedAtts[NSFontAttributeName]=[UIFont systemFontOfSize:12];
     selectedAtts[NSForegroundColorAttributeName] = NavigationBarBGColor;
-    
+    UITabBarItem * item = [self.tabBar.items objectAtIndex:0];
+    item.badgeValue = @"0";
+    item.badgeValue=  nil;
     for (UIViewController *viewC in self.viewControllers) {
         [viewC.tabBarItem setTitleTextAttributes:selectedAtts forState:UIControlStateSelected];
     }
+    /// 开启上传位置定时器
+    [SharedAppDelegate openTimer];
 }
 
 - (void)didReceiveMemoryWarning {

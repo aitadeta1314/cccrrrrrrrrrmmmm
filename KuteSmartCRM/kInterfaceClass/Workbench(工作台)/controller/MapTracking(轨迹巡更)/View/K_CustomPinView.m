@@ -83,7 +83,7 @@
             self.timeView = [[K_InputTimeView alloc] initWithFrame:CGRectMake(0, 0, 200, 150)];
             self.timeView.beginTextfield.delegate = self;
             self.timeView.endTextfield.delegate = self;
-            [self.timeView.sure addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
+            [self.timeView.sure addTarget:self action:@selector(sure:) forControlEvents:UIControlEventTouchUpInside];
             [self.calloutView addSubview:self.timeView];
 
         }
@@ -102,7 +102,7 @@
 
  @param sender 确定按钮
  */
-- (void)btnAction:(UIButton *)sender {
+- (void)sure:(UIButton *)sender {
     
     if (![self.timeView.beginTextfield.text isValidString] || ![self.timeView.endTextfield.text isValidString]) {
         [K_GlobalUtil HUDShowMessage:@"请输入有效的时间" addedToView:SharedAppDelegate.window];
@@ -110,8 +110,34 @@
     }
     
     [self cancelClick];
-    DisplayViewController *display = [[DisplayViewController alloc] init];
-    [[self viewController].navigationController pushViewController:display animated:YES];
+    
+    weakObjc(self);
+    [K_NetWorkClient searchSomeoneATimePeriodDateFrom:[NSString stringWithFormat:@"%@:00", self.timeView.beginTextfield.text]
+                                               dateTo:[NSString stringWithFormat:@"%@:00", self.timeView.endTextfield.text]
+                                       employeeNumber:self.employeeNumber
+                                              success:^(id response) {
+                                                    NSLog(@"查询成功");
+                                                    NSLog(@"response:%@", response);
+                                                  
+                                                  if ([response[@"code"] integerValue] == 200) {
+                                                      NSArray *coordArray = response[@"data"];
+                                                      AMapRouteRecord *record = [[AMapRouteRecord alloc] init];
+                                                      for (NSDictionary *dic in coordArray) {
+                                                          NSString *longitude = dic[@"longitude"];
+                                                          NSString *latitude = dic[@"latitude"];
+                                                          CLLocation *location = [[CLLocation alloc] initWithLatitude:[latitude doubleValue] longitude:[longitude doubleValue]];
+                                                          [record addLocation:location];
+                                                      }
+                                                      DisplayViewController *display = [[DisplayViewController alloc] init];
+                                                      [display setRecord:record];
+                                                      [[weakself viewController].navigationController pushViewController:display animated:YES];
+                                                  }
+                                                  
+    }
+                                                failure:^(NSError *error) {
+                                                    NSLog(@"查询时间段失败");
+                                                    NSLog(@"error:%@", error);
+    }];
 }
 
 - (UIViewController *)viewController {

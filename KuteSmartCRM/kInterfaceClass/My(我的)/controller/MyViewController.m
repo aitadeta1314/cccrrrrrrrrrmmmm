@@ -349,6 +349,7 @@
     UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         KLOGOUT = YES;
         [self toLoginPage];
+        [SharedAppDelegate invalidateTimer];
     }];
     [alertVC addAction:action2];
     [self presentViewController:alertVC animated:YES completion:nil];

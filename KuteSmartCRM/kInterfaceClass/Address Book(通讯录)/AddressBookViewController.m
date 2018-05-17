@@ -33,9 +33,8 @@
     
     
     self.isPushed ? [self addBackButton] : nil;
-}
-
-- (void)viewWillAppear:(BOOL)animated {
+    
+    
     [self getDataFromServer];
     _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kDeviceWidth, kDeviceHeight-64) style:UITableViewStylePlain];
     _tableView.delegate = self;
@@ -45,6 +44,9 @@
     
     _orgArray = [[NSMutableArray alloc]init];
     _personArray = [[NSMutableArray alloc]init];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
 
 }
 

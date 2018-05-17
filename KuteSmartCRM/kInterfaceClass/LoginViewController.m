@@ -204,7 +204,8 @@
         NSString *encrytPasswordStr = [RSAEncryptor encryptString:self.passwordTF.text publicKey:KRSA_PUBLIC_KEY];
         
         self.passwordTF.text = encrytPasswordStr;
-        
+        KUSERNAME = self.userNameTF.text;
+        weakObjc(self);
         [K_NetWorkClient loginAPPWithUsername:self.userNameTF.text password:self.passwordTF.text success:^(id responseObject) {
             [_activitIndicatorView stopAnimating];
             if(responseObject){
@@ -213,9 +214,9 @@
                 
                 [K_GlobalUtil HUDShowMessage:@"登录成功" addedToView:SharedAppDelegate.window];
                 KTOKEN = dic[@"clientDigest"];
-                KUSERNAME = dic[@"username"];
+                KDISPLAYNAME = dic[@"params"][@"ename"];
                 
-                if (KAUTOLOGIN) {
+                if (KAUTOLOGIN) {   
                     // 自动登录  并设置退出登录为NO
                     KAUTOLOGIN = YES;
                     KLOGOUT = NO;
@@ -225,7 +226,7 @@
                     KUSERPASSWORD = saveStr;
                 }
                 
-                [self toMainPage];
+                [weakself toMainPage];
                 
             }
         } failure:^(NSError *error) {

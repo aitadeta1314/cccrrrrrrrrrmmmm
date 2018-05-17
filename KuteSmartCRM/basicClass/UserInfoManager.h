@@ -11,13 +11,17 @@
 @interface UserInfoManager : NSObject
 
 /**
- *  用户名
+ 姓名
  */
-@property (nonatomic, strong) NSString *theUserName;
+@property (nonatomic, copy) NSString *displayName;
+/**
+ *  用户名----->>>工号
+ */
+@property (nonatomic, copy) NSString *theUserName;
 /**
  *  密码
  */
-@property (nonatomic, strong) NSString *theUserPassword;
+@property (nonatomic, copy) NSString *theUserPassword;
 /**
  * 自动登录
  */
@@ -25,16 +29,16 @@
 /**
  *  user_id
  */
-@property (nonatomic, strong) NSString *userID;
+@property (nonatomic, copy) NSString *userID;
 /**
  *  TOKEN
  */
-@property (nonatomic, strong) NSString *token;
+@property (nonatomic, copy) NSString *token;
 
 /**
  *  姓名
  */
-@property (nonatomic, strong) NSString *personName;
+@property (nonatomic, copy) NSString *personName;
 /**
  *  是否记住密码
  */
@@ -46,12 +50,13 @@
 /**
  * 手机型号
  */
-@property (nonatomic, assign) NSString *phoneType;
+@property (nonatomic, copy) NSString *phoneType;
 
 /** 用户单例*/
 + (UserInfoManager *)shareUserInfoManager;
 
 
+#define KDISPLAYNAME  [UserInfoManager shareUserInfoManager].displayName
 #define KUSERNAME     [UserInfoManager shareUserInfoManager].theUserName
 #define KUSERPASSWORD [UserInfoManager shareUserInfoManager].theUserPassword
 #define KAUTOLOGIN    [UserInfoManager shareUserInfoManager].isAutoLogin

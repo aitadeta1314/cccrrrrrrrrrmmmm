@@ -19,6 +19,10 @@
  */
 @property (nonatomic, strong) NSTimer *timer;
 /**
+ 获取到的地理经纬度
+ */
+@property (nonatomic, strong) CLLocation *locationInfo;
+/**
  定位管理者
  */
 @property (nonatomic, strong) AMapLocationManager *locationManager;
@@ -40,13 +44,46 @@
     [self loginInit];
     NSLog(@"phoneType:%@",KPHONETYPE);
     [self initLocationManager];
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:6 target:self selector:@selector(timerAction:) userInfo:nil repeats:YES];
     return YES;
 }
 
-- (void)timerAction:(NSTimer *)timer {
-    NSLog(@"timer action");
+/**
+ 开启定位 定时器
+ */
+- (void)openTimer {
     
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(timerAction:) userInfo:nil repeats:YES];
+}
+
+/**
+ 销毁定时器
+ */
+- (void)invalidateTimer {
+    NSLog(@"timer invalidate");
+    [self.timer invalidate];
+}
+
+- (void)timerAction:(NSTimer *)timer {
+    NSLog(@"---timer action in appDelegate---");
+    NSLog(@"---longitude:%f, latitude:%f", self.locationInfo.coordinate.longitude, self.locationInfo.coordinate.latitude);
+//     NSLog(@"userID:%@,userName:%@", KUSERID, KUSERNAME);
+//    NSLog(@"displayName:%@", KDISPLAYNAME);
+    
+    NSDictionary *dataDic = @{@"longitude":[NSString stringWithFormat:@"%f",self.locationInfo.coordinate.longitude],
+                              @"latitude":[NSString stringWithFormat:@"%f", self.locationInfo.coordinate.latitude],
+                              @"createTime":[processingTime dateStringWithDate:[NSDate date] andFormatString:@"yyyy-MM-dd HH:mm:ss"],
+//                              @"displayName":KDISPLAYNAME,
+                              @"displayName":@"葛丽芬",
+                              @"employeeNumber":@"100217"
+//                              @"employeeNumber":KUSERNAME
+                              };
+    [K_NetWorkClient uploadLocationCoordinates:dataDic
+                                       success:^(id response) {
+                                           NSLog(@"上传位置成功：%@", response);
+    }
+                                       failure:^(NSError *error) {
+                                           NSLog(@"上传位置失败:%@", error);
+    }];
 }
 
 - (void)initLocationManager {
@@ -62,6 +99,7 @@
 
 #pragma mark - AMapLocationManagerDelegate
 - (void)amapLocationManager:(AMapLocationManager *)manager didUpdateLocation:(CLLocation *)location reGeocode:(AMapLocationReGeocode *)reGeocode {
+    self.locationInfo = location;
     NSLog(@"location:{lat:%f; lon:%f; accuracy:%f}", location.coordinate.latitude, location.coordinate.longitude, location.horizontalAccuracy);
     
     if (reGeocode)
@@ -76,6 +114,7 @@
     if (KAUTOLOGIN && KLOGOUT == NO) {
         // 自动登录 并且 没有退出登录
         [self toMainPage];
+//        [self openTimer];
     }
     else {
         // 没有自动登录  并且 退出登录的情况

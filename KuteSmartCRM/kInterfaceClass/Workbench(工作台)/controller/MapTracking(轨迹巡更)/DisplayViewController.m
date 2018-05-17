@@ -16,7 +16,7 @@
 {
     CLLocationCoordinate2D *_traceCoordinate;
     NSUInteger _traceCount;
-    CFTimeInterval _duration;
+    CFTimeInterval _duration;  
 }
 
 @property (nonatomic, strong) AMapRouteRecord *record;

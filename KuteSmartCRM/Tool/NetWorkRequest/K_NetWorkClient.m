@@ -83,7 +83,7 @@
 + (void)getUserLocationInfoSuccess:(void (^)(id))success
                            failure:(void (^)(NSError *))failure {
     [K_NetWorkClient requestWithMethod_ST:RequestMethodTypeGet
-                                      url:[NSString stringWithFormat:@""]
+                                      url:[NSString stringWithFormat:@"/public/map/getCurrentRecord"]
                                    params:nil
                                   success:success
                                   failure:failure];
@@ -95,10 +95,23 @@
                           success:(void (^)(id))success
                           failure:(void (^)(NSError *))failure {
     [K_NetWorkClient requestWithMethod_ST:RequestMethodTypePost
-                                      url:[NSString stringWithFormat:@"/"]
+                                      url:[NSString stringWithFormat:@"/public/map/addRecord"]
                                    params:locaDic
                                   success:success
                                   failure:success];
+}
+
+/// 查询某个人某个时间段位置信息
++ (void)searchSomeoneATimePeriodDateFrom:(NSString *)dateFrom
+                                  dateTo:(NSString *)dateTo
+                          employeeNumber:(NSString *)employeeNumber
+                                 success:(void (^)(id))success
+                                 failure:(void (^)(NSError *))failure {
+    [K_NetWorkClient requestWithMethod_ST:RequestMethodTypeGet
+                                      url:[NSString stringWithFormat:@"/public/map/getRecord/%@?dateFrom=%@&dateTo=%@", employeeNumber, dateFrom, dateTo]
+                                   params:nil
+                                  success:success
+                                  failure:failure];
 }
 
 + (NSURLSessionDataTask *)requestWithMethod_ST:(RequestMethodType)methodType
@@ -117,6 +130,10 @@
         
         [manager.requestSerializer setValue:KUSERNAME forHTTPHeaderField:@"username"];
     }
+    
+    /// 如果url中有空格  需要做以下处理
+    url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+
     NSURLSessionDataTask *task;
     switch (methodType) {
         case RequestMethodTypeGet:
@@ -163,6 +180,8 @@
         {
             NSString *errorStr = [NSString stringWithFormat:@"%@",error];
             if ([errorStr containsString:@"401"]) {
+                /// Token失效
+                [SharedAppDelegate openTimer];
                 UIStoryboard *CRMStory = [UIStoryboard storyboardWithName:@"CRM" bundle:nil];
                 LoginViewController *loginVC = [CRMStory instantiateViewControllerWithIdentifier:@"loginID"];
                 SharedAppDelegate.window.rootViewController = loginVC;

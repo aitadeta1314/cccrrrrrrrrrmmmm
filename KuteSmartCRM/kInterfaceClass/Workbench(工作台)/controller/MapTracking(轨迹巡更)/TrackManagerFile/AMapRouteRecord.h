@@ -33,6 +33,7 @@
 
 - (CLLocationDistance)totalDistance;
 
+/// 总共的时间可以写死  例如10秒（轨迹回放的时候 动画所需要的时间）
 - (NSTimeInterval)totalDuration;
 
 @end

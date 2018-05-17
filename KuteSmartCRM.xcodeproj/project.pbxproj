@@ -55,6 +55,7 @@
 		8A83147520A5405A00D675D3 /* K_DatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A83147420A5405900D675D3 /* K_DatePickerView.m */; };
 		8ABED1A41ED8F933007A9B81 /* K_BasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABED1A31ED8F933007A9B81 /* K_BasicViewController.m */; };
 		8ABF04ED208EDE6B0007CFCA /* K_GlobalUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABF04EC208EDE6B0007CFCA /* K_GlobalUtil.m */; };
+		8ADE3CB920ABCC20005F9959 /* processingTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADE3CB720ABCC1F005F9959 /* processingTime.m */; };
 		9A79B4584616C5E88C1D3029 /* libPods-KuteSmartCRM.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F27B3E6E334E7DC3653ED98 /* libPods-KuteSmartCRM.a */; };
 /* End PBXBuildFile section */
 
@@ -166,6 +167,8 @@
 		8ABED1A31ED8F933007A9B81 /* K_BasicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = K_BasicViewController.m; sourceTree = "<group>"; };
 		8ABF04EB208EDE6B0007CFCA /* K_GlobalUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = K_GlobalUtil.h; sourceTree = "<group>"; };
 		8ABF04EC208EDE6B0007CFCA /* K_GlobalUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = K_GlobalUtil.m; sourceTree = "<group>"; };
+		8ADE3CB720ABCC1F005F9959 /* processingTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = processingTime.m; sourceTree = "<group>"; };
+		8ADE3CB820ABCC1F005F9959 /* processingTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = processingTime.h; sourceTree = "<group>"; };
 		9F27B3E6E334E7DC3653ED98 /* libPods-KuteSmartCRM.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KuteSmartCRM.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B854D9CEC6650D2D51078435 /* Pods-KuteSmartCRM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KuteSmartCRM.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KuteSmartCRM/Pods-KuteSmartCRM.debug.xcconfig"; sourceTree = "<group>"; };
 		FF69B33A6F7A9AFE84E823C3 /* Pods-KuteSmartCRM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KuteSmartCRM.release.xcconfig"; path = "Pods/Target Support Files/Pods-KuteSmartCRM/Pods-KuteSmartCRM.release.xcconfig"; sourceTree = "<group>"; };
@@ -368,6 +371,8 @@
 		8A59437B2086F3A200D122F7 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				8ADE3CB820ABCC1F005F9959 /* processingTime.h */,
+				8ADE3CB720ABCC1F005F9959 /* processingTime.m */,
 				8A59438020871D5500D122F7 /* Category */,
 				8A59437C2086F3C100D122F7 /* NetWorkRequest */,
 				8ABF04EB208EDE6B0007CFCA /* K_GlobalUtil.h */,
@@ -725,6 +730,7 @@
 				8A64A57D1ECEB9A400606DF2 /* MyNavViewController.m in Sources */,
 				8A1DA7A820A92AED000D323A /* UIView+PS.m in Sources */,
 				8A1DA7B520A92AED000D323A /* TipView.m in Sources */,
+				8ADE3CB920ABCC20005F9959 /* processingTime.m in Sources */,
 				8A59437F2086F3E200D122F7 /* K_NetWorkClient.m in Sources */,
 				8A83146D20A5154800D675D3 /* HWWeakTimer.m in Sources */,
 			);
