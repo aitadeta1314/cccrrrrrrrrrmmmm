@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="K_PersonCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="手机" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A1K-pg-MIo">
+                        <rect key="frame" x="15" y="12" width="31" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13166666666" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IQP-fh-pfO">
+                        <rect key="frame" x="66" y="12" width="98" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qFP-Eu-3Nl">
+                        <rect key="frame" x="275" y="6" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="EKO-4t-3TP"/>
+                            <constraint firstAttribute="width" constant="30" id="ZYC-kE-72v"/>
+                        </constraints>
+                        <state key="normal" image="电话"/>
+                        <connections>
+                            <action selector="phone:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="TGI-Dy-CRB"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="A1K-pg-MIo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="479-mD-ErT"/>
+                    <constraint firstItem="IQP-fh-pfO" firstAttribute="centerY" secondItem="A1K-pg-MIo" secondAttribute="centerY" id="CQE-EQ-GFk"/>
+                    <constraint firstItem="qFP-Eu-3Nl" firstAttribute="centerY" secondItem="IQP-fh-pfO" secondAttribute="centerY" id="MYz-aX-jw7"/>
+                    <constraint firstItem="A1K-pg-MIo" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="WTK-CX-mj4"/>
+                    <constraint firstAttribute="trailing" secondItem="qFP-Eu-3Nl" secondAttribute="trailing" constant="15" id="wKv-9c-2HK"/>
+                    <constraint firstItem="IQP-fh-pfO" firstAttribute="leading" secondItem="A1K-pg-MIo" secondAttribute="trailing" constant="20" id="wrz-ME-muF"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="nameLabel" destination="A1K-pg-MIo" id="s6R-lb-ERR"/>
+                <outlet property="phoneBtn" destination="qFP-Eu-3Nl" id="kBz-Pm-E6W"/>
+                <outlet property="phoneNumber" destination="IQP-fh-pfO" id="3tO-lb-vur"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="电话" width="30" height="30"/>
+    </resources>
+</document>

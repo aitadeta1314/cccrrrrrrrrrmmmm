@@ -7,7 +7,7 @@
 //
 
 #import "K_MapLocationViewController.h"
-#import "TipView.h"
+//#import "TipView.h"
 #import "AMapRouteRecord.h"
 #import "FileHelper.h"
 #import "K_CustomPinView.h"
@@ -37,7 +37,7 @@
 @property (nonatomic, strong) MATraceManager *traceManager;
 
 // 不需要
-@property (nonatomic, strong) TipView *tipView;
+//@property (nonatomic, strong) TipView *tipView;
 // 暂不需要
 @property (nonatomic, strong) UIButton *locationBtn;
 @property (nonatomic, strong) UIImage *imageLocated;
@@ -85,7 +85,7 @@
             [self.locationsArray addObject:userLocation.location];
             
             //            NSLog(@"date: %@,now :%@",userLocation.location.timestamp, [NSDate date]);
-            [self.tipView showTip:[NSString stringWithFormat:@"has got %ld locations",self.locationsArray.count]];
+//            [self.tipView showTip:[NSString stringWithFormat:@"has got %ld locations",self.locationsArray.count]];
             
             // 往 路径记录对象 添加路径location
             [self.currentRecord addLocation:userLocation.location];
@@ -343,12 +343,12 @@
         
         if ([self saveRoute])
         {
-            [self.tipView showTip:@"recording save succeeded"];
+//            [self.tipView showTip:@"recording save succeeded"];
         }
-        else
-        {
-            [self.tipView showTip:@"recording save failed"];
-        }
+//        else
+//        {
+//            [self.tipView showTip:@"recording save failed"];
+//        }
     }
     
     [self addFullTrace:locations];
@@ -428,14 +428,14 @@
 
 #pragma mark - Initialization
 
-- (void)initTipView
-{
-    self.locationsArray = [[NSMutableArray alloc] init];
-
-    self.tipView = [[TipView alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height*0.95, self.view.bounds.size.width, self.view.bounds.size.height*0.05)];
-
-    [self.view addSubview:self.tipView];
-}
+//- (void)initTipView
+//{
+//    self.locationsArray = [[NSMutableArray alloc] init];
+//
+//    self.tipView = [[TipView alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height*0.95, self.view.bounds.size.width, self.view.bounds.size.height*0.05)];
+//
+//    [self.view addSubview:self.tipView];
+//}
 
 - (void)initPolygonArea {
     NSMutableArray *polygonArr = [NSMutableArray array];
@@ -729,7 +729,7 @@
     
     [self initMapView];
     [self initPolygonArea];
-    [self initTipView];
+//    [self initTipView];
     
     [self initLocationButton];
     

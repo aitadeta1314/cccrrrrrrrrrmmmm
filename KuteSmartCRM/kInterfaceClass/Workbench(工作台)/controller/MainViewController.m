@@ -40,21 +40,6 @@
     [self.tabBarItem.selectedImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     [self configureForInterface];
 
-    UIButton *mapBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [mapBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [mapBtn setTitle:@"地图" forState:UIControlStateNormal];
-    mapBtn.frame = CGRectMake(0, 300, 100, 100);
-    [self.view addSubview:mapBtn];
-    [self.view bringSubviewToFront:mapBtn];
-    [mapBtn addTarget:self action:@selector(mapBtnClick) forControlEvents:UIControlEventTouchUpInside];
-}
-
-- (void)mapBtnClick {
-    K_MapLocationViewController *mapLocationVC = [[K_MapLocationViewController alloc] init];
-
-    mapLocationVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:mapLocationVC animated:YES];
-
 }
 
 - (NSMutableArray *)dataArray {

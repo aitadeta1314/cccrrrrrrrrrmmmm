@@ -53,6 +53,8 @@
 		8A65CDAE1EBD77830037F668 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A65CDAC1EBD77830037F668 /* AppDelegate.m */; };
 		8A83146D20A5154800D675D3 /* HWWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A83146C20A5154800D675D3 /* HWWeakTimer.m */; };
 		8A83147520A5405A00D675D3 /* K_DatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A83147420A5405900D675D3 /* K_DatePickerView.m */; };
+		8A91145120AE700E0082EE6A /* K_PersonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A91144F20AE700E0082EE6A /* K_PersonCell.m */; };
+		8A91145220AE700E0082EE6A /* K_PersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A91145020AE700E0082EE6A /* K_PersonCell.xib */; };
 		8ABED1A41ED8F933007A9B81 /* K_BasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABED1A31ED8F933007A9B81 /* K_BasicViewController.m */; };
 		8ABF04ED208EDE6B0007CFCA /* K_GlobalUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABF04EC208EDE6B0007CFCA /* K_GlobalUtil.m */; };
 		8ADE3CB920ABCC20005F9959 /* processingTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADE3CB720ABCC1F005F9959 /* processingTime.m */; };
@@ -163,6 +165,9 @@
 		8A83146C20A5154800D675D3 /* HWWeakTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWWeakTimer.m; sourceTree = "<group>"; };
 		8A83147320A5405900D675D3 /* K_DatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = K_DatePickerView.h; sourceTree = "<group>"; };
 		8A83147420A5405900D675D3 /* K_DatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = K_DatePickerView.m; sourceTree = "<group>"; };
+		8A91144E20AE700E0082EE6A /* K_PersonCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = K_PersonCell.h; sourceTree = "<group>"; };
+		8A91144F20AE700E0082EE6A /* K_PersonCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = K_PersonCell.m; sourceTree = "<group>"; };
+		8A91145020AE700E0082EE6A /* K_PersonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = K_PersonCell.xib; sourceTree = "<group>"; };
 		8ABED1A21ED8F933007A9B81 /* K_BasicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = K_BasicViewController.h; sourceTree = "<group>"; };
 		8ABED1A31ED8F933007A9B81 /* K_BasicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = K_BasicViewController.m; sourceTree = "<group>"; };
 		8ABF04EB208EDE6B0007CFCA /* K_GlobalUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = K_GlobalUtil.h; sourceTree = "<group>"; };
@@ -358,6 +363,7 @@
 		8A1DA7A120A92AED000D323A /* Address Book(通讯录) */ = {
 			isa = PBXGroup;
 			children = (
+				8A91144D20AE6F970082EE6A /* view */,
 				8A1DA7A220A92AED000D323A /* AddressBookViewController.h */,
 				8A1DA7A620A92AED000D323A /* AddressBookViewController.m */,
 				8A1DA7A320A92AED000D323A /* K_OrgAndPersonViewController.h */,
@@ -492,6 +498,16 @@
 			path = KuteSmartCRMUITests;
 			sourceTree = "<group>";
 		};
+		8A91144D20AE6F970082EE6A /* view */ = {
+			isa = PBXGroup;
+			children = (
+				8A91144E20AE700E0082EE6A /* K_PersonCell.h */,
+				8A91144F20AE700E0082EE6A /* K_PersonCell.m */,
+				8A91145020AE700E0082EE6A /* K_PersonCell.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		8CE8E3C6D650AC8EACD1CE14 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -580,7 +596,7 @@
 				TargetAttributes = {
 					8A65CD651EBD754F0037F668 = {
 						CreatedOnToolsVersion = 8.3.1;
-						DevelopmentTeam = 3KQY2K7HQZ;
+						DevelopmentTeam = 5MPLF388EQ;
 						ProvisioningStyle = Automatic;
 					};
 					8A65CD7E1EBD754F0037F668 = {
@@ -627,6 +643,7 @@
 				8A65CD791EBD754F0037F668 /* LaunchScreen.storyboard in Resources */,
 				8A65CD761EBD754F0037F668 /* Assets.xcassets in Resources */,
 				8A65CD741EBD754F0037F668 /* CRM.storyboard in Resources */,
+				8A91145220AE700E0082EE6A /* K_PersonCell.xib in Resources */,
 				8A1DA7B920A92AED000D323A /* K_HeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -700,6 +717,7 @@
 				8A1DA7AD20A92AED000D323A /* K_MapLocationViewController.m in Sources */,
 				8A1DA7B720A92AED000D323A /* K_PortalModel.m in Sources */,
 				8A59438320871D5600D122F7 /* UIViewController+NavigationBar.m in Sources */,
+				8A91145120AE700E0082EE6A /* K_PersonCell.m in Sources */,
 				8A1DA7AC20A92AED000D323A /* K_MyTableCell.m in Sources */,
 				8A5B06E71EC00A17007EC66A /* UserInfoManager.m in Sources */,
 				8A1DA7C820A987C0000D323A /* NSString+Extension.m in Sources */,
@@ -885,11 +903,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 3KQY2K7HQZ;
+				DEVELOPMENT_TEAM = 5MPLF388EQ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/KuteSmartCRM/PrefixHeader.pch";
 				INFOPLIST_FILE = KuteSmartCRM/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kutesmart.KuteSmartCRM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -904,11 +922,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 3KQY2K7HQZ;
+				DEVELOPMENT_TEAM = 5MPLF388EQ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/KuteSmartCRM/PrefixHeader.pch";
 				INFOPLIST_FILE = KuteSmartCRM/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kutesmart.KuteSmartCRM;
 				PRODUCT_NAME = "$(TARGET_NAME)";

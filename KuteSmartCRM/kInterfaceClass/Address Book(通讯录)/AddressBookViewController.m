@@ -36,7 +36,7 @@
     
     
     [self getDataFromServer];
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kDeviceWidth, kDeviceHeight-64) style:UITableViewStylePlain];
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kDeviceWidth, kDeviceHeight-49) style:UITableViewStylePlain];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
@@ -64,47 +64,10 @@
     } failure:^(NSError *error) {
         NSLog(@"error:%@", error);
     }];
-//    AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
-//    mgr.requestSerializer = [AFJSONRequestSerializer serializer];
-//    // 设置缓存策略忽略本地缓存数据
-//    [mgr.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringCacheData];
-//    mgr.responseSerializer = [AFJSONResponseSerializer serializer];
-//    [mgr.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-//    [mgr.requestSerializer setTimeoutInterval:12.0];
-//    [mgr.requestSerializer didChangeValueForKey:@"timeoutInterval"];
-//
-//    [mgr.requestSerializer setValue:@"gzip" forHTTPHeaderField:@"Content-Encoding"];
-//    [mgr.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-//    objc_setAssociatedObject(mgr, "RETRY_COUNT_MAP_KEY", [NSMutableDictionary dictionary], OBJC_ASSOCIATION_RETAIN);
-//    mgr.responseSerializer = [[AFJSONResponseSerializer alloc] init];
-//    NSMutableSet* set = [mgr.responseSerializer.acceptableContentTypes mutableCopy];
-//    [set addObject:@"text/plain"];
-//    [set addObject:@"text/html"];
-//
-//    mgr.responseSerializer.acceptableContentTypes = set;
-//    [mgr.requestSerializer setValue:KTOKEN forHTTPHeaderField:@"token"];
-//    [mgr.requestSerializer setValue:KUSERNAME forHTTPHeaderField:@"username"];
-//
-//    NSString *str = KADRESSHTTP;
-//    if(_orgId){
-//        str = [NSString stringWithFormat:@"%@%@",KADRESS,_orgId];
-//    }
-//    [mgr GET:str parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//
-//        if(responseObject){
-//
-//            NSDictionary *dic = responseObject[@"data"];
-//            _orgArray = dic[@"org"];
-//            _personArray = dic[@"person"];
-//            [_tableView reloadData];
-//
-//        }
-//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//
-//
-//    }];
 }
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     if(_orgArray.count>0){
         return 2;
     }
@@ -112,10 +75,12 @@
         return 1;
     }
 }
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 50;
 }
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if(_orgArray.count>0){
         if(section == 0){
             return _orgArray.count;
@@ -129,7 +94,7 @@
     }
     
 }
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     if(cell == nil){
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
@@ -177,7 +142,8 @@
         }    }
     return cell;
 }
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if(_orgArray.count>0){
         if(indexPath.section == 0){
             K_OrgAndPersonViewController *op = [[K_OrgAndPersonViewController alloc]init];

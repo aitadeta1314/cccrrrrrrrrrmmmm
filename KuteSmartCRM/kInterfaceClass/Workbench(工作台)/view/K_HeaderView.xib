@@ -24,7 +24,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="tg8-hh-E6h"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="italicSystem" pointSize="18"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
