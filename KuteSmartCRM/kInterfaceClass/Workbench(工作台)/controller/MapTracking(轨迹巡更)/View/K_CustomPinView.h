@@ -8,8 +8,17 @@
 
 #import <MAMapKit/MAMapKit.h>
 
+/**
+ 点击了某个大头针view
+ */
+typedef void(^ClickCustomPinView)(CLLocationCoordinate2D coordinate, NSString *name);
+
 @interface K_CustomPinView : MAAnnotationView
 
+/**
+ 点击某个大头针弹出气泡
+ */
+@property (nonatomic, copy) ClickCustomPinView clickCustomPinView;
 /**
  人员姓名
  */

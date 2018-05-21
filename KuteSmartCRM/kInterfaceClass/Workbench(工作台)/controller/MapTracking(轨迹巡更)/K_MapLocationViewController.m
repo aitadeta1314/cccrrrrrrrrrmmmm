@@ -26,9 +26,22 @@
  */
 @property (nonatomic, strong) NSMutableArray *pinAnnotation;
 /**
- 数据源大头针坐标信息(每分钟更新大头针坐标  移除之前的信息)
+ 数据源大头针坐标信息(每个大头针包含名字、工号、坐标点经纬度信息)(每分钟更新大头针坐标  移除之前的信息)
  */
 @property (nonatomic, strong) NSMutableArray *dataSourcePinCoordsInfo;
+
+/**
+ 保存弹出气泡的大头针坐标点  防止在每分钟刷新，删除正在查询的大头针
+ */
+@property (nonatomic, assign) CLLocationCoordinate2D searchCoordinate;
+/**
+ 弹出气泡的人员姓名
+ */
+@property (nonatomic,copy) NSString *searchName;
+/**
+ 气泡大头针
+ */
+@property (nonatomic, strong) MAPointAnnotation *searchAnnotation;
 
 @property (nonatomic, strong) MAMapView *mapView;
 /**
@@ -161,28 +174,27 @@
         
         MAPolygonRenderer *pol = [[MAPolygonRenderer alloc] initWithPolygon:overlay];
         
-        pol.lineWidth = 5.f;
+        pol.lineWidth = 1.f;
         NSString *areaStr = overlay.title;
-        pol.strokeColor =  [UIColor blueColor];
-        pol.fillColor = [UIColor colorWithRed:158/255.0 green:230/255.0 blue:252/255.0 alpha:0.5];
+
         if ([areaStr isEqualToString:@"停车场"]) {
-            pol.fillColor = RGBA(0, 255, 0, 0.5);    // 绿色
+            pol.fillColor = RGBA(88, 132, 237, 1);    // 绿色
         } else if ([areaStr isEqualToString:@"办公室"]) {
-            pol.fillColor = RGBA(0, 0, 255, 0.5);    // 蓝色
+            pol.fillColor = RGBA(49, 98, 206, 1);    // 蓝色
         } else if ([areaStr isEqualToString:@"工厂"]) {
-            pol.fillColor = RGBA(128, 128, 128, 0.5);// 灰色
+            pol.fillColor = RGBA(234, 94, 62, 1);// 灰色
         } else if ([areaStr isEqualToString:@"超市"]) {
-            pol.fillColor = RGBA(255, 255, 0, 0.5);  // 黄色
+            pol.fillColor = RGBA(246, 186, 89, 1);  // 黄色
         } else if ([areaStr isEqualToString:@"宾馆"]) {
-            pol.fillColor = RGBA(128, 0, 128, 0.5);  // 紫色
+            pol.fillColor = RGBA(58, 169, 241, 1);  // 紫色
         } else if ([areaStr isEqualToString:@"公寓"]) {
-            pol.fillColor = RGBA(0, 0, 0, 0.7);      // 黑色
+            pol.fillColor = RGBA(128, 86, 210, 1);      // 黑色
         } else if ([areaStr isEqualToString:@"食堂"]) {
-            pol.fillColor = RGBA(255, 165, 0, 0.5);  // 橙色
+            pol.fillColor = RGBA(97, 214, 129, 1);  // 橙色
         }
         
         
-        pol.lineDashType = kMALineDashTypeDot;//YES表示虚线绘制，NO表示实线绘制
+        pol.lineDashType = kMALineDashTypeNone;
         return pol;
         
     }
@@ -202,12 +214,19 @@
             pinView.draggable = NO;
             
         }
+        weakObjc(self);
+        pinView.clickCustomPinView = ^(CLLocationCoordinate2D coordinate, NSString *name) {
+            weakself.searchCoordinate = coordinate;
+            weakself.searchName = name;
+//            NSLog(@"block ---- searchCoordinate...latitude:%f, longitude:%f", weakself.searchCoordinate.latitude, weakself.searchCoordinate.longitude);
+//            NSLog(@"block ---- searchName:%@", weakself.searchName);
+        };
         for (NSDictionary *subDic in self.dataSourcePinCoordsInfo) {
             double latitude = [[subDic valueForKey:@"latitude"] doubleValue];
             double longitude = [[subDic valueForKey:@"longitude"] doubleValue];
             if (annotation.coordinate.latitude == latitude && annotation.coordinate.longitude == longitude) {
                 
-                pinView.portraitUrl = [NSString stringWithFormat:@""];
+                pinView.portraitUrl = [NSString stringWithFormat:@""];  // 图片暂时是本地的
                 pinView.name = [subDic valueForKey:@"name"];
                 pinView.employeeNumber = [subDic valueForKey:@"employeeNumber"];
                 break;
@@ -737,6 +756,10 @@
     self.tempTraceLocations = [NSMutableArray array];
     self.totalTraceLength = 0.0;
     
+    
+    self.searchCoordinate = (CLLocationCoordinate2D){0, 0};
+    self.searchName = @"";
+    
     [self initAnnotation];
     [self initTimer];
     /// 开始记录轨迹路线
@@ -754,12 +777,34 @@
  */
 - (void)initAnnotation {
     NSLog(@"大头针移除");
-    /// 移除大头针标注
-    [self.mapView removeAnnotations:self.pinAnnotation];
-    /// 移除大头针数据源数据
-    [self.dataSourcePinCoordsInfo removeAllObjects];
-    /// 移除大头针标注组
-    [self.pinAnnotation removeAllObjects];
+    if (self.searchCoordinate.latitude == 0 && self.searchCoordinate.longitude == 0) {
+        // ************* 没有大头针气泡弹出 ************ //
+        /// 移除所有大头针标注
+        [self.mapView removeAnnotations:self.pinAnnotation];
+        /// 移除所有大头针数据源数据
+        [self.dataSourcePinCoordsInfo removeAllObjects];
+        /// 移除大头针标注组
+        [self.pinAnnotation removeAllObjects];
+    } else {
+        
+        /// 移除大头针标注(对于已经显示气泡的大头针不做处理)
+        NSArray *tempPin = [self.pinAnnotation mutableCopy];
+        for (MAPointAnnotation *annotation in tempPin) {
+            if (annotation.coordinate.latitude == self.searchCoordinate.latitude && annotation.coordinate.longitude == self.searchCoordinate.longitude) {
+                self.searchAnnotation = annotation;
+            } else {
+                [self.pinAnnotation removeObject:annotation];
+                [self.mapView removeAnnotation:annotation];
+            }
+        }
+        /// 移除大头针数据源数据
+        NSArray *tempDataSource = [self.dataSourcePinCoordsInfo mutableCopy];
+        for (NSDictionary *dic in tempDataSource) {
+            if (!([dic[@"longitude"] doubleValue] == self.searchCoordinate.longitude && [dic[@"latitude"] doubleValue] == self.searchCoordinate.latitude)) {
+                [self.dataSourcePinCoordsInfo removeObject:dic];
+            }
+        }
+    }
     
     weakObjc(self);
     [K_NetWorkClient getUserLocationInfoSuccess:^(id responseObject) {
@@ -771,12 +816,20 @@
             /// 大头针经纬度坐标
             CLLocationCoordinate2D *coords = malloc(data.count*sizeof(CLLocationCoordinate2D));
             for (NSInteger i = 0; i < data.count; i ++) {
+                if ([data[i][@"displayName"] isEqualToString:self.searchName]) {
+                    coords[i].latitude = self.searchCoordinate.latitude;
+                    coords[i].longitude = self.searchCoordinate.longitude;
+                    continue;
+                }
                 coords[i].latitude = [data[i][@"latitude"] doubleValue];
                 coords[i].longitude = [data[i][@"longitude"] doubleValue];
             }
             
             for (NSDictionary *everyone in data) {
                 NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+                if ([everyone[@"displayName"] isEqualToString:self.searchName]) {
+                    continue;
+                }
                 [dic setValue:everyone[@"displayName"] forKey:@"name"];
                 [dic setValue:everyone[@"employeeNumber"] forKey:@"employeeNumber"];
                 [dic setValue:@"警察" forKey:@"imageName"];
@@ -791,7 +844,18 @@
 //                pointAnnotation.title = [NSString stringWithFormat:@"coord:%d", i];
                 [weakself.pinAnnotation addObject:pointAnnotation];
             }
-            [weakself.mapView addAnnotations:weakself.pinAnnotation];
+            
+            if (self.searchCoordinate.latitude == 0 && self.searchCoordinate.longitude == 0) {
+                /// 没有弹出气泡大头针  添加所有的大头针
+                [weakself.mapView addAnnotations:weakself.pinAnnotation];
+            } else {
+                
+                for (MAPointAnnotation *annotation in weakself.pinAnnotation) {
+                    if (!(annotation.coordinate.latitude == self.searchCoordinate.latitude && annotation.coordinate.longitude == self.searchCoordinate.longitude)) {
+                        [self.mapView addAnnotation:annotation];
+                    }
+                }
+            }
             
         }
     } failure:^(NSError *error) {

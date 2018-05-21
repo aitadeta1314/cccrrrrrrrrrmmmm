@@ -297,18 +297,10 @@
 				8A1DA78220A92AED000D323A /* DisplayViewController.m */,
 				8A1DA78420A92AED000D323A /* K_MapLocationViewController.h */,
 				8A1DA78120A92AED000D323A /* K_MapLocationViewController.m */,
-				8A1DA78320A92AED000D323A /* Polygon */,
 				8A1DA78520A92AED000D323A /* View */,
 				8A1DA78D20A92AED000D323A /* TrackManagerFile */,
 			);
 			path = "MapTracking(轨迹巡更)";
-			sourceTree = "<group>";
-		};
-		8A1DA78320A92AED000D323A /* Polygon */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Polygon;
 			sourceTree = "<group>";
 		};
 		8A1DA78520A92AED000D323A /* View */ = {

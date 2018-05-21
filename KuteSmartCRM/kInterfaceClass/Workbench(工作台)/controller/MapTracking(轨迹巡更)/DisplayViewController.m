@@ -106,11 +106,15 @@
 {
     if ([overlay isKindOfClass:[MAPolyline class]])
     {
-        MAMultiColoredPolylineRenderer *view = [[MAMultiColoredPolylineRenderer alloc] initWithPolyline:overlay];
-        view.gradient = YES;
-        view.lineWidth = 2;
-        view.strokeColors = @[[UIColor greenColor], [UIColor redColor]];
-        
+//        MAMultiColoredPolylineRenderer *view = [[MAMultiColoredPolylineRenderer alloc] initWithPolyline:overlay];
+//        view.gradient = YES;
+//        view.lineWidth = 2;
+//        view.strokeColors = @[[UIColor greenColor], [UIColor redColor]];
+//
+//        return view;
+        MAPolylineRenderer *view = [[MAPolylineRenderer alloc] initWithPolyline:overlay];
+        view.lineWidth = 5.0;
+        view.strokeColor = [UIColor redColor];
         return view;
     }
     
@@ -120,28 +124,27 @@
         
         MAPolygonRenderer *pol = [[MAPolygonRenderer alloc] initWithPolygon:overlay];
         
-        pol.lineWidth = 5.f;
+        pol.lineWidth = 1.f;
         NSString *areaStr = overlay.title;
-        pol.strokeColor =  [UIColor blueColor];
-        pol.fillColor = [UIColor colorWithRed:158/255.0 green:230/255.0 blue:252/255.0 alpha:0.5];
+        
         if ([areaStr isEqualToString:@"停车场"]) {
-            pol.fillColor = RGBA(0, 255, 0, 0.5);    // 绿色
+            pol.fillColor = RGBA(88, 132, 237, 1);    // 绿色
         } else if ([areaStr isEqualToString:@"办公室"]) {
-            pol.fillColor = RGBA(0, 0, 255, 0.5);    // 蓝色
+            pol.fillColor = RGBA(49, 98, 206, 1);    // 蓝色
         } else if ([areaStr isEqualToString:@"工厂"]) {
-            pol.fillColor = RGBA(128, 128, 128, 0.5);// 灰色
+            pol.fillColor = RGBA(234, 94, 62, 1);// 灰色
         } else if ([areaStr isEqualToString:@"超市"]) {
-            pol.fillColor = RGBA(255, 255, 0, 0.5);  // 黄色
+            pol.fillColor = RGBA(246, 186, 89, 1);  // 黄色
         } else if ([areaStr isEqualToString:@"宾馆"]) {
-            pol.fillColor = RGBA(128, 0, 128, 0.5);  // 紫色
+            pol.fillColor = RGBA(58, 169, 241, 1);  // 紫色
         } else if ([areaStr isEqualToString:@"公寓"]) {
-            pol.fillColor = RGBA(0, 0, 0, 0.7);      // 黑色
+            pol.fillColor = RGBA(128, 86, 210, 1);      // 黑色
         } else if ([areaStr isEqualToString:@"食堂"]) {
-            pol.fillColor = RGBA(255, 165, 0, 0.5);  // 橙色
+            pol.fillColor = RGBA(97, 214, 129, 1);  // 橙色
         }
         
         
-        pol.lineDashType = kMALineDashTypeDot;//YES表示虚线绘制，NO表示实线绘制
+        pol.lineDashType = kMALineDashTypeNone;
         return pol;
         
     }

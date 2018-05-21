@@ -72,7 +72,8 @@
     if (self.selected == selected) {
         return;
     }
-    
+    /// 能够知道点击的大头针坐标位置
+    NSLog(@"setSelected:animated: -----  ----- latitude:%f, longitude:%f", self.annotation.coordinate.latitude, self.annotation.coordinate.longitude);
     if (selected) {
         if (!self.calloutView) {
             /* 气泡 */
@@ -88,9 +89,17 @@
 
         }
         [self addSubview:self.calloutView];
+        /// 调用block  防止在输入查询信息的时候remove大头针
+        if (self.clickCustomPinView) {
+            self.clickCustomPinView(self.annotation.coordinate, self.name);
+        }
     } else {
         [self.calloutView removeFromSuperview];
         [self cancelClick];
+        CLLocationCoordinate2D coord = (CLLocationCoordinate2D){0, 0};
+        if (self.clickCustomPinView) {
+            self.clickCustomPinView(coord, @"");
+        }
     }
     
     [super setSelected:selected animated:animated];
