@@ -57,6 +57,7 @@
 		8A91145220AE700E0082EE6A /* K_PersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A91145020AE700E0082EE6A /* K_PersonCell.xib */; };
 		8ABED1A41ED8F933007A9B81 /* K_BasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABED1A31ED8F933007A9B81 /* K_BasicViewController.m */; };
 		8ABF04ED208EDE6B0007CFCA /* K_GlobalUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABF04EC208EDE6B0007CFCA /* K_GlobalUtil.m */; };
+		8ACE771820B2C40900A257AA /* K_StartEndPinView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACE771720B2C40900A257AA /* K_StartEndPinView.m */; };
 		8ADE3CB920ABCC20005F9959 /* processingTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADE3CB720ABCC1F005F9959 /* processingTime.m */; };
 		9A79B4584616C5E88C1D3029 /* libPods-KuteSmartCRM.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F27B3E6E334E7DC3653ED98 /* libPods-KuteSmartCRM.a */; };
 /* End PBXBuildFile section */
@@ -172,6 +173,8 @@
 		8ABED1A31ED8F933007A9B81 /* K_BasicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = K_BasicViewController.m; sourceTree = "<group>"; };
 		8ABF04EB208EDE6B0007CFCA /* K_GlobalUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = K_GlobalUtil.h; sourceTree = "<group>"; };
 		8ABF04EC208EDE6B0007CFCA /* K_GlobalUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = K_GlobalUtil.m; sourceTree = "<group>"; };
+		8ACE771620B2C40900A257AA /* K_StartEndPinView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = K_StartEndPinView.h; sourceTree = "<group>"; };
+		8ACE771720B2C40900A257AA /* K_StartEndPinView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = K_StartEndPinView.m; sourceTree = "<group>"; };
 		8ADE3CB720ABCC1F005F9959 /* processingTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = processingTime.m; sourceTree = "<group>"; };
 		8ADE3CB820ABCC1F005F9959 /* processingTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = processingTime.h; sourceTree = "<group>"; };
 		9F27B3E6E334E7DC3653ED98 /* libPods-KuteSmartCRM.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KuteSmartCRM.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -306,6 +309,8 @@
 		8A1DA78520A92AED000D323A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8ACE771620B2C40900A257AA /* K_StartEndPinView.h */,
+				8ACE771720B2C40900A257AA /* K_StartEndPinView.m */,
 				8A1DA78620A92AED000D323A /* K_CustomPinView.h */,
 				8A1DA78A20A92AED000D323A /* K_CustomPinView.m */,
 				8A1DA78720A92AED000D323A /* CustomCalloutView.h */,
@@ -719,6 +724,7 @@
 				8A1DA7AE20A92AED000D323A /* DisplayViewController.m in Sources */,
 				8A08F7AE1EC6A9170022D7C2 /* KTabBarController.m in Sources */,
 				8A1DA7B420A92AED000D323A /* FileHelper.m in Sources */,
+				8ACE771820B2C40900A257AA /* K_StartEndPinView.m in Sources */,
 				8A3072EF1EC1722900E4B19E /* RSAEncryptor.m in Sources */,
 				8A1DA7CB20A9889B000D323A /* NSObject+WN_Extension.m in Sources */,
 				8A1DA7C120A92B68000D323A /* K_MessageListsViewController.m in Sources */,

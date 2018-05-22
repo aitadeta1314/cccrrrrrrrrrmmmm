@@ -11,12 +11,14 @@
 #import "AMapRouteRecord.h"
 #import "K_InputTimeView.h"
 #import "K_DatePickerView.h"
+#import "K_StartEndPinView.h"
 
 @interface DisplayViewController()<MAMapViewDelegate>
 {
     CLLocationCoordinate2D *_traceCoordinate;
     NSUInteger _traceCount;
-    CFTimeInterval _duration;  
+    CFTimeInterval _duration;
+    CLLocationCoordinate2D startCoordinate; /// 记录一下起点位置坐标
 }
 
 @property (nonatomic, strong) AMapRouteRecord *record;
@@ -26,6 +28,7 @@
 @property (nonatomic, strong) MAAnimatedAnnotation *myLocation;
 
 @property (nonatomic, assign) BOOL isPlaying;
+
 
 @end
 
@@ -84,19 +87,30 @@
         return annotationView;
     }
     
-    if ([annotation isKindOfClass:[MAPointAnnotation class]])
+    if ([annotation isKindOfClass:[MAPointAnnotation class]]  && ![annotation isMemberOfClass:[MAUserLocation class]])
     {
-        static NSString *annotationIdentifier = @"lcoationIdentifier";
+        static NSString *annotationIdentifier = @"startEndIdentifier";
         
-        MAPinAnnotationView *poiAnnotationView = (MAPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:annotationIdentifier];
-        
-        if (poiAnnotationView == nil)
-        {
-            poiAnnotationView = [[MAPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:annotationIdentifier];
-        }
-        poiAnnotationView.canShowCallout = YES;
+//        MAPinAnnotationView *poiAnnotationView = (MAPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:annotationIdentifier];
+//
+//        if (poiAnnotationView == nil)
+//        {
+//            poiAnnotationView = [[MAPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:annotationIdentifier];
+//        }
+//        poiAnnotationView.canShowCallout = YES;
 //        poiAnnotationView.image = [UIImage imageNamed: @"car1"];
-        return nil;
+//        return nil;
+        K_StartEndPinView *pinView = (K_StartEndPinView *)[mapView dequeueReusableAnnotationViewWithIdentifier:annotationIdentifier];
+        if (pinView == nil) {
+            pinView = [[K_StartEndPinView alloc] initWithAnnotation:annotation reuseIdentifier:annotationIdentifier];
+        }
+        if (annotation.coordinate.latitude == startCoordinate.latitude && annotation.coordinate.longitude == startCoordinate.longitude) {
+            // 起点
+            pinView.imagename = @"起点";
+        } else {
+            pinView.imagename = @"终点";
+        }
+        return pinView;
     }
     
     return nil;
@@ -238,11 +252,15 @@
         return;
     }
     
+    // 起点
     MAPointAnnotation *startPoint = [[MAPointAnnotation alloc] init];
     startPoint.coordinate = CLLocationCoordinate2DMake(tracePoints.firstObject.coordinate.latitude, tracePoints.firstObject.coordinate.longitude);
     startPoint.title = @"start";
     [self.mapView addAnnotation:startPoint];
+    // 保存一下起点坐标
+    startCoordinate = startPoint.coordinate;
     
+    // 终点
     MAPointAnnotation *endPoint = [[MAPointAnnotation alloc] init];
     endPoint.coordinate = CLLocationCoordinate2DMake(tracePoints.lastObject.coordinate.latitude, tracePoints.lastObject.coordinate.longitude);
     endPoint.title = @"end";
