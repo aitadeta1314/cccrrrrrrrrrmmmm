@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,35 +18,40 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43.666666666666664"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGo-ex-eC6">
-                        <rect key="frame" x="15" y="11" width="200" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="DAe-y4-rqH"/>
-                            <constraint firstAttribute="width" constant="200" id="SJY-fx-fzo"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="修改密码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGo-ex-eC6">
+                        <rect key="frame" x="15" y="12.333333333333334" width="65.333333333333329" height="19.333333333333329"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MFr-3b-dlW">
-                        <rect key="frame" x="0.0" y="44" width="320" height="1"/>
+                        <rect key="frame" x="0.0" y="42.666666666666664" width="320" height="1"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="0.5" id="VKN-wh-MGH"/>
                         </constraints>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10.2MB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yWF-6c-gk7">
+                        <rect key="frame" x="257" y="14.333333333333336" width="48" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="yWF-6c-gk7" secondAttribute="trailing" constant="15" id="HjC-Hq-gMS"/>
                     <constraint firstItem="MFr-3b-dlW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="IlA-66-ASg"/>
+                    <constraint firstItem="yWF-6c-gk7" firstAttribute="centerY" secondItem="wGo-ex-eC6" secondAttribute="centerY" id="qL2-Mw-pLp"/>
                 </constraints>
             </tableViewCellContentView>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="MFr-3b-dlW" secondAttribute="bottom" constant="-0.5" id="6nW-Op-lqE"/>
+                <constraint firstAttribute="bottom" secondItem="MFr-3b-dlW" secondAttribute="bottom" constant="0.5" id="6nW-Op-lqE"/>
                 <constraint firstItem="wGo-ex-eC6" firstAttribute="leading" secondItem="KGk-i7-Jjw" secondAttribute="leading" constant="15" id="ldw-dv-tjJ"/>
                 <constraint firstAttribute="trailing" secondItem="MFr-3b-dlW" secondAttribute="trailing" id="wPh-b2-lT9"/>
                 <constraint firstItem="wGo-ex-eC6" firstAttribute="centerY" secondItem="KGk-i7-Jjw" secondAttribute="centerY" id="zu1-WM-Lfv"/>
             </constraints>
             <connections>
+                <outlet property="subTitleLabel" destination="yWF-6c-gk7" id="5wG-V3-FDZ"/>
                 <outlet property="titleLabel" destination="wGo-ex-eC6" id="jit-ti-ftj"/>
             </connections>
             <point key="canvasLocation" x="-178" y="89"/>

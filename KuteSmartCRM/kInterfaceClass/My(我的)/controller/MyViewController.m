@@ -14,6 +14,7 @@
 #import <Photos/PHPhotoLibrary.h>
 #import <AVFoundation/AVCaptureDevice.h>
 #import <AVFoundation/AVMediaFormat.h>
+#import "K_clearCache.h"
 
 #define Max_OffsetY  50
 
@@ -27,6 +28,8 @@
 @interface MyViewController ()<UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate,UINavigationControllerDelegate,UIAlertViewDelegate,UIImagePickerControllerDelegate> {
     
     CGFloat _lastPosition;
+    
+    float cacheSize;
 }
 /**
  *  姓名
@@ -67,7 +70,7 @@
 #pragma mark - 懒加载
 - (NSArray *)dataArray {
     if (!_dataArray) {
-        _dataArray = @[@"修改密码"];
+        _dataArray = @[@"修改密码", @"清理缓存"];
     }
     return _dataArray;
 }
@@ -101,7 +104,7 @@
         
         // 退出登录
         UIButton *logout = [[UIButton alloc] init];
-        logout.size = CGSizeMake(kDeviceWidth, 40);
+        logout.size = CGSizeMake(kDeviceWidth, 50);
         logout.center = _footView.center;
         logout.backgroundColor = [UIColor whiteColor];
         [logout setTitle:@"退出登录" forState:UIControlStateNormal];
@@ -196,6 +199,7 @@
     
     [super viewDidLoad];
     
+    cacheSize = 0.0;
     self.view.backgroundColor = RGBA(245, 245, 245, 1);
     self.navigationItem.title = @"我的";
     
@@ -204,6 +208,7 @@
     self.displayTableView.backgroundColor = [UIColor  clearColor];
     self.displayTableView.tableHeaderView = self.headBackView;
     self.displayTableView.tableFooterView = self.footView;
+    self.displayTableView.rowHeight = 50;
     self.displayTableView.scrollEnabled = NO;
     self.displayTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.displayTableView];
@@ -211,6 +216,13 @@
     // 注册cell
     [self.displayTableView registerNib:[UINib nibWithNibName:@"K_MyTableCell" bundle:nil] forCellReuseIdentifier:@"cell"];
     
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    cacheSize = [K_clearCache folderSizeAtPath];
+    [self.displayTableView reloadData];
 }
 
 - (void)resetHeaderView {
@@ -428,15 +440,17 @@
     return self.dataArray.count;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    return 50;
-}
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
  
     K_MyTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     cell.titleLabel.text = self.dataArray[indexPath.row];
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    if ([self.dataArray[indexPath.row] isEqualToString:@"清理缓存"]) {
+        cell.subTitleLabel.text = [NSString stringWithFormat:@"%.2fMB", cacheSize];
+    } else {
+        cell.subTitleLabel.hidden = YES;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        
+    }
     
     return cell;
 }
@@ -444,16 +458,35 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     K_MyTableCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    UIViewController *vc = nil;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"CRM" bundle:nil];
     if ([cell.titleLabel.text isEqualToString:@"修改密码"]) {
-        vc = [storyboard instantiateViewControllerWithIdentifier:@"changePassword"];
+        UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"changePassword"];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    } else if ([cell.titleLabel.text isEqualToString:@"清理缓存"]) {
+        [self clearCacheSheet];
     }
+ 
+}
+
+- (void)clearCacheSheet {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:@"确定删除所有缓存？" preferredStyle:UIAlertControllerStyleActionSheet];
+    weakObjc(self);
+    UIAlertAction *sure = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [K_clearCache cleanCache:^{
+            cacheSize = [K_clearCache folderSizeAtPath];
+            [K_GlobalUtil HUDShowMessage:@"清除成功" addedToView:self.view];
+            
+            [weakself.displayTableView reloadData];
+        }];
+    }];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
     
-    self.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
-    self.hidesBottomBarWhenPushed = NO;
+    [alert addAction:sure];
+    [alert addAction:cancel];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 /**
