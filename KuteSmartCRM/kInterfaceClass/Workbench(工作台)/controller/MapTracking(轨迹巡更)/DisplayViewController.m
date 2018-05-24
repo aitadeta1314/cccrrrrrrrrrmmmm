@@ -322,10 +322,16 @@
     
     [self initPolygonArea];
     
-    [self initToolBar];
     
-    [self showRoute];
-    
+    if (self.record.locations.count < 2) {
+        // 没有查询到轨迹，隐藏右侧的播放轨迹的navigationBar
+        [K_GlobalUtil HUDShowMessage:@"没有查询到轨迹" addedToView:self.view];
+    } else {
+        
+        [self initToolBar];
+        
+        [self showRoute];
+    }
     
 }
 
