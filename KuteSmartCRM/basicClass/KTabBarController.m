@@ -28,8 +28,29 @@
     for (UIViewController *viewC in self.viewControllers) {
         [viewC.tabBarItem setTitleTextAttributes:selectedAtts forState:UIControlStateSelected];
     }
-    /// 开启上传位置定时器
-    [SharedAppDelegate openTimer];
+    
+    [self getSafetyListFromServer];
+}
+
+- (void)getSafetyListFromServer {
+    
+    /// 获取保安列表
+    [K_NetWorkClient getSecurityPersonnelListSuccess:^(id response) {
+        NSLog(@"response:%@", response);
+        if ([response[@"code"] intValue] == 200) {
+            NSArray *data = response[@"data"];
+            for (NSString *number in data) {
+                if ([number isEqualToString: KUSERNAME]) {
+                    
+                    /// 开启上传位置定时器
+                    [SharedAppDelegate openTimer];
+                    break;
+                }
+            }
+        }
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -72,10 +72,10 @@
     NSDictionary *dataDic = @{@"longitude":[NSString stringWithFormat:@"%f",self.locationInfo.coordinate.longitude],
                               @"latitude":[NSString stringWithFormat:@"%f", self.locationInfo.coordinate.latitude],
                               @"createTime":[processingTime dateStringWithDate:[NSDate date] andFormatString:@"yyyy-MM-dd HH:mm:ss"],
-//                              @"displayName":KDISPLAYNAME,
-                              @"displayName":@"葛丽芬",
-                              @"employeeNumber":@"100217"
-//                              @"employeeNumber":KUSERNAME
+                              @"displayName":KDISPLAYNAME,
+//                              @"displayName":@"葛丽芬",
+//                              @"employeeNumber":@"100217"
+                              @"employeeNumber":KUSERNAME
                               };
     [K_NetWorkClient uploadLocationCoordinates:dataDic
                                        success:^(id response) {

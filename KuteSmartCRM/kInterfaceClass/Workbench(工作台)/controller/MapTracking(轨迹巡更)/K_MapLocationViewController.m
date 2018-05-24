@@ -178,19 +178,19 @@
         NSString *areaStr = overlay.title;
 
         if ([areaStr isEqualToString:@"停车场"]) {
-            pol.fillColor = RGBA(88, 132, 237, 1);    // 绿色
+            pol.fillColor = RGBA(88, 132, 237, 1);
         } else if ([areaStr isEqualToString:@"办公室"]) {
-            pol.fillColor = RGBA(49, 98, 206, 1);    // 蓝色
+            pol.fillColor = RGBA(49, 98, 206, 1);
         } else if ([areaStr isEqualToString:@"工厂"]) {
-            pol.fillColor = RGBA(234, 94, 62, 1);// 灰色
+            pol.fillColor = RGBA(234, 94, 62, 1);
         } else if ([areaStr isEqualToString:@"超市"]) {
-            pol.fillColor = RGBA(246, 186, 89, 1);  // 黄色
+            pol.fillColor = RGBA(246, 186, 89, 1);
         } else if ([areaStr isEqualToString:@"宾馆"]) {
-            pol.fillColor = RGBA(58, 169, 241, 1);  // 紫色
+            pol.fillColor = RGBA(58, 169, 241, 1);
         } else if ([areaStr isEqualToString:@"公寓"]) {
-            pol.fillColor = RGBA(128, 86, 210, 1);      // 黑色
+            pol.fillColor = RGBA(128, 86, 210, 1);
         } else if ([areaStr isEqualToString:@"食堂"]) {
-            pol.fillColor = RGBA(97, 214, 129, 1);  // 橙色
+            pol.fillColor = RGBA(97, 214, 129, 1); 
         }
         
         

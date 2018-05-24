@@ -36,18 +36,14 @@
     
     
     [self getDataFromServer];
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kDeviceWidth, kDeviceHeight-49) style:UITableViewStylePlain];
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kDeviceWidth, kDeviceHeight) style:UITableViewStylePlain];
+    _tableView.rowHeight = 50;
     _tableView.delegate = self;
     _tableView.dataSource = self;
-    _tableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
     [self.view addSubview:_tableView];
     
     _orgArray = [[NSMutableArray alloc]init];
     _personArray = [[NSMutableArray alloc]init];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-
 }
 
 - (void)getDataFromServer {
@@ -74,10 +70,6 @@
     else{
         return 1;
     }
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 50;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

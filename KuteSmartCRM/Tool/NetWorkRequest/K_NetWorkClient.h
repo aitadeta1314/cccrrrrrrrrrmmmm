@@ -31,6 +31,7 @@ typedef NS_ENUM(NSInteger, RequestMethodType){
 + (void)getWorkbenchListInfoSuccess:(void (^)(id responseObject))success
                             failure:(void (^)(NSError *error))failure;
 
+#pragma mark - 轨迹巡更接口
 /// 获取用户位置信息
 + (void)getUserLocationInfoSuccess:(void (^)(id responseObject))success
                            failure:(void (^)(NSError *error))failure;
@@ -46,4 +47,12 @@ typedef NS_ENUM(NSInteger, RequestMethodType){
                           employeeNumber:(NSString *)employeeNumber
                                  success:(void (^)(id response))success
                                  failure:(void (^)(NSError *error))failure;
+
+/// 获取保安人员
++ (void)getSecurityPersonnelListSuccess:(void (^)(id response))success
+                             failure:(void (^)(NSError *error))failure;
+
+#pragma mark -
+
+
 @end

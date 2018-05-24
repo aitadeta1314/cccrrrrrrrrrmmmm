@@ -114,6 +114,16 @@
                                   failure:failure];
 }
 
+/// 获取保安人员
++ (void)getSecurityPersonnelListSuccess:(void (^)(id))success
+                             failure:(void (^)(NSError *))failure {
+    [K_NetWorkClient requestWithMethod_ST:RequestMethodTypeGet
+                                      url:[NSString stringWithFormat:@"/public/map/getSecurityPersonnel"]
+                                   params:nil
+                                  success:success
+                                  failure:failure];
+}
+
 + (NSURLSessionDataTask *)requestWithMethod_ST:(RequestMethodType)methodType
                                            url:(NSString*)url
                                         params:(id)params
