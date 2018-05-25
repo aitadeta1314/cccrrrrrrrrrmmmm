@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -24,17 +25,16 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WDo-l9-f1G" userLabel="bgView">
-                        <rect key="frame" x="15" y="22.5" width="55" height="55"/>
+                        <rect key="frame" x="15" y="12.5" width="55" height="55"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cuK-y9-sIm">
-                                <rect key="frame" x="10" y="0.0" width="35" height="35"/>
+                                <rect key="frame" x="6.5" y="0.0" width="42.5" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="cuK-y9-sIm" secondAttribute="height" multiplier="1:1" id="oRX-RQ-FbX"/>
-                                    <constraint firstAttribute="width" constant="35" id="uvg-3q-deo"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标题" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4kb-a2-MfK">
-                                <rect key="frame" x="0.0" y="40" width="55" height="14.5"/>
+                                <rect key="frame" x="0.0" y="48" width="55" height="14.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="hj9-iJ-e8A"/>
                                 </constraints>
@@ -56,9 +56,10 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="WDo-l9-f1G" firstAttribute="centerY" secondItem="909-iD-bFj" secondAttribute="centerY" id="OYv-ys-yLL"/>
+                <constraint firstItem="WDo-l9-f1G" firstAttribute="centerY" secondItem="909-iD-bFj" secondAttribute="centerY" constant="-10" id="OYv-ys-yLL"/>
                 <constraint firstItem="909-iD-bFj" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="RRP-Fb-C3I"/>
                 <constraint firstItem="WDo-l9-f1G" firstAttribute="leading" secondItem="909-iD-bFj" secondAttribute="leading" constant="15" id="aks-fj-aw1"/>
+                <constraint firstItem="cuK-y9-sIm" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.5" id="bBA-NG-jcn"/>
                 <constraint firstAttribute="trailing" secondItem="909-iD-bFj" secondAttribute="trailing" id="dG9-K0-Ow7"/>
                 <constraint firstItem="WDo-l9-f1G" firstAttribute="centerX" secondItem="909-iD-bFj" secondAttribute="centerX" id="gyE-4M-Pmg"/>
                 <constraint firstItem="909-iD-bFj" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="tDE-Lz-8n3"/>

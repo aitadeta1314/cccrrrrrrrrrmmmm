@@ -90,6 +90,7 @@
 
     [self.collectionView registerNib:[UINib nibWithNibName:@"K_PortalCell" bundle:nil] forCellWithReuseIdentifier:@"cell"];
     [self.collectionView registerNib:[UINib nibWithNibName:@"K_HeaderView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
+    [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"footer"];
 }
 
 - (void)makeDataFromNet {
@@ -132,6 +133,14 @@
         K_HeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header" forIndexPath:indexPath];
         headerView.lbHeader.text = ((K_PortalModel *)self.dataArray[indexPath.section]).appName;
         return headerView;
+    }
+    if ([kind isEqualToString:UICollectionElementKindSectionFooter]) {
+        UICollectionReusableView *footer = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"footer" forIndexPath:indexPath];
+        UIView *line = [[UIView alloc] initWithFrame:CGRectMake(20, 0, kDeviceWidth-40, 1)];
+        line.backgroundColor = RGBA(245, 245, 245, 1);
+        [footer addSubview:line];
+        
+        return footer;
     }
     return nil;
 }
@@ -182,12 +191,16 @@
     return CGSizeMake(kDeviceWidth, 40);
 }
 
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
+    return CGSizeMake(kDeviceWidth, 2);
+}
+
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     if (UI_IS_IPHONE5) {
-        return CGSizeMake(kDeviceWidth/3-0.5, kDeviceWidth/3);
+        return CGSizeMake(kDeviceWidth/3-0.5, kDeviceWidth/3 - 10);
     }
     else {
-        return CGSizeMake(kDeviceWidth/4-0.5, kDeviceWidth/4);
+        return CGSizeMake(kDeviceWidth/4-0.5, kDeviceWidth/4 - 10);
     }
 }
 

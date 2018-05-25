@@ -331,9 +331,9 @@
                     </tabBar>
                     <connections>
                         <segue destination="eCi-82-nqF" kind="relationship" relationship="viewControllers" id="LOb-85-6bb"/>
-                        <segue destination="Dgs-rE-YAq" kind="relationship" relationship="viewControllers" id="BBv-x0-4yj"/>
-                        <segue destination="oOm-bo-EW7" kind="relationship" relationship="viewControllers" id="uzt-PA-AZm"/>
-                        <segue destination="xfx-TM-o4M" kind="relationship" relationship="viewControllers" id="eZC-6U-EcS"/>
+                        <segue destination="oOm-bo-EW7" kind="relationship" relationship="viewControllers" id="qFa-wF-HqX"/>
+                        <segue destination="Dgs-rE-YAq" kind="relationship" relationship="viewControllers" id="ra1-Xh-lP1"/>
+                        <segue destination="xfx-TM-o4M" kind="relationship" relationship="viewControllers" id="GkM-k2-vyw"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RVH-1G-y5P" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -531,7 +531,7 @@
         <image name="icon3_selected.png" width="24" height="24"/>
         <image name="消息_normal" width="30" height="30"/>
         <image name="消息_selected" width="30" height="30"/>
-        <image name="通讯录_normal" width="24" height="24"/>
-        <image name="通讯录_selected" width="24" height="24"/>
+        <image name="通讯录_normal" width="30" height="30"/>
+        <image name="通讯录_selected" width="30" height="30"/>
     </resources>
 </document>
