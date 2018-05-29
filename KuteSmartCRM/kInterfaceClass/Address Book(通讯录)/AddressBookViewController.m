@@ -9,6 +9,9 @@
 #import "AddressBookViewController.h"
 #import "K_OrgAndPersonViewController.h"
 #import "K_PersonViewController.h"
+#import "K_SearchViewController.h"
+
+
 @interface AddressBookViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *_tableView;
@@ -36,6 +39,8 @@
     
     
     [self getDataFromServer];
+    [self addNavgationItem];
+    
     _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kDeviceWidth, kDeviceHeight) style:UITableViewStylePlain];
     _tableView.rowHeight = 50;
     _tableView.delegate = self;
@@ -44,6 +49,19 @@
     
     _orgArray = [[NSMutableArray alloc]init];
     _personArray = [[NSMutableArray alloc]init];
+}
+
+- (void)addNavgationItem {
+    UIBarButtonItem *search = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"search"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(searchClick:)];
+
+    self.navigationItem.rightBarButtonItem = search;
+}
+
+- (void)searchClick:(UIBarButtonItem *)item {
+    NSLog(@"点击了搜索");
+    K_SearchViewController *search = [[K_SearchViewController alloc] init];
+    search.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:search animated:YES];
 }
 
 - (void)getDataFromServer {

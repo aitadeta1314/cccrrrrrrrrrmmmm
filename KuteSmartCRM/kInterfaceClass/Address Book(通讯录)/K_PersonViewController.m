@@ -46,6 +46,9 @@
 /// 数据源
 - (void)getDataSource {
     NSArray *name = @[@"手机", @"部门"];
+    if ([NSString isBlankString:_phoneNum]) {
+        _phoneNum = @"";
+    }
     NSArray *value = @[_phoneNum, _org];
     for (int i = 0; i < 2; i ++) {
         NSMutableDictionary *dic = [NSMutableDictionary dictionary];

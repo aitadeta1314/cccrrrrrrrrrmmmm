@@ -11,11 +11,19 @@
 @interface NSString (Extension)
 
 /**
- *  判断某个字符串是否是有效的字符创(不为空, 长度>0)
+ *  判断某个字符串是否是有效的字符串(不为空, 长度>0)
  *
  *  @return 判断结果
  */
 - (BOOL)isValidString;
+
+/**
+ 判断某个字符串是否是有效的字符串（主要处理字符串为NSNull的情况）
+
+ @param str 需要判断的字符串
+ @return 判断结果，为空返回YES, 否则返回NO
+ */
++ (BOOL)isBlankString:(NSString *)str;
 
 /**
  * 将传入的 Objective-C 字典转为 JSon 形式的字典
