@@ -24,7 +24,6 @@
 #import "K_GlobalUtil.h"
 #import <AMapFoundationKit/AMapFoundationKit.h>
 #import <MAMapKit/MAMapKit.h>
-#import <Bugly/Bugly.h>
 #import <Masonry.h>
 #import "NSString+Extension.h"
 #import "NSObject+WN_Extension.h"

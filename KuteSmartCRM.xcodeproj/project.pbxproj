@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8A012DA11EC2E28E00A3C1B9 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A012D9B1EC2E28E00A3C1B9 /* LoginViewController.m */; };
 		8A012DA21EC2E28E00A3C1B9 /* WebDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A012D9E1EC2E28E00A3C1B9 /* WebDetailViewController.m */; };
+		8A04B81120BB9A3100F90CA8 /* K_SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B81020BB9A3100F90CA8 /* K_SearchViewController.m */; };
 		8A08F7AE1EC6A9170022D7C2 /* KTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A08F7AD1EC6A9170022D7C2 /* KTabBarController.m */; };
 		8A1DA7A820A92AED000D323A /* UIView+PS.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1DA77220A92AED000D323A /* UIView+PS.m */; };
 		8A1DA7A920A92AED000D323A /* K_ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1DA77620A92AED000D323A /* K_ChangePasswordViewController.m */; };
@@ -85,6 +86,8 @@
 		8A012D9B1EC2E28E00A3C1B9 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		8A012D9D1EC2E28E00A3C1B9 /* WebDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebDetailViewController.h; sourceTree = "<group>"; };
 		8A012D9E1EC2E28E00A3C1B9 /* WebDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebDetailViewController.m; sourceTree = "<group>"; };
+		8A04B80F20BB9A3100F90CA8 /* K_SearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = K_SearchViewController.h; sourceTree = "<group>"; };
+		8A04B81020BB9A3100F90CA8 /* K_SearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = K_SearchViewController.m; sourceTree = "<group>"; };
 		8A08F7AC1EC6A9170022D7C2 /* KTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTabBarController.h; sourceTree = "<group>"; };
 		8A08F7AD1EC6A9170022D7C2 /* KTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTabBarController.m; sourceTree = "<group>"; };
 		8A1DA77220A92AED000D323A /* UIView+PS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PS.m"; sourceTree = "<group>"; };
@@ -227,6 +230,15 @@
 			path = kInterfaceClass;
 			sourceTree = "<group>";
 		};
+		8A04B80C20BB985800F90CA8 /* 搜索 */ = {
+			isa = PBXGroup;
+			children = (
+				8A04B80F20BB9A3100F90CA8 /* K_SearchViewController.h */,
+				8A04B81020BB9A3100F90CA8 /* K_SearchViewController.m */,
+			);
+			path = "搜索";
+			sourceTree = "<group>";
+		};
 		8A1DA77020A92AED000D323A /* Message(消息) */ = {
 			isa = PBXGroup;
 			children = (
@@ -363,6 +375,7 @@
 		8A1DA7A120A92AED000D323A /* Address Book(通讯录) */ = {
 			isa = PBXGroup;
 			children = (
+				8A04B80C20BB985800F90CA8 /* 搜索 */,
 				8A91144D20AE6F970082EE6A /* view */,
 				8A1DA7A220A92AED000D323A /* AddressBookViewController.h */,
 				8A1DA7A620A92AED000D323A /* AddressBookViewController.m */,
@@ -734,6 +747,7 @@
 				8A1DA7CB20A9889B000D323A /* NSObject+WN_Extension.m in Sources */,
 				8A1DA7C120A92B68000D323A /* K_MessageListsViewController.m in Sources */,
 				8A1DA7BD20A92AEE000D323A /* K_OrgAndPersonViewController.m in Sources */,
+				8A04B81120BB9A3100F90CA8 /* K_SearchViewController.m in Sources */,
 				8A1DA7B620A92AED000D323A /* MainViewController.m in Sources */,
 				8A1DA7BE20A92AEE000D323A /* AddressBookViewController.m in Sources */,
 				8ACE771B20B3B08D00A257AA /* K_clearCache.m in Sources */,

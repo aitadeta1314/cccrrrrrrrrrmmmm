@@ -81,7 +81,7 @@
             annotationView = [[MAAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:annotationIdentifier];
         }
         
-        annotationView.image = [UIImage imageNamed:@"smallman"];
+        annotationView.image = [UIImage imageNamed:@"sportDot"];
         annotationView.canShowCallout = NO;
         
         return annotationView;

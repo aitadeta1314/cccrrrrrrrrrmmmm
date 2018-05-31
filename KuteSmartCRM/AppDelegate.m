@@ -12,6 +12,7 @@
 #import "MainViewController.h"
 #import "KTabBarController.h"
 #import <AMapLocationKit/AMapLocationKit.h>
+#import <Bugly/Bugly.h>
 
 @interface AppDelegate () <AMapLocationManagerDelegate>
 /**
@@ -35,7 +36,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [AMapServices sharedServices].apiKey = AMAP_API_key;
-    [Bugly startWithAppId:@""];
+    [Bugly startWithAppId:@"2da1b89840"];
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
