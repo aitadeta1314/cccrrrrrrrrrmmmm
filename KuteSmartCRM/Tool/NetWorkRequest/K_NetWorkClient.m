@@ -54,6 +54,7 @@
                                   failure:success];
 }
 
+#pragma mark - 通讯录接口
 // 通讯录
 + (void)getAddressBookWithOrgID:(NSString *)orgID
                         success:(void (^)(id))success
@@ -64,6 +65,17 @@
     }
     [K_NetWorkClient requestWithMethod_ST:RequestMethodTypeGet
                                       url:[NSString stringWithFormat:@"/personnel/findHrryByOrg/%@", orgID]
+                                   params:nil
+                                  success:success
+                                  failure:failure];
+}
+
+/// 搜索联系人
++ (void)searchAddressWithparameter:(NSString *)searchText
+                           success:(void (^)(id))success
+                           failure:(void (^)(NSError *))failure {
+    [K_NetWorkClient requestWithMethod_ST:RequestMethodTypeGet
+                                      url:[NSString stringWithFormat:@"personnel/queryHrryByName/%@", searchText]
                                    params:nil
                                   success:success
                                   failure:failure];
@@ -136,6 +148,7 @@
     if (token) {
         [manager.requestSerializer setValue:token forHTTPHeaderField:@"token"];
     }
+    NSLog(@"kusername:%@", KUSERNAME);
     if (KUSERNAME) {
         
         [manager.requestSerializer setValue:KUSERNAME forHTTPHeaderField:@"username"];

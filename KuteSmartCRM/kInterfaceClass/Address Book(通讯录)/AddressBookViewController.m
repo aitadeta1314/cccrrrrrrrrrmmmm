@@ -52,9 +52,12 @@
 }
 
 - (void)addNavgationItem {
-    UIBarButtonItem *search = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"search"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(searchClick:)];
-
-    self.navigationItem.rightBarButtonItem = search;
+    if (!self.isPushed) {
+        
+        UIBarButtonItem *search = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"search"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(searchClick:)];
+        
+        self.navigationItem.rightBarButtonItem = search;
+    }
 }
 
 - (void)searchClick:(UIBarButtonItem *)item {
@@ -116,13 +119,27 @@
         [cell addSubview:label];
     }
     if(_orgArray.count>0){
-    if(indexPath.section == 0){
-        UIImageView *imageView = (UIImageView *)[cell viewWithTag:101];
-        imageView.image = [UIImage imageNamed:@"org"];
-        UILabel *label = (UILabel *)[cell viewWithTag:102];
-        label.text = _orgArray[indexPath.row][@"stext"];
-    }
-    else{
+        if(indexPath.section == 0){
+            UIImageView *imageView = (UIImageView *)[cell viewWithTag:101];
+            imageView.image = [UIImage imageNamed:@"org"];
+            UILabel *label = (UILabel *)[cell viewWithTag:102];
+            label.text = _orgArray[indexPath.row][@"stext"];
+        }
+        else{
+            UIImageView *imageView = (UIImageView *)[cell viewWithTag:101];
+            imageView.image = [UIImage imageNamed:@"person"];
+            UILabel *label = (UILabel *)[cell viewWithTag:102];
+            NSString *string = _personArray[indexPath.row][@"ename"];
+            NSString *str = _personArray[indexPath.row][@"pernr"];
+            str = [str substringFromIndex:2];
+            if([string isKindOfClass:[NSNull class]] ){
+                label.text = str;
+            }
+            else{
+                label.text = [NSString stringWithFormat:@"%@%@",string,str];
+            }
+        }
+    } else {
         UIImageView *imageView = (UIImageView *)[cell viewWithTag:101];
         imageView.image = [UIImage imageNamed:@"person"];
         UILabel *label = (UILabel *)[cell viewWithTag:102];
@@ -136,28 +153,16 @@
             label.text = [NSString stringWithFormat:@"%@%@",string,str];
         }
     }
-    }
-    else{
-        UIImageView *imageView = (UIImageView *)[cell viewWithTag:101];
-        imageView.image = [UIImage imageNamed:@"person"];
-        UILabel *label = (UILabel *)[cell viewWithTag:102];
-        NSString *string = _personArray[indexPath.row][@"ename"];
-        NSString *str = _personArray[indexPath.row][@"pernr"];
-        str = [str substringFromIndex:2];
-        if([string isKindOfClass:[NSNull class]] ){
-            label.text = str;
-        }
-        else{
-            label.text = [NSString stringWithFormat:@"%@%@",string,str];
-        }    }
     return cell;
 }
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if(_orgArray.count>0){
         if(indexPath.section == 0){
             K_OrgAndPersonViewController *op = [[K_OrgAndPersonViewController alloc]init];
             op.orgId = _orgArray[indexPath.row][@"objid"];
+            op.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:op animated:YES];
         }
         else{
@@ -166,16 +171,17 @@
             person.phoneNum = _personArray[indexPath.row][@"usrid"];
             person.pernr = _personArray[indexPath.row][@"pernr"];
             person.org = _personArray[indexPath.row][@"orgtx"];
+            person.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:person animated:YES];
 
         }
-    }
-    else{
+    } else {
         K_PersonViewController *person = [[K_PersonViewController alloc]init];
         person.name = _personArray[indexPath.row][@"ename"];
         person.pernr = _personArray[indexPath.row][@"pernr"];
         person.phoneNum = _personArray[indexPath.row][@"usrid"];
         person.org = _personArray[indexPath.row][@"orgtx"];
+        person.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:person animated:YES];
     }
 }

@@ -325,7 +325,8 @@
     
     if (self.record.locations.count < 2) {
         // 没有查询到轨迹，隐藏右侧的播放轨迹的navigationItem
-        [K_GlobalUtil HUDShowMessage:@"没有查询到轨迹" addedToView:self.view];
+        [K_GlobalUtil HUDShowMessage:@"没有查询到该时间段轨迹" addedToView:self.view afterDelay:2.0];
+        
     } else {
         
         [self initToolBar];

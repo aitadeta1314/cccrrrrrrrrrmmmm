@@ -13,6 +13,8 @@
 //显示toast
 + (MBProgressHUD*)HUDShowMessage:(NSString*)msg addedToView:(UIView*)view;
 
++ (MBProgressHUD*)HUDShowMessage:(NSString*)msg addedToView:(UIView*)view afterDelay:(NSTimeInterval)delay;
+
 + (MBProgressHUD*)HUDShowMessage:(NSString*)msg yOffset:(CGFloat)yOffset addedToView:(UIView*)view;
 
 + (MBProgressHUD*)HUDShowTitle:(NSString*)title message:(NSString*)msg addedToView:(UIView*)view;

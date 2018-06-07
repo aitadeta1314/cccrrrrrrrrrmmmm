@@ -12,6 +12,10 @@
 
 + (MBProgressHUD*)HUDShowMessage:(NSString*)msg addedToView:(UIView*)view
 {
+    return [K_GlobalUtil HUDShowMessage:msg addedToView:view afterDelay:1];
+}
+
++ (MBProgressHUD *)HUDShowMessage:(NSString *)msg addedToView:(UIView *)view afterDelay:(NSTimeInterval)delay {
     MBProgressHUD* HUD = [[MBProgressHUD alloc] initWithView:view];
     [view addSubview:HUD];
     HUD.labelText = msg;
@@ -22,7 +26,7 @@
     //HUD.xOffset = 100.0f;
     [HUD show:YES];
     HUD.removeFromSuperViewOnHide = YES;
-    [HUD hide:YES afterDelay:1];
+    [HUD hide:YES afterDelay:delay];
     return HUD;
 }
 

@@ -23,13 +23,19 @@ typedef NS_ENUM(NSInteger, RequestMethodType){
                      success:(void (^)(id response))success
                      failure:(void (^)(NSError *error))failure;
 
+/// 获取工作台
++ (void)getWorkbenchListInfoSuccess:(void (^)(id responseObject))success
+                            failure:(void (^)(NSError *error))failure;
+#pragma mark - 通讯录接口
 /// 通讯录
 + (void)getAddressBookWithOrgID:(NSString *)orgID
                         success:(void (^)(id responseObject))success
                         failure:(void (^)(NSError *error))failure;
-/// 获取工作台
-+ (void)getWorkbenchListInfoSuccess:(void (^)(id responseObject))success
-                            failure:(void (^)(NSError *error))failure;
+
+/// 通讯录搜索
++ (void)searchAddressWithparameter:(NSString *)searchText
+                           success:(void (^)(id responseObject))success
+                           failure:(void (^)(NSError *error))failure;
 
 #pragma mark - 轨迹巡更接口
 /// 获取用户位置信息
