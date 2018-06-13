@@ -82,8 +82,43 @@
 
 - (void)loadHTML:(NSString *)htmlString {
     NSURL *url = [NSURL URLWithString:htmlString];
-    self.request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
-    [self.webView loadRequest:self.request];
+    if ([self.httpType isEqualToString:@"POST"]) {
+        /// post 请求html
+        NSMutableURLRequest *requestMutable = [NSMutableURLRequest requestWithURL:url];
+        NSArray *component = [self.params componentsSeparatedByString:@","];
+        NSString *body = nil;
+        if ([self.htmlName isEqualToString:@"BPM"]) {
+            
+            for (NSString *subStr in component) {
+                if ([subStr isEqualToString:@"_login_userName"]) {
+                    body = [NSString stringWithFormat:@"_login_userName=%@", KUSERNAME];
+                } else if ([subStr isEqualToString:@"_login_token"]) {
+                    body = [NSString stringWithFormat:@"%@&_login_token=%@", body, KTOKEN];
+                }
+            }
+        }
+        NSLog(@"token:%@",KTOKEN);
+        [requestMutable setHTTPMethod:@"POST"];
+        
+        // 在转码之前需要对特殊字符进行处理  否则会出现特殊字符变空的情况
+        // @"#%<>[\\]^`{|}\"]+"  代表的意思是需要对这些特殊字符进行转码
+        body = [body stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@"#%<>[\\]^`{|}\"]+"].invertedSet];
+        
+        [requestMutable setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
+        [self.webView loadRequest:requestMutable];
+        
+    } else {
+        /// 默认get请求
+        self.request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
+        [self.webView loadRequest:self.request];
+    }
+    
+}
+
+- (NSString *)percentEscapeString:(NSString *)string {
+    NSString *result = CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (CFStringRef)string, (CFStringRef)@" ", (CFStringRef)@":/?@!$&'()*+,;=", kCFStringEncodingUTF8));
+    return [result stringByReplacingOccurrencesOfString:@" " withString:@"+"];
+    
 }
 
 /** 返回按钮*/

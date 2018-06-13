@@ -17,4 +17,19 @@
  */
 @property (nonatomic,copy) NSString *htmlUrl;
 
+/**
+ 请求方式
+ */
+@property (nonatomic,copy) NSString *httpType;
+
+/**
+ 请求参数
+ */
+@property (nonatomic,copy) NSString *params;
+
+/**
+ html名称  例如BPM etc..
+ */
+@property (nonatomic,copy) NSString *htmlName;
+
 @end

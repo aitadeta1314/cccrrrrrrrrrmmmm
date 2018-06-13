@@ -152,10 +152,17 @@
     if ([sublist.appType isEqualToString:@"web"]) {
         // 跳转到html
         WebDetailViewController *webDetailVC = [[WebDetailViewController alloc] init];
+        if ([sublist.sub_appName isEqualToString:@"BPM"]) {
+            // BPM post请求
+            webDetailVC.httpType = @"POST";
+            webDetailVC.params = sublist.urlParams;
+            
+        }
+        webDetailVC.htmlName = sublist.sub_appName;
         webDetailVC.htmlUrl = sublist.appUrl;
-        self.hidesBottomBarWhenPushed = YES;
+        webDetailVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:webDetailVC animated:YES];
-        self.hidesBottomBarWhenPushed = NO;
+        
     } else if ([sublist.appType isEqualToString:@"native"]) {
         UIViewController *subAppVC = nil;
         // 跳转到原生页面
