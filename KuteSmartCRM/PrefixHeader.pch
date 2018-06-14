@@ -52,7 +52,6 @@
 #define UI_IS_IOS8_AND_HIGHER   ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0)
 
 
-//#define KHOST  @"http://218.58.54.237:8088/"
 #define KHOST  @"http://218.58.54.234:8088/"
 // 登录页网址
 #define KLOGINHTTP @"http://web01.collegeofeva.edu.pl:8888/user/login"

@@ -115,12 +115,6 @@
     
 }
 
-- (NSString *)percentEscapeString:(NSString *)string {
-    NSString *result = CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (CFStringRef)string, (CFStringRef)@" ", (CFStringRef)@":/?@!$&'()*+,;=", kCFStringEncodingUTF8));
-    return [result stringByReplacingOccurrencesOfString:@" " withString:@"+"];
-    
-}
-
 /** 返回按钮*/
 - (void)addLeftButton {
     self.navigationItem.leftBarButtonItem = self.backItem;

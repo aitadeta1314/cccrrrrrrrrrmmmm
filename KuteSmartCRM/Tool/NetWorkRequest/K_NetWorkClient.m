@@ -85,7 +85,7 @@
 + (void)getWorkbenchListInfoSuccess:(void (^)(id))success
                             failure:(void (^)(NSError *))failure {
     [K_NetWorkClient requestWithMethod_ST:RequestMethodTypeGet
-                                      url:[NSString stringWithFormat:@"/public/microapp/getAppList"]
+                                      url:[NSString stringWithFormat:@"/public/microapp/getAppList?username=%@", KUSERNAME]
                                    params:nil
                                   success:success
                                   failure:failure];

@@ -24,7 +24,8 @@
 - (void)cellInformationDictionary:(NSDictionary *)infoDic {
     self.nameLabel.text = infoDic[@"name"];
     self.phoneNumber.text = infoDic[@"phoneNumber"];
-    if ([infoDic[@"name"] isEqualToString:@"部门"] || [NSString isBlankString:infoDic[@"phoneNumber"]]) {
+    if (!([infoDic[@"name"] isEqualToString:@"手机"] && ![NSString isBlankString:infoDic[@"phoneNumber"]])) {
+        
         [self.phoneBtn removeFromSuperview];
     }
 }
