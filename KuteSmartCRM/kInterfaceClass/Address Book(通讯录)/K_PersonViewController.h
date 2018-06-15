@@ -9,9 +9,13 @@
 #import "K_BasicViewController.h"
 
 @interface K_PersonViewController : K_BasicViewController
-@property (nonatomic,strong)NSString *name;
-@property (nonatomic,strong)NSString *phoneNum;
-@property (nonatomic,strong)NSString *org;
-@property (nonatomic,strong)NSString *pernr;//工号
+@property (nonatomic,copy)NSString *name;
+@property (nonatomic,copy)NSString *phoneNum;
+@property (nonatomic,copy)NSString *org;
+@property (nonatomic,copy)NSString *pernr;//工号
+/**
+ 功能（岗位）
+ */
+@property (nonatomic, copy) NSString *plstx;
 
 @end

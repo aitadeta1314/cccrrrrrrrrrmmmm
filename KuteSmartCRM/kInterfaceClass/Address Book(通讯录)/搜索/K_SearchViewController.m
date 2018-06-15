@@ -266,6 +266,7 @@
             person.name = self.personArray[indexPath.row][@"ename"];
             person.phoneNum = self.personArray[indexPath.row][@"usrid"];
             person.org = self.personArray[indexPath.row][@"orgtx"];
+            person.plstx = _personArray[indexPath.row][@"plstx"];
             person.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:person animated:YES];
             
@@ -276,6 +277,7 @@
         person.name = self.personArray[indexPath.row][@"ename"];
         person.phoneNum = self.personArray[indexPath.row][@"usrid"];
         person.org = self.personArray[indexPath.row][@"orgtx"];
+        person.plstx = _personArray[indexPath.row][@"plstx"];
         person.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:person animated:YES];
     }

@@ -6,6 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -408,8 +410,14 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="V9I-do-1jC">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cotte标题" translatesAutoresizingMaskIntoConstraints="NO" id="vfD-GL-DEu" userLabel="标题">
+                                <rect key="frame" x="75" y="131.5" width="225" height="82"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="vfD-GL-DEu" secondAttribute="height" multiplier="1921:698" id="iI7-EQ-2aj"/>
+                                </constraints>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j8H-4p-C50" userLabel="middleView">
-                                <rect key="frame" x="10" y="173.5" width="355" height="240"/>
+                                <rect key="frame" x="10" y="253.5" width="355" height="240"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入用户名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B3q-Zf-a8X" userLabel="用户名tf">
                                         <rect key="frame" x="20" y="10" width="315" height="40"/>
@@ -499,12 +507,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="vfD-GL-DEu" firstAttribute="bottom" secondItem="j8H-4p-C50" secondAttribute="top" constant="-40" id="BJu-lS-vXS"/>
                             <constraint firstAttribute="trailing" secondItem="j8H-4p-C50" secondAttribute="trailing" constant="10" id="Cag-9M-vTt"/>
-                            <constraint firstItem="j8H-4p-C50" firstAttribute="centerY" secondItem="eyH-hP-ekA" secondAttribute="centerY" constant="-40" id="ESi-Eu-IrW"/>
+                            <constraint firstItem="j8H-4p-C50" firstAttribute="centerY" secondItem="eyH-hP-ekA" secondAttribute="centerY" constant="40" id="ESi-Eu-IrW"/>
                             <constraint firstItem="j8H-4p-C50" firstAttribute="leading" secondItem="eyH-hP-ekA" secondAttribute="leading" constant="10" id="OPq-NJ-pkD"/>
+                            <constraint firstItem="vfD-GL-DEu" firstAttribute="width" secondItem="V9I-do-1jC" secondAttribute="width" multiplier="0.6" id="Rkk-7S-UPS"/>
                             <constraint firstItem="V9I-do-1jC" firstAttribute="top" secondItem="eyH-hP-ekA" secondAttribute="top" id="SGu-bJ-ZJb"/>
                             <constraint firstAttribute="trailing" secondItem="V9I-do-1jC" secondAttribute="trailing" id="dEG-fr-Hpg"/>
                             <constraint firstItem="V9I-do-1jC" firstAttribute="leading" secondItem="eyH-hP-ekA" secondAttribute="leading" id="dMI-IX-yzf"/>
+                            <constraint firstItem="vfD-GL-DEu" firstAttribute="centerX" secondItem="V9I-do-1jC" secondAttribute="centerX" id="eKi-4Y-1mY"/>
                             <constraint firstItem="ctS-uz-PJn" firstAttribute="top" secondItem="V9I-do-1jC" secondAttribute="bottom" id="f2E-Sh-4xC"/>
                         </constraints>
                     </view>
@@ -525,6 +536,7 @@
     </scenes>
     <resources>
         <image name="bg.jpg" width="522" height="783"/>
+        <image name="cotte标题" width="640" height="232"/>
         <image name="icon1_normal.png" width="24" height="24"/>
         <image name="icon1_selected.png" width="24" height="24"/>
         <image name="icon3_normal.png" width="24" height="24"/>

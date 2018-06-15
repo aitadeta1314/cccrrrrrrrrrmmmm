@@ -253,7 +253,8 @@
 
 /** 点击响应事件*/
 - (void)tapAvatar:(UITapGestureRecognizer *)sender {
-    [self callActionSheetFunc];
+    // 暂时注释点击更换头像
+//    [self callActionSheetFunc];
 }
 
 - (void)callActionSheetFunc {

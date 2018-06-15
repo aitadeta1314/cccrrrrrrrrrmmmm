@@ -141,6 +141,7 @@
             person.name = _personArray[indexPath.row][@"ename"];
             person.phoneNum = _personArray[indexPath.row][@"usrid"];
             person.org = _personArray[indexPath.row][@"orgtx"];
+            person.plstx = _personArray[indexPath.row][@"plstx"];
             [self.navigationController pushViewController:person animated:YES];
             
         }
@@ -150,6 +151,7 @@
         person.name = _personArray[indexPath.row][@"ename"];
         person.phoneNum = _personArray[indexPath.row][@"usrid"];
         person.org = _personArray[indexPath.row][@"orgtx"];
+        person.plstx = _personArray[indexPath.row][@"plstx"];
         [self.navigationController pushViewController:person animated:YES];
     }
 }

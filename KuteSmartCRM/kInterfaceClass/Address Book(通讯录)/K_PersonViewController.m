@@ -45,12 +45,18 @@
 
 /// 数据源
 - (void)getDataSource {
-    NSArray *name = @[@"手机", @"部门"];
+    NSArray *name = @[@"手机", @"组织", @"功能"];
     if ([NSString isBlankString:_phoneNum]) {
         _phoneNum = @"";
     }
-    NSArray *value = @[_phoneNum, _org];
-    for (int i = 0; i < 2; i ++) {
+    if ([NSString isBlankString:_org]) {
+        _org = @"";
+    }
+    if ([NSString isBlankString:_plstx]) {
+        _plstx = @"";
+    }
+    NSArray *value = @[_phoneNum, _org, _plstx];
+    for (int i = 0; i < name.count; i ++) {
         NSMutableDictionary *dic = [NSMutableDictionary dictionary];
         [dic setValue:name[i] forKey:@"name"];
         [dic setValue:value[i] forKey:@"phoneNumber"];
@@ -67,7 +73,7 @@
 
 #pragma mark - UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 2;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

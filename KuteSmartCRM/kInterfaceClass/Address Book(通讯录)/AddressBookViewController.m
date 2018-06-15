@@ -171,6 +171,7 @@
             person.phoneNum = _personArray[indexPath.row][@"usrid"];
             person.pernr = _personArray[indexPath.row][@"pernr"];
             person.org = _personArray[indexPath.row][@"orgtx"];
+            person.plstx = _personArray[indexPath.row][@"plstx"];
             person.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:person animated:YES];
 
@@ -181,6 +182,7 @@
         person.pernr = _personArray[indexPath.row][@"pernr"];
         person.phoneNum = _personArray[indexPath.row][@"usrid"];
         person.org = _personArray[indexPath.row][@"orgtx"];
+        person.plstx = _personArray[indexPath.row][@"plstx"];
         person.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:person animated:YES];
     }
