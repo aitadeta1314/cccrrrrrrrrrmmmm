@@ -104,41 +104,29 @@
         // 新密码tf  确认新密码tf 相同
         if (self.passwordNewTF.text.length >= 6 && self.passwordNewTF.text.length <= 15) {
             // 校验密码
-            [_activitIndicatorView startAnimating];
-            
-            AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-            manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-            NSDictionary *params = @{@"userId":KUSERID,@"oldPassword":self.oldPasswordTF.text,@"newPassword":self.passwordNewTF.text};
-            
-            [manager POST:[NSString stringWithFormat:@"%@%@",KHOST,@"AppUpdateUserPassword"] parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            [K_NetWorkClient modifyPasswordNewPassword:self.passwordNewTF.text oldPassword:self.oldPasswordTF.text success:^(id response) {
                 
-                [_activitIndicatorView stopAnimating];
+                NSLog(@"modifyPassword ' response :%@", response);
+
+                NSDictionary *data = response[@"data"];
                 
-                NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
-                NSLog(@"dic:%@",dic);
-                
-                NSString *result_code = dic[@"result_code"];
-                NSString *result_info = dic[@"result_info"];
-                NSLog(@"result_info:%@",result_info);
-                if ([result_code isEqualToString:@"Y"]) {
+                NSString *result_flag = data[@"result_flag"];
+                NSString *result_message = data[@"result_message"];
+                NSLog(@"result_message:%@",result_message);
+                if ([result_flag isEqualToString:@"Y"]) {
                     // 成功
-                    KUSERPASSWORD = self.passwordNewTF.text;
+                    [SAMKeychain setPassword:self.passwordNewTF.text forService:ServiceName account:KUSERNAME];
                     [K_GlobalUtil HUDShowMessage:@"修改成功" addedToView:SharedAppDelegate.window];
                     [self goLeft];
-                }
-                else if([result_code isEqualToString:@"W"]) {
-                    // 旧密码错误
-                    [K_GlobalUtil HUDShowMessage:result_info addedToView:SharedAppDelegate.window];
-                }
-                else {
+                } else {
+                    
                     [K_GlobalUtil HUDShowMessage:@"修改失败" addedToView:SharedAppDelegate.window];
                 }
                 
-            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 
+            } failure:^(NSError *error) {
                 [K_GlobalUtil HUDShowMessage:@"请检查您的网络" addedToView:SharedAppDelegate.window];
             }];
-            
         }
         else {
             // 密码格式不正确

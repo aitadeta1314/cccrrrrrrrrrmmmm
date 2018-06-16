@@ -62,10 +62,13 @@
     UIImageView *leftImg1 = [[UIImageView alloc] initWithFrame:CGRectMake(12, 9, 22, 22)];
     [leftImg1 setImage:[UIImage imageNamed:@"iconfont-user"]];
     [self.userNameTF.leftView addSubview:leftImg1];
+    // 监测用户名大小变化
+    [self.userNameTF addTarget:self action:@selector(userNameChange:) forControlEvents:UIControlEventEditingChanged];
     
     // 密码tf
-    if (KUSERPASSWORD) {
-        self.passwordTF.text = KUSERPASSWORD;
+    NSString *password = [SAMKeychain passwordForService:ServiceName account:KUSERNAME];
+    if (password) {
+        self.passwordTF.text = password;
     }
     
     NSMutableAttributedString *placeholder2 = [[NSMutableAttributedString alloc] initWithString:self.passwordTF.placeholder];
@@ -123,7 +126,12 @@
     
 }
 
-
+/// 监听用户名textfield值变化
+- (void)userNameChange:(UITextField *)textfield {
+    if (textfield.text.length <= 0) {
+        self.passwordTF.text = nil;
+    }
+}
 
 #pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -183,7 +191,8 @@
     }
     else {
         KREMEMBERPSD = NO;
-        KUSERPASSWORD = nil;
+        // 移除钥匙串中的密码值
+        [SAMKeychain deletePasswordForService:ServiceName account:KUSERNAME];
     }
 }
 
@@ -212,21 +221,28 @@
                 
                 NSDictionary *dic = responseObject[@"data"];
                 
-                [K_GlobalUtil HUDShowMessage:@"登录成功" addedToView:SharedAppDelegate.window];
-                KTOKEN = dic[@"clientDigest"];
-                KDISPLAYNAME = dic[@"params"][@"ename"];
-                
-                if (KAUTOLOGIN) {   
-                    // 自动登录  并设置退出登录为NO
-                    KAUTOLOGIN = YES;
-                    KLOGOUT = NO;
+                if ([dic isValidObject]) {
+                    
+                    [K_GlobalUtil HUDShowMessage:@"登录成功" addedToView:SharedAppDelegate.window];
+                    KTOKEN = dic[@"clientDigest"];
+                    KDISPLAYNAME = dic[@"params"][@"ename"];
+                    
+                    if (KAUTOLOGIN) {
+                        // 自动登录  并设置退出登录为NO
+                        KAUTOLOGIN = YES;
+                        KLOGOUT = NO;
+                    }
+                    if (KREMEMBERPSD) {
+                        // 记住密码
+                        [SAMKeychain setPassword:saveStr forService:ServiceName account:KUSERNAME];
+                    }
+                    
+                    [weakself toMainPage];
+                } else {
+                    
+                    weakself.passwordTF.text = saveStr;
+                    [K_GlobalUtil HUDShowMessage:@"登录失败" addedToView:SharedAppDelegate.window];
                 }
-                if (KREMEMBERPSD) {
-                    // 记住密码
-                    KUSERPASSWORD = saveStr;
-                }
-                
-                [weakself toMainPage];
                 
             }
         } failure:^(NSError *error) {

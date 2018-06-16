@@ -138,7 +138,7 @@
 }
 
 - (void)autoLoginRequest {
-    NSString *encrytPasswordStr = [RSAEncryptor encryptString:KUSERPASSWORD publicKey:KRSA_PUBLIC_KEY];
+    NSString *encrytPasswordStr = [RSAEncryptor encryptString:[SAMKeychain passwordForService:ServiceName account:KUSERNAME] publicKey:KRSA_PUBLIC_KEY];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];

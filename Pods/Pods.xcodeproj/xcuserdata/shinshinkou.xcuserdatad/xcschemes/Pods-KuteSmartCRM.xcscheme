@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A81B03670A3ED300DBC3E43ECAC6D711"
+               BlueprintIdentifier = "F61B25F6D8675EEBAA9242C1CE42FE1B"
                BlueprintName = "Pods-KuteSmartCRM"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "libPods-KuteSmartCRM.a">

@@ -13,4 +13,5 @@ target 'KuteSmartCRM' do
 	pod 'AMap3DMap'  #3D地图SDK
 	pod 'Bugly'
 	pod 'Masonry'
+	pod 'SAMKeychain'
 end

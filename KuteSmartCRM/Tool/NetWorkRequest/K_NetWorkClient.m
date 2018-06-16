@@ -136,6 +136,18 @@
                                   failure:failure];
 }
 
+/// 修改密码
++ (void)modifyPasswordNewPassword:(NSString *)newPassword
+                      oldPassword:(NSString *)oldPassword
+                          success:(void (^)(id))success
+                          failure:(void (^)(NSError *))faliure {
+    [K_NetWorkClient requestWithMethod_ST:RequestMethodTypePost
+                                      url:[NSString stringWithFormat:@"user/modifyPassword"]
+                                   params:@{@"newPassword": newPassword, @"oldPassword": oldPassword}
+                                  success:success
+                                  failure:success];
+}
+
 + (NSURLSessionDataTask *)requestWithMethod_ST:(RequestMethodType)methodType
                                            url:(NSString*)url
                                         params:(id)params

@@ -28,6 +28,7 @@
 #import "NSString+Extension.h"
 #import "NSObject+WN_Extension.h"
 #import "processingTime.h"
+#import <SAMKeychain.h>
 
 #endif
 
@@ -36,6 +37,7 @@
 /// Bugly APP_id
 #define BUGLY_APP_id @"2da1b89840"
 
+#define ServiceName @"com.cotte.CRMService"
 
 // 判断设备型号
 #define UI_IS_LANDSCAPE  ([UIDevice currentDevice].orientation == UIDeviceOrientationLandscapeLeft || [UIDevice currentDevice].orientation == UIDeviceOrientationLandscapeRight)

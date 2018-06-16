@@ -58,7 +58,11 @@ typedef NS_ENUM(NSInteger, RequestMethodType){
 + (void)getSecurityPersonnelListSuccess:(void (^)(id response))success
                              failure:(void (^)(NSError *error))failure;
 
-#pragma mark -
+#pragma mark - 修改密码
++ (void)modifyPasswordNewPassword:(NSString *)newPassword
+                      oldPassword:(NSString *)oldPassword
+                          success:(void (^)(id response))success
+                          failure:(void (^)(NSError *error))faliure;
 
 
 @end
