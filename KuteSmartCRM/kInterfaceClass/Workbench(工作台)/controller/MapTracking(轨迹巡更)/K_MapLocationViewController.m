@@ -12,11 +12,16 @@
 #import "FileHelper.h"
 #import "K_CustomPinView.h"
 #import "HWWeakTimer.h"
+#import "K_RecordEventInfoViewController.h"
 
 #define kTempTraceLocationCount 20
 
 @interface K_MapLocationViewController() <MAMapViewDelegate>
 
+/**
+ 记录突发事件按钮
+ */
+@property (nonatomic, strong) UIButton *recordEventBtn;
 /**
  NSTimer
  */
@@ -764,6 +769,14 @@
     [self initTimer];
     /// 开始记录轨迹路线
     [self startRecordTrack];
+    
+    [self.view addSubview:self.recordEventBtn];
+    [self.view bringSubviewToFront:self.recordEventBtn];
+    [self.recordEventBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view).offset(20);
+        make.width.height.mas_equalTo(40);
+        make.bottom.equalTo(self.view).offset(-100);
+    }];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -885,6 +898,14 @@
     NSLog(@"dealloc");
 }
 
+#pragma mark - 记录事件
+- (void)recordEventBtn:(UIButton *)sender {
+    NSLog(@"点击了记录事件 button");
+    
+    K_RecordEventInfoViewController *record = [[K_RecordEventInfoViewController alloc] initWithNibName:@"K_RecordEventInfoViewController" bundle:nil];
+    [self.navigationController pushViewController:record animated:YES];
+}
+
 #pragma mark - Lazy init
 - (NSMutableArray *)pinAnnotation {
     if (!_pinAnnotation) {
@@ -898,6 +919,19 @@
         _dataSourcePinCoordsInfo = [NSMutableArray array];
     }
     return _dataSourcePinCoordsInfo;
+}
+
+- (UIButton *)recordEventBtn {
+    if (!_recordEventBtn) {
+        _recordEventBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_recordEventBtn setImage:[UIImage imageNamed:@"事件记录"] forState:UIControlStateNormal];
+        _recordEventBtn.layer.cornerRadius = 20;
+        _recordEventBtn.layer.masksToBounds = YES;
+        _recordEventBtn.layer.borderColor = NavigationBarBGColor.CGColor;
+        _recordEventBtn.layer.borderWidth = 1.0f;
+        [_recordEventBtn addTarget:self action:@selector(recordEventBtn:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _recordEventBtn;
 }
 
 @end

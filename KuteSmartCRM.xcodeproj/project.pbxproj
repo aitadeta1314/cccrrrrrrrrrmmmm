@@ -54,6 +54,9 @@
 		8A65CDAE1EBD77830037F668 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A65CDAC1EBD77830037F668 /* AppDelegate.m */; };
 		8A83146D20A5154800D675D3 /* HWWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A83146C20A5154800D675D3 /* HWWeakTimer.m */; };
 		8A83147520A5405A00D675D3 /* K_DatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A83147420A5405900D675D3 /* K_DatePickerView.m */; };
+		8A91034820E0924400F8AF52 /* K_RecordEventInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A91034620E0924400F8AF52 /* K_RecordEventInfoViewController.m */; };
+		8A91034920E0924400F8AF52 /* K_RecordEventInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A91034720E0924400F8AF52 /* K_RecordEventInfoViewController.xib */; };
+		8A91034D20E0D6CA00F8AF52 /* LVRecordTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A91034C20E0D6CA00F8AF52 /* LVRecordTool.m */; };
 		8A91145120AE700E0082EE6A /* K_PersonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A91144F20AE700E0082EE6A /* K_PersonCell.m */; };
 		8A91145220AE700E0082EE6A /* K_PersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A91145020AE700E0082EE6A /* K_PersonCell.xib */; };
 		8ABED1A41ED8F933007A9B81 /* K_BasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABED1A31ED8F933007A9B81 /* K_BasicViewController.m */; };
@@ -170,6 +173,11 @@
 		8A83146C20A5154800D675D3 /* HWWeakTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWWeakTimer.m; sourceTree = "<group>"; };
 		8A83147320A5405900D675D3 /* K_DatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = K_DatePickerView.h; sourceTree = "<group>"; };
 		8A83147420A5405900D675D3 /* K_DatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = K_DatePickerView.m; sourceTree = "<group>"; };
+		8A91034520E0924400F8AF52 /* K_RecordEventInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = K_RecordEventInfoViewController.h; sourceTree = "<group>"; };
+		8A91034620E0924400F8AF52 /* K_RecordEventInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = K_RecordEventInfoViewController.m; sourceTree = "<group>"; };
+		8A91034720E0924400F8AF52 /* K_RecordEventInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = K_RecordEventInfoViewController.xib; sourceTree = "<group>"; };
+		8A91034B20E0D6CA00F8AF52 /* LVRecordTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LVRecordTool.h; sourceTree = "<group>"; };
+		8A91034C20E0D6CA00F8AF52 /* LVRecordTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LVRecordTool.m; sourceTree = "<group>"; };
 		8A91144E20AE700E0082EE6A /* K_PersonCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = K_PersonCell.h; sourceTree = "<group>"; };
 		8A91144F20AE700E0082EE6A /* K_PersonCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = K_PersonCell.m; sourceTree = "<group>"; };
 		8A91145020AE700E0082EE6A /* K_PersonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = K_PersonCell.xib; sourceTree = "<group>"; };
@@ -315,8 +323,12 @@
 				8A1DA78220A92AED000D323A /* DisplayViewController.m */,
 				8A1DA78420A92AED000D323A /* K_MapLocationViewController.h */,
 				8A1DA78120A92AED000D323A /* K_MapLocationViewController.m */,
+				8A91034520E0924400F8AF52 /* K_RecordEventInfoViewController.h */,
+				8A91034620E0924400F8AF52 /* K_RecordEventInfoViewController.m */,
+				8A91034720E0924400F8AF52 /* K_RecordEventInfoViewController.xib */,
 				8A1DA78520A92AED000D323A /* View */,
 				8A1DA78D20A92AED000D323A /* TrackManagerFile */,
+				8A91034A20E0D6CA00F8AF52 /* RecordTool(语音) */,
 			);
 			path = "MapTracking(轨迹巡更)";
 			sourceTree = "<group>";
@@ -513,6 +525,15 @@
 			path = KuteSmartCRMUITests;
 			sourceTree = "<group>";
 		};
+		8A91034A20E0D6CA00F8AF52 /* RecordTool(语音) */ = {
+			isa = PBXGroup;
+			children = (
+				8A91034B20E0D6CA00F8AF52 /* LVRecordTool.h */,
+				8A91034C20E0D6CA00F8AF52 /* LVRecordTool.m */,
+			);
+			path = "RecordTool(语音)";
+			sourceTree = "<group>";
+		};
 		8A91144D20AE6F970082EE6A /* view */ = {
 			isa = PBXGroup;
 			children = (
@@ -653,6 +674,7 @@
 			files = (
 				8A1DA7AF20A92AED000D323A /* K_InputTimeView.xib in Resources */,
 				8A65CDAA1EBD77490037F668 /* Info.plist in Resources */,
+				8A91034920E0924400F8AF52 /* K_RecordEventInfoViewController.xib in Resources */,
 				8A1DA7AB20A92AED000D323A /* K_MyTableCell.xib in Resources */,
 				8A1DA7B820A92AED000D323A /* K_PortalCell.xib in Resources */,
 				8A65CD791EBD754F0037F668 /* LaunchScreen.storyboard in Resources */,
@@ -742,6 +764,7 @@
 				8A1DA7B120A92AED000D323A /* K_CustomPinView.m in Sources */,
 				8A1DA7BB20A92AED000D323A /* K_PortalCell.m in Sources */,
 				8A1DA7AE20A92AED000D323A /* DisplayViewController.m in Sources */,
+				8A91034820E0924400F8AF52 /* K_RecordEventInfoViewController.m in Sources */,
 				8A08F7AE1EC6A9170022D7C2 /* KTabBarController.m in Sources */,
 				8A1DA7B420A92AED000D323A /* FileHelper.m in Sources */,
 				8ACE771820B2C40900A257AA /* K_StartEndPinView.m in Sources */,
@@ -760,6 +783,7 @@
 				8A1DA7BC20A92AEE000D323A /* K_PersonViewController.m in Sources */,
 				8A65CD6B1EBD754F0037F668 /* main.m in Sources */,
 				8A012DA21EC2E28E00A3C1B9 /* WebDetailViewController.m in Sources */,
+				8A91034D20E0D6CA00F8AF52 /* LVRecordTool.m in Sources */,
 				8ABF04ED208EDE6B0007CFCA /* K_GlobalUtil.m in Sources */,
 				8ABED1A41ED8F933007A9B81 /* K_BasicViewController.m in Sources */,
 				8A5943862087389100D122F7 /* UINavigationBar+PS.m in Sources */,
