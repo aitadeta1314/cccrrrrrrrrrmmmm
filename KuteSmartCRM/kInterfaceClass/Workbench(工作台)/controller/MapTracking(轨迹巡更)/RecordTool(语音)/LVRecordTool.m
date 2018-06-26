@@ -6,15 +6,18 @@
 //  Copyright © 2018年 redcollar. All rights reserved.
 //
 
-#define LVRecordFielName @"lvRecord.caf"
+#define LVRecordFileName @"lvRecord"
 
 #import "LVRecordTool.h"
+#import "VoiceConverter.h"
 
 @interface LVRecordTool () <AVAudioRecorderDelegate>
 
 
 
-/** 录音文件地址 */
+/**
+ 录音文件地址   .wav格式
+ */
 @property (nonatomic, strong) NSURL *recordFileUrl;
 
 /** 定时器 */
@@ -79,11 +82,26 @@
     }
 }
 
+#pragma mark - 停止录音
 - (void)stopRecording {
     if ([self.recorder isRecording]) {
         [self.recorder stop];
-        [self.timer invalidate];
+//        [self.timer invalidate];
+        
+        
+        // 停止录音  并将wav格式转化为amr音频格式
+        NSString *recordWAVPath = [self GetPathByFileName:LVRecordFileName ofType:@"wav"];
+        NSString *recordAMRPath = [self GetPathByFileName:LVRecordFileName ofType:@"amr"];
+        
+        if ([VoiceConverter ConvertWavToAmr:recordWAVPath amrSavePath:recordAMRPath]) {
+            
+        } else {
+            NSLog(@"wav转amr失败");
+        }
+        
+        
     }
+    
 }
 
 - (void)playRecordingFile {
@@ -124,28 +142,34 @@ static id instance;
     return instance;
 }
 
-#pragma mark - 懒加载
+#pragma mark - 生成文件路径
+- (NSString *)GetPathByFileName:(NSString *)fileName ofType:(NSString *)type {
+    
+    NSString *directory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)objectAtIndex:0];;
+    NSString *fileDirectory = [[[directory stringByAppendingPathComponent:fileName]
+                                stringByAppendingPathExtension:type]
+                               stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    return fileDirectory;
+}
+
+#pragma mark - lazy init
 - (AVAudioRecorder *)recorder {
     if (!_recorder) {
         
-        // 1.获取沙盒地址
-        NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-        NSString *filePath = [path stringByAppendingPathComponent:LVRecordFielName];
-        self.recordFileUrl = [NSURL fileURLWithPath:filePath];
-        NSLog(@"%@", filePath);
+        self.recordFileUrl = [NSURL fileURLWithPath:[self GetPathByFileName:LVRecordFileName ofType:@"wav"]];
         
         // 3.设置录音的一些参数
         NSMutableDictionary *setting = [NSMutableDictionary dictionary];
         // 音频格式
-        setting[AVFormatIDKey] = @(kAudioFormatAppleIMA4);
+        setting[AVFormatIDKey] = @(kAudioFormatLinearPCM);
         // 录音采样率(Hz) 如：AVSampleRateKey==8000/44100/96000（影响音频的质量）
-        setting[AVSampleRateKey] = @(44100);
+        setting[AVSampleRateKey] = @(44100.0);
         // 音频通道数 1 或 2
-        setting[AVNumberOfChannelsKey] = @(1);
+        setting[AVNumberOfChannelsKey] = @(2);
         // 线性音频的位深度  8、16、24、32
-        setting[AVLinearPCMBitDepthKey] = @(8);
+        setting[AVLinearPCMBitDepthKey] = @(16);
         //录音的质量
-        setting[AVEncoderAudioQualityKey] = [NSNumber numberWithInt:AVAudioQualityHigh];
+        setting[AVEncoderAudioQualityKey] = [NSNumber numberWithInt:AVAudioQualityMin];
         
         _recorder = [[AVAudioRecorder alloc] initWithURL:self.recordFileUrl settings:setting error:NULL];
         _recorder.delegate = self;
@@ -170,4 +194,7 @@ static id instance;
         [self.session setActive:NO error:nil];
     }
 }
+
+
+
 @end

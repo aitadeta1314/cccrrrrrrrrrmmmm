@@ -45,4 +45,5 @@
 /** 更新图片的代理 */
 @property (nonatomic, assign) id<LVRecordToolDelegate> delegate;
 
+
 @end

@@ -93,7 +93,7 @@
             
             [self.recordTool stopRecording];
         });
-        
+
         [K_GlobalUtil HUDShowMessage:@"已成功录音" addedToView:self.view];
     }
 }

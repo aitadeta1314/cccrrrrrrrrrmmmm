@@ -57,6 +57,10 @@
 		8A91034820E0924400F8AF52 /* K_RecordEventInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A91034620E0924400F8AF52 /* K_RecordEventInfoViewController.m */; };
 		8A91034920E0924400F8AF52 /* K_RecordEventInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A91034720E0924400F8AF52 /* K_RecordEventInfoViewController.xib */; };
 		8A91034D20E0D6CA00F8AF52 /* LVRecordTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A91034C20E0D6CA00F8AF52 /* LVRecordTool.m */; };
+		8A91036920E222F000F8AF52 /* VoiceConverter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8A91035E20E222EF00F8AF52 /* VoiceConverter.mm */; };
+		8A91036A20E222F000F8AF52 /* libopencore-amrwb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A91036020E222EF00F8AF52 /* libopencore-amrwb.a */; };
+		8A91036B20E222F000F8AF52 /* libopencore-amrnb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A91036120E222EF00F8AF52 /* libopencore-amrnb.a */; };
+		8A91036C20E222F000F8AF52 /* amrFileCodec.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8A91036720E222EF00F8AF52 /* amrFileCodec.mm */; };
 		8A91145120AE700E0082EE6A /* K_PersonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A91144F20AE700E0082EE6A /* K_PersonCell.m */; };
 		8A91145220AE700E0082EE6A /* K_PersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A91145020AE700E0082EE6A /* K_PersonCell.xib */; };
 		8ABED1A41ED8F933007A9B81 /* K_BasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABED1A31ED8F933007A9B81 /* K_BasicViewController.m */; };
@@ -178,6 +182,16 @@
 		8A91034720E0924400F8AF52 /* K_RecordEventInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = K_RecordEventInfoViewController.xib; sourceTree = "<group>"; };
 		8A91034B20E0D6CA00F8AF52 /* LVRecordTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LVRecordTool.h; sourceTree = "<group>"; };
 		8A91034C20E0D6CA00F8AF52 /* LVRecordTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LVRecordTool.m; sourceTree = "<group>"; };
+		8A91035C20E222EF00F8AF52 /* if_rom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = if_rom.h; sourceTree = "<group>"; };
+		8A91035D20E222EF00F8AF52 /* dec_if.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dec_if.h; sourceTree = "<group>"; };
+		8A91035E20E222EF00F8AF52 /* VoiceConverter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VoiceConverter.mm; sourceTree = "<group>"; };
+		8A91036020E222EF00F8AF52 /* libopencore-amrwb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrwb.a"; sourceTree = "<group>"; };
+		8A91036120E222EF00F8AF52 /* libopencore-amrnb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrnb.a"; sourceTree = "<group>"; };
+		8A91036220E222EF00F8AF52 /* VoiceConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceConverter.h; sourceTree = "<group>"; };
+		8A91036420E222EF00F8AF52 /* interf_dec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interf_dec.h; sourceTree = "<group>"; };
+		8A91036520E222EF00F8AF52 /* interf_enc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interf_enc.h; sourceTree = "<group>"; };
+		8A91036720E222EF00F8AF52 /* amrFileCodec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = amrFileCodec.mm; sourceTree = "<group>"; };
+		8A91036820E222EF00F8AF52 /* amrFileCodec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = amrFileCodec.h; sourceTree = "<group>"; };
 		8A91144E20AE700E0082EE6A /* K_PersonCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = K_PersonCell.h; sourceTree = "<group>"; };
 		8A91144F20AE700E0082EE6A /* K_PersonCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = K_PersonCell.m; sourceTree = "<group>"; };
 		8A91145020AE700E0082EE6A /* K_PersonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = K_PersonCell.xib; sourceTree = "<group>"; };
@@ -202,6 +216,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A3072EC1EC171E900E4B19E /* Security.framework in Frameworks */,
+				8A91036B20E222F000F8AF52 /* libopencore-amrnb.a in Frameworks */,
+				8A91036A20E222F000F8AF52 /* libopencore-amrwb.a in Frameworks */,
 				9A79B4584616C5E88C1D3029 /* libPods-KuteSmartCRM.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -528,10 +544,60 @@
 		8A91034A20E0D6CA00F8AF52 /* RecordTool(语音) */ = {
 			isa = PBXGroup;
 			children = (
+				8A91035A20E222EF00F8AF52 /* VoiceConvert */,
 				8A91034B20E0D6CA00F8AF52 /* LVRecordTool.h */,
 				8A91034C20E0D6CA00F8AF52 /* LVRecordTool.m */,
 			);
 			path = "RecordTool(语音)";
+			sourceTree = "<group>";
+		};
+		8A91035A20E222EF00F8AF52 /* VoiceConvert */ = {
+			isa = PBXGroup;
+			children = (
+				8A91036220E222EF00F8AF52 /* VoiceConverter.h */,
+				8A91035E20E222EF00F8AF52 /* VoiceConverter.mm */,
+				8A91035B20E222EF00F8AF52 /* opencore-amrwb */,
+				8A91035F20E222EF00F8AF52 /* lib */,
+				8A91036320E222EF00F8AF52 /* opencore-amrnb */,
+				8A91036620E222EF00F8AF52 /* amrwapper */,
+			);
+			path = VoiceConvert;
+			sourceTree = "<group>";
+		};
+		8A91035B20E222EF00F8AF52 /* opencore-amrwb */ = {
+			isa = PBXGroup;
+			children = (
+				8A91035C20E222EF00F8AF52 /* if_rom.h */,
+				8A91035D20E222EF00F8AF52 /* dec_if.h */,
+			);
+			path = "opencore-amrwb";
+			sourceTree = "<group>";
+		};
+		8A91035F20E222EF00F8AF52 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				8A91036020E222EF00F8AF52 /* libopencore-amrwb.a */,
+				8A91036120E222EF00F8AF52 /* libopencore-amrnb.a */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		8A91036320E222EF00F8AF52 /* opencore-amrnb */ = {
+			isa = PBXGroup;
+			children = (
+				8A91036420E222EF00F8AF52 /* interf_dec.h */,
+				8A91036520E222EF00F8AF52 /* interf_enc.h */,
+			);
+			path = "opencore-amrnb";
+			sourceTree = "<group>";
+		};
+		8A91036620E222EF00F8AF52 /* amrwapper */ = {
+			isa = PBXGroup;
+			children = (
+				8A91036720E222EF00F8AF52 /* amrFileCodec.mm */,
+				8A91036820E222EF00F8AF52 /* amrFileCodec.h */,
+			);
+			path = amrwapper;
 			sourceTree = "<group>";
 		};
 		8A91144D20AE6F970082EE6A /* view */ = {
@@ -781,6 +847,7 @@
 				8A012DA11EC2E28E00A3C1B9 /* LoginViewController.m in Sources */,
 				8A1DA7B320A92AED000D323A /* AMapRouteRecord.m in Sources */,
 				8A1DA7BC20A92AEE000D323A /* K_PersonViewController.m in Sources */,
+				8A91036920E222F000F8AF52 /* VoiceConverter.mm in Sources */,
 				8A65CD6B1EBD754F0037F668 /* main.m in Sources */,
 				8A012DA21EC2E28E00A3C1B9 /* WebDetailViewController.m in Sources */,
 				8A91034D20E0D6CA00F8AF52 /* LVRecordTool.m in Sources */,
@@ -789,6 +856,7 @@
 				8A5943862087389100D122F7 /* UINavigationBar+PS.m in Sources */,
 				8A1DA7AA20A92AED000D323A /* MyViewController.m in Sources */,
 				8A65CDAE1EBD77830037F668 /* AppDelegate.m in Sources */,
+				8A91036C20E222F000F8AF52 /* amrFileCodec.mm in Sources */,
 				8A64A57D1ECEB9A400606DF2 /* MyNavViewController.m in Sources */,
 				8A1DA7A820A92AED000D323A /* UIView+PS.m in Sources */,
 				8A1DA7B520A92AED000D323A /* TipView.m in Sources */,
@@ -951,11 +1019,17 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: rongping li (6FEEK5TGX5)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 5MPLF388EQ;
+				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/KuteSmartCRM/PrefixHeader.pch";
 				INFOPLIST_FILE = KuteSmartCRM/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/KuteSmartCRM/kInterfaceClass/Workbench(工作台)/controller/MapTracking(轨迹巡更)/RecordTool(语音)/lame",
+					"$(PROJECT_DIR)/KuteSmartCRM/kInterfaceClass/Workbench(工作台)/controller/MapTracking(轨迹巡更)/RecordTool(语音)/VoiceConvert/lib",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kutesmart.KuteSmartCRM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "1cfa213c-c5c5-4b94-9d12-84f8fc8e7dc2";
@@ -973,11 +1047,17 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: rongping li (6FEEK5TGX5)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 5MPLF388EQ;
+				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/KuteSmartCRM/PrefixHeader.pch";
 				INFOPLIST_FILE = KuteSmartCRM/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/KuteSmartCRM/kInterfaceClass/Workbench(工作台)/controller/MapTracking(轨迹巡更)/RecordTool(语音)/lame",
+					"$(PROJECT_DIR)/KuteSmartCRM/kInterfaceClass/Workbench(工作台)/controller/MapTracking(轨迹巡更)/RecordTool(语音)/VoiceConvert/lib",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kutesmart.KuteSmartCRM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "1cfa213c-c5c5-4b94-9d12-84f8fc8e7dc2";
