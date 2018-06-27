@@ -94,10 +94,11 @@
         NSString *recordAMRPath = [self GetPathByFileName:LVRecordFileName ofType:@"amr"];
         
         if ([VoiceConverter ConvertWavToAmr:recordWAVPath amrSavePath:recordAMRPath]) {
-            
+            NSLog(@"wav转amr成功");
         } else {
             NSLog(@"wav转amr失败");
         }
+        
         
         
     }
@@ -163,9 +164,9 @@ static id instance;
         // 音频格式
         setting[AVFormatIDKey] = @(kAudioFormatLinearPCM);
         // 录音采样率(Hz) 如：AVSampleRateKey==8000/44100/96000（影响音频的质量）
-        setting[AVSampleRateKey] = @(44100.0);
+        setting[AVSampleRateKey] = @(8000);
         // 音频通道数 1 或 2
-        setting[AVNumberOfChannelsKey] = @(2);
+        setting[AVNumberOfChannelsKey] = @(1);
         // 线性音频的位深度  8、16、24、32
         setting[AVLinearPCMBitDepthKey] = @(16);
         //录音的质量
@@ -185,6 +186,8 @@ static id instance;
     NSFileManager *fileManager = [NSFileManager defaultManager];
     if (self.recordFileUrl) {
         [fileManager removeItemAtURL:self.recordFileUrl error:NULL];
+        
+        [fileManager removeItemAtPath:[self GetPathByFileName:LVRecordFileName ofType:@"amr"] error:NULL];
     }
 }
 

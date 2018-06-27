@@ -92,7 +92,7 @@
     self.locationManager.delegate = self;
     self.locationManager.pausesLocationUpdatesAutomatically = NO;
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 9) {
-//        self.locationManager.allowsBackgroundLocationUpdates = YES;
+        self.locationManager.allowsBackgroundLocationUpdates = YES;
     }
     //开始持续定位
     [self.locationManager startUpdatingLocation];

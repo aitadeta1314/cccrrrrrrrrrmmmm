@@ -13,6 +13,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="K_RecordEventInfoViewController">
             <connections>
+                <outlet property="imageCollectionView" destination="wvs-sp-m4Z" id="hJm-oY-raY"/>
                 <outlet property="playRecordBtn" destination="ZFr-63-yfU" id="l7C-rl-zqP"/>
                 <outlet property="recordBtn" destination="bMa-Si-fmU" id="yH0-Ku-jCh"/>
                 <outlet property="recordText" destination="FMt-BN-sEM" id="ZcL-Sd-b8p"/>
@@ -57,13 +58,41 @@
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                 </button>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="wvs-sp-m4Z" userLabel="image Collection View">
+                    <rect key="frame" x="71" y="237" width="279" height="128"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="128" id="ceL-1s-wce"/>
+                    </constraints>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5Mf-rL-PSV">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="cm4-Ff-lJK"/>
+                        <outlet property="delegate" destination="-1" id="6Nh-sp-b4J"/>
+                    </connections>
+                </collectionView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="图片：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1dm-sR-5Pt">
+                    <rect key="frame" x="20" y="237" width="43" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <color key="highlightedColor" red="0.45098039220000002" green="0.4549019608" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="ZFr-63-yfU" firstAttribute="width" secondItem="bMa-Si-fmU" secondAttribute="width" multiplier="1:3" id="6TB-2w-9jb"/>
                 <constraint firstItem="ZFr-63-yfU" firstAttribute="trailing" secondItem="FMt-BN-sEM" secondAttribute="trailing" id="6VJ-2f-8dX"/>
+                <constraint firstItem="1dm-sR-5Pt" firstAttribute="leading" secondItem="KUO-uF-hSn" secondAttribute="leading" id="CDh-Mf-l3R"/>
+                <constraint firstItem="wvs-sp-m4Z" firstAttribute="trailing" secondItem="ZFr-63-yfU" secondAttribute="trailing" id="Fwl-Kp-wTP"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="FMt-BN-sEM" secondAttribute="trailing" constant="25" id="WBi-4c-hjZ"/>
                 <constraint firstItem="bMa-Si-fmU" firstAttribute="top" secondItem="FMt-BN-sEM" secondAttribute="bottom" constant="10" id="abv-6f-shl"/>
+                <constraint firstItem="1dm-sR-5Pt" firstAttribute="top" secondItem="bMa-Si-fmU" secondAttribute="bottom" constant="20" id="j3A-0i-mDJ"/>
+                <constraint firstItem="wvs-sp-m4Z" firstAttribute="top" secondItem="1dm-sR-5Pt" secondAttribute="top" id="llX-kc-VX6"/>
+                <constraint firstItem="wvs-sp-m4Z" firstAttribute="leading" secondItem="1dm-sR-5Pt" secondAttribute="trailing" constant="8" id="oVJ-TM-dMY"/>
                 <constraint firstItem="ZFr-63-yfU" firstAttribute="centerY" secondItem="bMa-Si-fmU" secondAttribute="centerY" id="pDl-ZI-haM"/>
                 <constraint firstItem="bMa-Si-fmU" firstAttribute="leading" secondItem="FMt-BN-sEM" secondAttribute="leading" id="rD5-Us-VlG"/>
                 <constraint firstItem="ZFr-63-yfU" firstAttribute="leading" secondItem="bMa-Si-fmU" secondAttribute="trailing" constant="20" id="rfZ-af-Ppq"/>

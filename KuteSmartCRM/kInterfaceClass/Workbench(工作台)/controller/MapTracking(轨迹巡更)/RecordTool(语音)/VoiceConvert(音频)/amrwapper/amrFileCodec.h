@@ -1,6 +1,6 @@
 //
 //  amrFileCodec.h
-//  amrDemoForiOS
+//  KuteSmartCRM
 //
 //  Created by Tang Xiaoping on 9/27/11.
 //  Copyright 2011 test. All rights reserved.
