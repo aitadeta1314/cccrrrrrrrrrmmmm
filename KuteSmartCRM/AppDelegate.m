@@ -11,7 +11,6 @@
 #import "LoginViewController.h"
 #import "MainViewController.h"
 #import "KTabBarController.h"
-#import <AMapLocationKit/AMapLocationKit.h>
 #import <Bugly/Bugly.h>
 
 @interface AppDelegate () <AMapLocationManagerDelegate>
@@ -19,10 +18,6 @@
  定时器
  */
 @property (nonatomic, strong) NSTimer *timer;
-/**
- 获取到的地理经纬度
- */
-@property (nonatomic, strong) CLLocation *locationInfo;
 /**
  定位管理者
  */

@@ -7,10 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AMapLocationKit/AMapLocationKit.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
+
+/**
+ 获取到的地理经纬度
+ */
+@property (nonatomic, strong) CLLocation *locationInfo;
 
 /**
  开启定位 定时器

@@ -5,7 +5,7 @@ target 'KuteSmartCRM' do
 	pod 'MBProgressHUD', '~> 0.9.1'
 	pod 'NJKWebViewProgress'
 	pod 'WebViewJavascriptBridge'
-	pod 'SDWebImage'
+	pod 'SDWebImage', '~> 3.8.2'
 	pod 'JSONModel'
 	pod 'SDAutoLayout','~> 2.1.3'
 	pod 'MJRefresh'

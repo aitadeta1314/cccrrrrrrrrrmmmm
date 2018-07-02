@@ -32,9 +32,9 @@ PODS:
   - NJKWebViewProgress/ProgressView (0.2.3)
   - SAMKeychain (1.5.3)
   - SDAutoLayout (2.1.8)
-  - SDWebImage (4.0.0):
-    - SDWebImage/Core (= 4.0.0)
-  - SDWebImage/Core (4.0.0)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
   - WebViewJavascriptBridge (6.0.2)
 
 DEPENDENCIES:
@@ -50,7 +50,7 @@ DEPENDENCIES:
   - NJKWebViewProgress
   - SAMKeychain
   - SDAutoLayout (~> 2.1.3)
-  - SDWebImage
+  - SDWebImage (~> 3.8.2)
   - WebViewJavascriptBridge
 
 SPEC REPOS:
@@ -85,9 +85,9 @@ SPEC CHECKSUMS:
   NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
   SAMKeychain: 483e1c9f32984d50ca961e26818a534283b4cd5c
   SDAutoLayout: 5a4b48d6b8a5172ae8d088d2879e40dd795e6251
-  SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   WebViewJavascriptBridge: 791ee0e26d1bf15efe5fb7fb9666a71a19b89d77
 
-PODFILE CHECKSUM: 24c96793fbbdb32997aea03d6f0d13999232d2c2
+PODFILE CHECKSUM: 0d0df0a35c7d98624f4e819e9d2c9419020b8a0a
 
 COCOAPODS: 1.5.0

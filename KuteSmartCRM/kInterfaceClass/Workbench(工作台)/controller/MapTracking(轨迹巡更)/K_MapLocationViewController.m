@@ -903,6 +903,8 @@
     NSLog(@"点击了记录事件 button");
     
     K_RecordEventInfoViewController *record = [[K_RecordEventInfoViewController alloc] initWithNibName:@"K_RecordEventInfoViewController" bundle:nil];
+    record.location = SharedAppDelegate.locationInfo.coordinate;
+    
     [self.navigationController pushViewController:record animated:YES];
 }
 

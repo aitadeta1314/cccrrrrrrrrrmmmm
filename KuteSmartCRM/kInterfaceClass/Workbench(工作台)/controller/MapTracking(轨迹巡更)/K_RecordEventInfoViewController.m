@@ -11,6 +11,7 @@
 #import "WN_CustomActionSheet.h"
 #import "TZImagePickerController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "MSSBrowseDefine.h"
 
 /// 可选图片最大数量
 #define MAXImageCount 3
@@ -155,10 +156,16 @@
     return _imageArray;
 }
 
+#pragma mark - touch page
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
+}
+
 #pragma mark - collectionView Delegate
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;
 }
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     if(self.imageArray.count < 3)
     {
@@ -169,6 +176,7 @@
         return 3;
     
 }
+
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *identifier = @"cell";
@@ -193,7 +201,7 @@
         littleImageview.clipsToBounds = YES;
         [cell.contentView addSubview:littleImageview];
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake(CGRectGetWidth(littleImageview.frame)/2-10, CGRectGetHeight(littleImageview.frame)-10, 20, 20);
+        btn.frame = CGRectMake(CGRectGetWidth(littleImageview.frame)-15, 0, 15, 15);
         [btn setBackgroundImage:[UIImage imageNamed:@"叉号"] forState:UIControlStateNormal];
         btn.tag = indexPath.row;
         [btn addTarget:self action:@selector(deleteButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -223,6 +231,23 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (self.imageArray.count != 0 && indexPath.row<self.imageArray.count) {
         
+        /// 显示本地图片
+        NSMutableArray *browseItemArray = [[NSMutableArray alloc]init];
+        for(int i = 0;i < [self.imageArray count]; i++)
+        {
+            MSSBrowseModel *browseItem = [[MSSBrowseModel alloc]init];
+            browseItem.bigImage = self.imageArray[i];
+            [browseItemArray addObject:browseItem];
+        }
+        MSSBrowseLocalViewController *localVC = [[MSSBrowseLocalViewController alloc] initWithBrowseItemArray:browseItemArray currentIndex:indexPath.row];
+//        bvc.isEqualRatio = NO;// 大图小图不等比时需要设置这个属性（建议等比）
+
+        [localVC showBrowseViewController];
+        
+        
+        /// 查看处理的时候需要显示网络图片
+//        MSSBrowseNetworkViewController *networkVC = [[MSSBrowseNetworkViewController alloc] initWithBrowseItemArray:browseItemArray currentIndex:indexPath.row];
+//        [networkVC showBrowseViewController];
     }
     else {
         [self.sheet showInView:SharedAppDelegate.window];
