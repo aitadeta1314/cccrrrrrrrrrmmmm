@@ -12,11 +12,12 @@
 #import "TZImagePickerController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "MSSBrowseDefine.h"
+#import <QiniuSDK.h>
 
 /// 可选图片最大数量
 #define MAXImageCount 3
 
-@interface K_RecordEventInfoViewController ()<CustomActionSheetDelegate, TZImagePickerControllerDelegate, UICollectionViewDelegateFlowLayout, UINavigationControllerDelegate>
+@interface K_RecordEventInfoViewController ()<CustomActionSheetDelegate, TZImagePickerControllerDelegate, UICollectionViewDelegateFlowLayout, UINavigationControllerDelegate, AVAudioPlayerDelegate>
 
 /**
  记录事件text
@@ -33,6 +34,17 @@
 @property (weak, nonatomic) IBOutlet UIButton *playRecordBtn;
 
 /**
+ 录音总时间
+ */
+@property (weak, nonatomic) IBOutlet UILabel *recordTotalTime;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activity;
+
+/**
+ 语音播放imgView
+ */
+@property (nonatomic, strong) UIImageView *audioImgView;
+
+/**
  录音工具
  */
 @property (nonatomic, strong) LVRecordTool *recordTool;
@@ -41,6 +53,18 @@
  图片collectionView
  */
 @property (weak, nonatomic) IBOutlet UICollectionView *imageCollectionView;
+
+
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *statusArray;
+
+/**
+ 上传者
+ */
+@property (weak, nonatomic) IBOutlet UILabel *uploader;
+/**
+ 上传按钮
+ */
+@property (weak, nonatomic) IBOutlet UIButton *uploderBtn;
 
 /**
  sheet
@@ -60,7 +84,7 @@
     [super viewDidLoad];
     
     [self addBackButton];
-    self.title = @"事件记录";
+    self.title = @"事件上报";
     
     // 初始化录音工具
     self.recordTool = [LVRecordTool sharedRecordTool];
@@ -84,15 +108,57 @@
     [self.recordBtn addTarget:self action:@selector(recordBtnDidTouchDragExit:) forControlEvents:UIControlEventTouchDragExit];
     
     // 语音播放
-    self.playRecordBtn.layer.cornerRadius = 5.f;
+    [self.playRecordBtn addSubview:self.audioImgView];
+    self.playRecordBtn.layer.cornerRadius = 3.f;
     self.playRecordBtn.layer.masksToBounds = YES;
+    self.playRecordBtn.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    [self.playRecordBtn setBackgroundColor: RGBA(235, 235, 235, 1)];
+    self.playRecordBtn.layer.borderWidth = .5f;
     [self.playRecordBtn addTarget:self action:@selector(playClick) forControlEvents:UIControlEventTouchUpInside];
+    
+    //
+    self.recordTotalTime.text = @"0''";
     
     
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     flowLayout.itemSize = CGSizeMake((CGRectGetWidth(self.imageCollectionView.frame)-30)/3, CGRectGetWidth(self.imageCollectionView.frame)/3);
     
     [self.imageCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
+    
+    // 紧急状态
+    for (UIButton *btn in self.statusArray) {
+        [btn setImage:[[UIImage imageNamed:@"未选中"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+        [btn setImage:[[UIImage imageNamed:@"选中"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateSelected];
+        [btn setImage:[[UIImage imageNamed:@"选中"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateHighlighted];
+        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateSelected];
+        btn.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 5);
+        btn.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 0);
+    }
+    
+    /// 上传者
+    self.uploader.text = KDISPLAYNAME;
+    
+    ///
+    self.uploderBtn.layer.cornerRadius = 40.f;
+    self.uploderBtn.layer.masksToBounds = YES;
+    
+}
+
+#pragma mark - 紧急状态按钮点击
+- (IBAction)urgencyStatusClick:(UIButton *)sender {
+    
+    if (!sender.selected) {
+        /// 未选中状态
+        sender.selected = YES;
+        
+    }
+    
+    for (UIButton *btn in self.statusArray) {
+        if (btn != sender) {
+            btn.selected = NO;
+        }
+    }
 }
 
 #pragma mark - 录音按钮
@@ -121,6 +187,8 @@
         });
 
         [K_GlobalUtil HUDShowMessage:@"已成功录音" addedToView:self.view];
+        
+        self.recordTotalTime.text = [NSString stringWithFormat:@"%.0f''", [self.recordTool recordTotalTime]];
     }
 }
 
@@ -137,10 +205,59 @@
 
 #pragma mark - 播放按钮
 - (void)playClick {
-    [self.recordTool playRecordingFile];
+    if ([self.recordTotalTime.text isEqualToString:@"0''"]) {
+        [K_GlobalUtil HUDShowMessage:@"没有可播放的录音" addedToView:self.view];
+        
+    } else {
+        //点击播放按钮时，动画开始
+        [self.audioImgView startAnimating];
+        [self.recordTool playRecordingFile];
+        self.recordTool.player.delegate = self;
+    }
+}
+
+#pragma mark - 上传按钮
+- (IBAction)uploaderClick:(UIButton *)sender {
+    [K_NetWorkClient getQiniuTokenSuccess:^(id response) {
+        
+        NSLog(@"请求七牛token成功");
+        NSLog(@"Qiniu ' response:%@", response);
+        if ([response[@"code"] isEqualToString:@"0"]) {
+            // 请求成功
+            NSString *token = response[@"data"];
+            QNUploadManager *uploadManger = [[QNUploadManager alloc] init];
+            NSString *directory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)objectAtIndex:0];;
+            NSString *AMRFilePath = [[[directory stringByAppendingPathComponent:@"lvRecord"]
+                                        stringByAppendingPathExtension:@"amr"]
+                                       stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            NSLog(@"amrfilePath:%@", AMRFilePath);
+            NSData *voiceData = [NSData dataWithContentsOfFile:AMRFilePath];
+//            NSData *data = UIImagePNGRepresentation(self.imageArray[0]);
+            [uploadManger putData:voiceData key:nil token:token complete:^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
+
+                NSLog(@"------info:%@", info);
+                NSLog(@"------resp:%@", resp);
+
+            } option:nil];
+        }
+        
+    } failure:^(NSError *error) {
+        NSLog(@"请求七牛token失败");
+    }];
 }
 
 #pragma mark - 懒加载
+- (UIImageView *)audioImgView {
+    if (!_audioImgView) {
+        _audioImgView = [[UIImageView alloc] initWithFrame:CGRectMake(11.25, 10, 15, 15)];
+        NSArray *myImages = [NSArray arrayWithObjects: [UIImage imageNamed:@"audio_icon_3"],[UIImage imageNamed:@"audio_icon_1"],[UIImage imageNamed:@"audio_icon_2"],[UIImage imageNamed:@"audio_icon_3"],nil];
+        [_audioImgView setImage:[UIImage imageNamed:@"audio_icon_3"]];
+        _audioImgView.animationImages = myImages;
+        _audioImgView.animationDuration = 1;
+        _audioImgView.animationRepeatCount = 0; //动画重复次数，0表示无限循环
+    }
+    return _audioImgView;
+}
 - (WN_CustomActionSheet *)sheet {
     if (!_sheet) {
         _sheet = [WN_CustomActionSheet customActionSheet];
@@ -159,6 +276,13 @@
 #pragma mark - touch page
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];
+}
+
+#pragma mark - AVAudioPlayerDelegate
+/// 结束播放方法
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
+    
+    [self.audioImgView stopAnimating];
 }
 
 #pragma mark - collectionView Delegate
@@ -353,11 +477,13 @@
 }
 
 - (void)dealloc {
+    NSLog(@"K_RecordEventInfoViewcontroller ---dealloc");
     
     if ([self.recordTool.recorder isRecording]) [self.recordTool stopPlaying];
     
     if ([self.recordTool.player isPlaying]) [self.recordTool stopRecording];
     
+    [self.recordTool destructionRecordingFile];
 }
 
 

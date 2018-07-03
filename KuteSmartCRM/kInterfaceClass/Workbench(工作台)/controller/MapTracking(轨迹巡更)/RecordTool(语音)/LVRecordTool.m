@@ -11,7 +11,7 @@
 #import "LVRecordTool.h"
 #import "VoiceConverter.h"
 
-@interface LVRecordTool () <AVAudioRecorderDelegate>
+@interface LVRecordTool () <AVAudioRecorderDelegate, AVAudioPlayerDelegate>
 
 
 
@@ -113,6 +113,7 @@
     if ([self.player isPlaying]) return;
 
     self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:self.recordFileUrl error:NULL];
+    self.player.delegate = self;
     [self.session setCategory:AVAudioSessionCategoryPlayback error:nil];
     [self.player play];
 }
@@ -189,6 +190,15 @@ static id instance;
         
         [fileManager removeItemAtPath:[self GetPathByFileName:LVRecordFileName ofType:@"amr"] error:NULL];
     }
+}
+
+- (float)recordTotalTime {
+    
+    AVURLAsset* audioAsset =[AVURLAsset URLAssetWithURL:self.recordFileUrl options:nil];
+    CMTime audioDuration = audioAsset.duration;
+    float audioDurationSeconds = CMTimeGetSeconds(audioDuration);
+    
+    return audioDurationSeconds;
 }
 
 #pragma mark - AVAudioRecorderDelegate

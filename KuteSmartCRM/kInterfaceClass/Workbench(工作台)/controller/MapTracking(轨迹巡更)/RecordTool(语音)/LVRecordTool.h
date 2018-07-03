@@ -37,6 +37,14 @@
 /** 销毁录音文件 */
 - (void)destructionRecordingFile;
 
+
+/**
+ 计算录音总工时间
+
+ @return 返回总时间
+ */
+- (float)recordTotalTime;
+
 /** 录音对象 */
 @property (nonatomic, strong) AVAudioRecorder *recorder;
 /** 播放器对象 */

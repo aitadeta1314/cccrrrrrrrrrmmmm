@@ -136,6 +136,16 @@
                                   failure:failure];
 }
 
+/// 获取七牛token
++ (void)getQiniuTokenSuccess:(void (^)(id))success
+                     failure:(void (^)(NSError *))failure {
+    [K_NetWorkClient requestWithMethod_ST:RequestMethodTypeGet
+                                      url:@"qiniu/getToken"
+                                   params:nil
+                                  success:success
+                                  failure:failure];
+}
+
 /// 修改密码
 + (void)modifyPasswordNewPassword:(NSString *)newPassword
                       oldPassword:(NSString *)oldPassword
