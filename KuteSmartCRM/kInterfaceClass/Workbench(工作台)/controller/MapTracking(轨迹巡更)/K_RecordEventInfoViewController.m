@@ -13,6 +13,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "MSSBrowseDefine.h"
 #import <QiniuSDK.h>
+#import "VoiceConverter.h"
 
 /// 可选图片最大数量
 #define MAXImageCount 3
@@ -37,7 +38,6 @@
  录音总时间
  */
 @property (weak, nonatomic) IBOutlet UILabel *recordTotalTime;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activity;
 
 /**
  语音播放imgView
@@ -75,6 +75,18 @@
  图片数组
  */
 @property (nonatomic, strong) NSMutableArray *imageArray;
+/**
+ 二进制(图片+语音)数组
+ */
+@property (nonatomic, strong) NSMutableArray *picVoiceDataArray;
+/**
+ picVoiceArray是否含有语音二进制
+ */
+@property (nonatomic, assign) BOOL isContainVoiceData;
+/**
+ 保存七牛图片语音地址数组
+ */
+@property (nonatomic, strong) NSMutableArray *picVoiceUrlArray;
 
 @end
 
@@ -85,6 +97,8 @@
     
     [self addBackButton];
     self.title = @"事件上报";
+    
+    self.isContainVoiceData = NO;
     
     // 初始化录音工具
     self.recordTool = [LVRecordTool sharedRecordTool];
@@ -139,11 +153,40 @@
     /// 上传者
     self.uploader.text = KDISPLAYNAME;
     
-    ///
+    /// 上传按钮
     self.uploderBtn.layer.cornerRadius = 40.f;
     self.uploderBtn.layer.masksToBounds = YES;
     
+    
+    /// 录音下载测试
+//    NSData *voiceData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"https://portalapp.magicmanufactory.com/FhX1DAB4QPalg30OKxv0nf7DEwtN"]];
+//    NSString *fileDirectory = [self GetPathByFileName:@"lvRecord" ofType:@"amr"];
+//    NSString *wavDirectory = [self GetPathByFileName:@"lvRecord" ofType:@"wav"];
+//
+//    BOOL isSave = [voiceData writeToFile:fileDirectory atomically:YES];
+//    if (isSave) {
+//        NSLog(@"保存下载录音成功");
+//    } else {
+//        NSLog(@"保存下载录音失败");
+//    }
+//    [VoiceConverter ConvertAmrToWav:fileDirectory wavSavePath:wavDirectory];
+//    NSURL *wavURL = [NSURL fileURLWithPath:wavDirectory];
+//    AVURLAsset* audioAsset =[AVURLAsset URLAssetWithURL:wavURL options:nil];
+//    CMTime audioDuration = audioAsset.duration;
+//    float audioDurationSeconds = CMTimeGetSeconds(audioDuration);
+//    self.recordTotalTime.text = [NSString stringWithFormat:@"%.0f''", audioDurationSeconds];
+    
 }
+
+- (NSString *)GetPathByFileName:(NSString *)fileName ofType:(NSString *)type {
+    
+    NSString *directory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)objectAtIndex:0];;
+    NSString *fileDirectory = [[[directory stringByAppendingPathComponent:fileName]
+                                stringByAppendingPathExtension:type]
+                               stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    return fileDirectory;
+}
+
 
 #pragma mark - 紧急状态按钮点击
 - (IBAction)urgencyStatusClick:(UIButton *)sender {
@@ -185,10 +228,13 @@
             
             [self.recordTool stopRecording];
         });
-
-        [K_GlobalUtil HUDShowMessage:@"已成功录音" addedToView:self.view];
         
-        self.recordTotalTime.text = [NSString stringWithFormat:@"%.0f''", [self.recordTool recordTotalTime]];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [K_GlobalUtil HUDShowMessage:@"已成功录音" addedToView:self.view];
+            
+            self.recordTotalTime.text = [NSString stringWithFormat:@"%.0f''", [self.recordTool recordTotalTime]];
+        });
     }
 }
 
@@ -199,7 +245,10 @@
         [self.recordTool stopRecording];
         [self.recordTool destructionRecordingFile];
         
-        [K_GlobalUtil HUDShowMessage:@"已取消录音" addedToView:self.view];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [K_GlobalUtil HUDShowMessage:@"已取消录音" addedToView:self.view];
+        });
     });
 }
 
@@ -218,35 +267,155 @@
 
 #pragma mark - 上传按钮
 - (IBAction)uploaderClick:(UIButton *)sender {
-    [K_NetWorkClient getQiniuTokenSuccess:^(id response) {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    /// 把图片和语音二进制数据加到一个数组中
+    if (self.imageArray.count > 0) {
         
-        NSLog(@"请求七牛token成功");
-        NSLog(@"Qiniu ' response:%@", response);
-        if ([response[@"code"] isEqualToString:@"0"]) {
-            // 请求成功
-            NSString *token = response[@"data"];
-            QNUploadManager *uploadManger = [[QNUploadManager alloc] init];
-            NSString *directory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)objectAtIndex:0];;
-            NSString *AMRFilePath = [[[directory stringByAppendingPathComponent:@"lvRecord"]
-                                        stringByAppendingPathExtension:@"amr"]
-                                       stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-            NSLog(@"amrfilePath:%@", AMRFilePath);
-            NSData *voiceData = [NSData dataWithContentsOfFile:AMRFilePath];
-//            NSData *data = UIImagePNGRepresentation(self.imageArray[0]);
-            [uploadManger putData:voiceData key:nil token:token complete:^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
+        for (UIImage *item in self.imageArray) {
+            NSData *imgData = UIImagePNGRepresentation(item);
+            [self.picVoiceDataArray addObject:imgData];
+        }
+    }
+    
+    if ([self.recordTool recordTotalTime] > 0.0) {
+        // 语音data
+        NSString *directory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)objectAtIndex:0];
+        NSString *AMRFilePath = [[[directory stringByAppendingPathComponent:@"lvRecord"]
+                                  stringByAppendingPathExtension:@"amr"]
+                                 stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSLog(@"amrfilePath:%@", AMRFilePath);
+        NSData *voiceData = [NSData dataWithContentsOfFile:AMRFilePath];
+        [self.picVoiceDataArray addObject:voiceData];
+        self.isContainVoiceData = YES;
+    }
+    
+    
+    if (self.picVoiceDataArray.count > 0) {
+        [K_NetWorkClient getQiniuTokenSuccess:^(id response) {
+            
+            if ([response[@"code"] isEqualToString:@"0"]) {
+                // 请求成功
+                NSString *token = response[@"data"];
+                
+                [self uploadImageAndVoiceToken:token];
 
-                NSLog(@"------info:%@", info);
-                NSLog(@"------resp:%@", resp);
+            }
+            
+        } failure:^(NSError *error) {
+            NSLog(@"请求七牛token失败");
+        }];
+    }
+}
 
-            } option:nil];
+
+/**
+ 上传图片和语音
+ */
+- (void)uploadImageAndVoiceToken:(NSString *)token {
+    [self putData:self.picVoiceDataArray.lastObject token:token];
+    [self.picVoiceDataArray removeLastObject];
+}
+
+- (void)putData:(NSData *)data token:(NSString *)token {
+    
+    __block NSMutableString *url = [[NSMutableString alloc] initWithString:@"https://portalapp.magicmanufactory.com/"];
+    QNUploadManager *uploadManger = [[QNUploadManager alloc] init];
+    weakObjc(self);
+    [uploadManger putData:data key:nil token:token complete:^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
+        
+        [url appendString:resp[@"key"]];
+        [weakself.picVoiceUrlArray addObject:url]; /// 保存地址的顺序为反序的
+        if (weakself.picVoiceDataArray.count > 0) {
+            /// 还有未上传的图片或者语音
+            [weakself uploadImageAndVoiceToken:token];
+        } else {
+            /// 上传完毕 需要将图片url和其他信息上传到后台
+            [weakself uploadAllInfomationMethod];
+        }
+        
+    } option:nil];
+    
+}
+
+/**
+ 信息上传服务器
+ */
+- (void)uploadAllInfomationMethod {
+    NSDictionary *infoDic = [self postServiceInformation];
+    [K_NetWorkClient addEventRecordWithDic:infoDic Success:^(id response) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        NSLog(@"response:%@", response);
+        NSLog(@"上传图片语音成功");
+        if ([response[@"code"] isEqualToString:@"200"]) {
+            
+            [K_GlobalUtil HUDShowMessage:@"上传成功" addedToView:SharedAppDelegate.window];
+            [self.navigationController popViewControllerAnimated:YES];
+        } else {
+            [K_GlobalUtil HUDShowMessage:@"上传失败" addedToView:self.view];
+            
         }
         
     } failure:^(NSError *error) {
-        NSLog(@"请求七牛token失败");
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [K_GlobalUtil HUDShowMessage:@"上传失败" addedToView:self.view];
+        NSLog(@"上传失败");
     }];
 }
 
+
+- (NSDictionary *)postServiceInformation {
+    NSMutableDictionary *infoDic = [NSMutableDictionary dictionary];
+    [infoDic setValue:KUSERNAME forKey:@"employeeNumber"];
+    [infoDic setValue:KDISPLAYNAME forKey:@"displayName"];
+    [infoDic setValue:[processingTime getCurrentDateWithFormatString:@"yyyy-MM-dd HH:mm:ss"] forKey:@"createTime"];
+    [infoDic setValue:[[NSNumber numberWithDouble:self.location.latitude] stringValue] forKey:@"latitude"];
+    [infoDic setValue:[[NSNumber numberWithDouble:self.location.longitude] stringValue] forKey:@"longitude"];
+    [infoDic setValue:self.recordText.text forKey:@"textDescription"];
+    NSArray *savePicVoiceUrlTempArr = [self.picVoiceUrlArray copy];
+    if (self.isContainVoiceData) {
+        /// 有voice
+        [infoDic setValue:self.picVoiceUrlArray.firstObject forKey:@"speechDescription"];
+        [self.picVoiceUrlArray removeObjectAtIndex:0];
+    }
+    NSArray *tempUrlarray = [[self.picVoiceUrlArray reverseObjectEnumerator] allObjects];
+    for (int i = 0; i < tempUrlarray.count; i ++) {
+        [infoDic setValue:tempUrlarray[i] forKey:[NSString stringWithFormat:@"pictureDescription%d", i+1]];
+    }
+    /// 这里恢复之前的值是因为  如果上传失败的话 需要重新点上传按钮  保存的url需要用到  ！！！
+    self.picVoiceUrlArray = [NSMutableArray arrayWithArray:savePicVoiceUrlTempArr];
+    
+    for (UIButton *btn in self.statusArray) {
+        if (btn.isSelected) {
+            if ([btn.currentTitle isEqualToString:@"正常"]) {
+                [infoDic setValue:@"0" forKey:@"urgentStatus"];
+            } else if ([btn.currentTitle isEqualToString:@"重要"]) {
+                [infoDic setValue:@"1" forKey:@"urgentStatus"];
+            } else {
+                /// 紧急
+                [infoDic setValue:@"2" forKey:@"urgentStatus"];
+            }
+            break;
+        }
+    }
+    
+    
+    return infoDic;
+}
+
 #pragma mark - 懒加载
+- (NSMutableArray *)picVoiceUrlArray {
+    if (!_picVoiceUrlArray) {
+        _picVoiceUrlArray = [NSMutableArray array];
+    }
+    return _picVoiceUrlArray;
+}
+
+- (NSMutableArray *)picVoiceDataArray {
+    if (!_picVoiceDataArray) {
+        _picVoiceDataArray = [NSMutableArray array];
+    }
+    return _picVoiceDataArray;
+}
 - (UIImageView *)audioImgView {
     if (!_audioImgView) {
         _audioImgView = [[UIImageView alloc] initWithFrame:CGRectMake(11.25, 10, 15, 15)];

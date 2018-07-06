@@ -136,6 +136,28 @@
                                   failure:failure];
 }
 
+/// 事件上报
++ (void)addEventRecordWithDic:(NSDictionary *)infoDic
+                      Success:(void (^)(id))success
+                      failure:(void (^)(NSError *))failure {
+    [K_NetWorkClient requestWithMethod_ST:RequestMethodTypePost
+                                      url:@"/public/map/addEventRecord"
+                                   params:infoDic
+                                  success:success
+                                  failure:failure];
+}
+
+/// 处理事件
++ (void)dealWithEventRecordWithDic:(NSDictionary *)infoDic
+                           Success:(void (^)(id))success
+                           failure:(void (^)(NSError *))failure {
+    [K_NetWorkClient requestWithMethod_ST:RequestMethodTypePost
+                                      url:@"/public/map/updateEventRecord"
+                                   params:infoDic
+                                  success:success
+                                  failure:failure];
+}
+
 /// 获取七牛token
 + (void)getQiniuTokenSuccess:(void (^)(id))success
                      failure:(void (^)(NSError *))failure {

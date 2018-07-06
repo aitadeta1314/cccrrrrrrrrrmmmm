@@ -58,6 +58,15 @@ typedef NS_ENUM(NSInteger, RequestMethodType){
 + (void)getSecurityPersonnelListSuccess:(void (^)(id response))success
                              failure:(void (^)(NSError *error))failure;
 
+/// 事件上报
++ (void)addEventRecordWithDic:(NSDictionary *)infoDic
+                      Success:(void (^)(id response))success
+                      failure:(void (^)(NSError *error))failure;
+
+/// 事件处理
++ (void)dealWithEventRecordWithDic:(NSDictionary *)infoDic
+                           Success:(void (^)(id response))success failure:(void (^)(NSError *error))failure;
+
 #pragma mark - 七牛token
 /// 获取七牛token
 + (void)getQiniuTokenSuccess:(void (^)(id response))success

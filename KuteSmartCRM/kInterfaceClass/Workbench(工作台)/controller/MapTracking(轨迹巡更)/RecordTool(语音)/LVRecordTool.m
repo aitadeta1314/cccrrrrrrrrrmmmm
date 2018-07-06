@@ -112,7 +112,8 @@
     // 正在播放就返回
     if ([self.player isPlaying]) return;
 
-    self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:self.recordFileUrl error:NULL];
+//    self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:self.recordFileUrl error:NULL];
+    self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL URLWithString:[self GetPathByFileName:LVRecordFileName ofType:@"wav"]] error:NULL];
     self.player.delegate = self;
     [self.session setCategory:AVAudioSessionCategoryPlayback error:nil];
     [self.player play];
@@ -187,6 +188,11 @@ static id instance;
     NSFileManager *fileManager = [NSFileManager defaultManager];
     if (self.recordFileUrl) {
         [fileManager removeItemAtURL:self.recordFileUrl error:NULL];
+        
+    }
+    NSURL *recordAMRUrl = [NSURL fileURLWithPath:[self GetPathByFileName:LVRecordFileName ofType:@"amr"]];
+
+    if (recordAMRUrl) {
         
         [fileManager removeItemAtPath:[self GetPathByFileName:LVRecordFileName ofType:@"amr"] error:NULL];
     }

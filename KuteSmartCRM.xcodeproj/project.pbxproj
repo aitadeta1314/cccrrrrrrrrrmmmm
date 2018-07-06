@@ -1227,8 +1227,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: rongping li (6FEEK5TGX5)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: rongping li (6FEEK5TGX5)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: fusheng xu (7ULY8CUDRF)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: fusheng xu (7ULY8CUDRF)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 5MPLF388EQ;
 				ENABLE_BITCODE = NO;
@@ -1245,7 +1245,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kutesmart.KuteSmartCRM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1cfa213c-c5c5-4b94-9d12-84f8fc8e7dc2";
+				PROVISIONING_PROFILE = "fa5a068c-26c2-4e3e-ae7d-4c79c89d889f";
 				PROVISIONING_PROFILE_SPECIFIER = cotteCRM_Dev;
 			};
 			name = Debug;
@@ -1256,8 +1256,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: rongping li (6FEEK5TGX5)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: rongping li (6FEEK5TGX5)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: fusheng xu (7ULY8CUDRF)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: fusheng xu (7ULY8CUDRF)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 5MPLF388EQ;
 				ENABLE_BITCODE = NO;
@@ -1274,7 +1274,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kutesmart.KuteSmartCRM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1cfa213c-c5c5-4b94-9d12-84f8fc8e7dc2";
+				PROVISIONING_PROFILE = "fa5a068c-26c2-4e3e-ae7d-4c79c89d889f";
 				PROVISIONING_PROFILE_SPECIFIER = cotteCRM_Dev;
 			};
 			name = Release;
