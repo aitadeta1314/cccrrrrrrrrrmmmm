@@ -163,7 +163,7 @@
                         <constraint firstAttribute="width" secondItem="apn-We-yHA" secondAttribute="height" id="zxx-OA-Vfq"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <state key="normal" title="上传">
+                    <state key="normal" title="上报">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <connections>
