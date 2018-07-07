@@ -61,6 +61,7 @@
 		8A91145220AE700E0082EE6A /* K_PersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A91145020AE700E0082EE6A /* K_PersonCell.xib */; };
 		8ABED1A41ED8F933007A9B81 /* K_BasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABED1A31ED8F933007A9B81 /* K_BasicViewController.m */; };
 		8ABF04ED208EDE6B0007CFCA /* K_GlobalUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABF04EC208EDE6B0007CFCA /* K_GlobalUtil.m */; };
+		8AC83DD920F04AC700BD0848 /* K_PendingEventPinView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AC83DD820F04AC700BD0848 /* K_PendingEventPinView.m */; };
 		8ACE771820B2C40900A257AA /* K_StartEndPinView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACE771720B2C40900A257AA /* K_StartEndPinView.m */; };
 		8ACE771B20B3B08D00A257AA /* K_clearCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACE771A20B3B08D00A257AA /* K_clearCache.m */; };
 		8ADE3CB920ABCC20005F9959 /* processingTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADE3CB720ABCC1F005F9959 /* processingTime.m */; };
@@ -220,6 +221,8 @@
 		8ABED1A31ED8F933007A9B81 /* K_BasicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = K_BasicViewController.m; sourceTree = "<group>"; };
 		8ABF04EB208EDE6B0007CFCA /* K_GlobalUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = K_GlobalUtil.h; sourceTree = "<group>"; };
 		8ABF04EC208EDE6B0007CFCA /* K_GlobalUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = K_GlobalUtil.m; sourceTree = "<group>"; };
+		8AC83DD720F04AC700BD0848 /* K_PendingEventPinView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = K_PendingEventPinView.h; sourceTree = "<group>"; };
+		8AC83DD820F04AC700BD0848 /* K_PendingEventPinView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = K_PendingEventPinView.m; sourceTree = "<group>"; };
 		8ACE771620B2C40900A257AA /* K_StartEndPinView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = K_StartEndPinView.h; sourceTree = "<group>"; };
 		8ACE771720B2C40900A257AA /* K_StartEndPinView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = K_StartEndPinView.m; sourceTree = "<group>"; };
 		8ACE771920B3B08D00A257AA /* K_clearCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = K_clearCache.h; sourceTree = "<group>"; };
@@ -451,6 +454,8 @@
 				8A1DA78C20A92AED000D323A /* K_InputTimeView.h */,
 				8A1DA78920A92AED000D323A /* K_InputTimeView.m */,
 				8A1DA78820A92AED000D323A /* K_InputTimeView.xib */,
+				8AC83DD720F04AC700BD0848 /* K_PendingEventPinView.h */,
+				8AC83DD820F04AC700BD0848 /* K_PendingEventPinView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1069,6 +1074,7 @@
 				8AEFBB4420E337750041DF0B /* TZImagePickerController.m in Sources */,
 				8A64A57D1ECEB9A400606DF2 /* MyNavViewController.m in Sources */,
 				8AEFBB7720E9FD5E0041DF0B /* MSSBrowseActionSheetCell.m in Sources */,
+				8AC83DD920F04AC700BD0848 /* K_PendingEventPinView.m in Sources */,
 				8AEFBB7320E9FD5E0041DF0B /* MSSBrowseBaseViewController.m in Sources */,
 				8A1DA7A820A92AED000D323A /* UIView+PS.m in Sources */,
 				8A1DA7B520A92AED000D323A /* TipView.m in Sources */,

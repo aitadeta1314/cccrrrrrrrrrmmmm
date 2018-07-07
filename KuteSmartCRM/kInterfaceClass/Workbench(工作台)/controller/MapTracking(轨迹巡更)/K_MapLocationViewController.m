@@ -19,6 +19,15 @@
 @interface K_MapLocationViewController() <MAMapViewDelegate>
 
 /**
+ 显示保安
+ */
+@property (nonatomic, strong) UIButton *securityBtn;
+/**
+ 待处理事件
+ */
+@property (nonatomic, strong) UIButton *pendingBtn;
+
+/**
  记录突发事件按钮
  */
 @property (nonatomic, strong) UIButton *recordEventBtn;
@@ -717,9 +726,9 @@
 {
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
-    UIBarButtonItem *beginItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_play"] style:UIBarButtonItemStylePlain target:self action:@selector(actionRecordAndStop)];
+//    UIBarButtonItem *beginItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_play"] style:UIBarButtonItemStylePlain target:self action:@selector(actionRecordAndStop)];
     
-    self.navigationItem.rightBarButtonItem = beginItem;
+//    self.navigationItem.rightBarButtonItem = beginItem;
     
 //    self.isRecording = NO;
     
@@ -777,6 +786,55 @@
         make.width.height.mas_equalTo(40);
         make.bottom.equalTo(self.view).offset(-100);
     }];
+    
+    [self changeShowPendingOrSecurityView];
+}
+
+/**
+ 显示保安或者待处理事件view
+ */
+- (void)changeShowPendingOrSecurityView {
+    UIView *view = [[UIView alloc] init];
+    view.backgroundColor = UIColor.whiteColor;
+    [self.view addSubview:view];
+    [self.view bringSubviewToFront:view];
+    [view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.view).offset(-20);
+        make.width.mas_equalTo(40);
+        make.height.mas_equalTo(80);
+        make.centerY.equalTo(self.view);
+    }];
+    
+    /// 阴影
+    view.layer.shadowColor = [UIColor grayColor].CGColor;
+    view.layer.shadowOpacity = 0.8f;
+    view.layer.shadowRadius = 2.f;
+    view.layer.shadowOffset = CGSizeMake(0, 0);
+    
+    UIView *line = [[UIView alloc] init];
+    [view addSubview:line];
+    line.backgroundColor = RGBA(235, 235, 235, 1);
+    [line mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(view).offset(3);
+        make.right.equalTo(view).offset(-3);
+        make.height.mas_equalTo(0.8);
+        make.centerY.equalTo(view);
+    }];
+    
+    
+    [view addSubview:self.securityBtn];
+    [view addSubview:self.pendingBtn];
+    [self.securityBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.equalTo(view);
+        make.height.mas_equalTo(40);
+    }];
+    
+    [self.pendingBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.equalTo(view);
+        make.height.mas_equalTo(40);
+    }];
+    
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -908,6 +966,16 @@
     [self.navigationController pushViewController:record animated:YES];
 }
 
+#pragma mark - 显示保安
+- (void)securityClick {
+    
+}
+
+#pragma mark - 显示待处理事件
+- (void)pendingClick {
+    
+}
+
 #pragma mark - Lazy init
 - (NSMutableArray *)pinAnnotation {
     if (!_pinAnnotation) {
@@ -934,6 +1002,25 @@
         [_recordEventBtn addTarget:self action:@selector(recordEventBtn:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _recordEventBtn;
+}
+
+- (UIButton *)securityBtn {
+    if (!_securityBtn) {
+        _securityBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_securityBtn setImage:[UIImage imageNamed:@"保安"] forState:UIControlStateNormal];
+        [_recordEventBtn addTarget:self action:@selector(securityClick) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _securityBtn;
+}
+
+- (UIButton *)pendingBtn {
+    if (!_pendingBtn) {
+        _pendingBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_pendingBtn setImage:[UIImage imageNamed:@"待处理"] forState:UIControlStateNormal];
+        [_pendingBtn addTarget:self action:@selector(pendingClick) forControlEvents:UIControlEventTouchUpInside];
+//        [_pendingBtn setContentEdgeInsets:UIEdgeInsetsMake(5, 5, 5, 5)];
+    }
+    return _pendingBtn;
 }
 
 @end
