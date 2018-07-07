@@ -11,13 +11,17 @@
 #import "AMapRouteRecord.h"
 #import "FileHelper.h"
 #import "K_CustomPinView.h"
+#import "K_PendingEventPinView.h"
 #import "HWWeakTimer.h"
 #import "K_RecordEventInfoViewController.h"
 
 #define kTempTraceLocationCount 20
 
 @interface K_MapLocationViewController() <MAMapViewDelegate>
-
+/**
+ YES显示保安，NO显示的是待处理
+ */
+@property (nonatomic, assign) BOOL isShowSecurity;
 /**
  显示保安
  */
@@ -84,6 +88,15 @@
 @property (nonatomic, strong) NSMutableArray *tracedPolylines;
 @property (nonatomic, strong) NSMutableArray *tempTraceLocations;
 @property (nonatomic, assign) double totalTraceLength;
+
+/**
+ 保存待处理事件的大头针数组
+ */
+@property (nonatomic, strong) NSMutableArray *pendingPinAnnotation;
+/**
+ 待处理大头针 数据数组
+ */
+@property (nonatomic, strong) NSMutableArray *pendingDataInfo;
 
 @end
 
@@ -216,38 +229,60 @@
     return nil;
 }
 
-/// 大头针自定义
+#pragma mark -  自定义大头针
 - (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation {
-    if ([annotation isKindOfClass:[MAPointAnnotation class]] && ![annotation isMemberOfClass:[MAUserLocation class]]) {
-        /// 用户自身定位的小蓝点也是MAPointAnnotation的子类 ,如果不加以区分小蓝点会消失
-        static NSString *customPinReuseIdentifier = @"CustomPinAnnotationIden";
-        K_CustomPinView *pinView = (K_CustomPinView *)[mapView dequeueReusableAnnotationViewWithIdentifier:customPinReuseIdentifier];
-        if (!pinView) {
-            pinView = [[K_CustomPinView alloc] initWithAnnotation:annotation reuseIdentifier:customPinReuseIdentifier];
-            pinView.canShowCallout = NO;
-            pinView.draggable = NO;
+    if (self.isShowSecurity) {
+        /// 显示保安大头针
+        if ([annotation isKindOfClass:[MAPointAnnotation class]] && ![annotation isMemberOfClass:[MAUserLocation class]]) {
+            /// 用户自身定位的小蓝点也是MAPointAnnotation的子类 ,如果不加以区分小蓝点会消失
+            static NSString *customPinReuseIdentifier = @"CustomPinAnnotationIden";
+            K_CustomPinView *pinView = (K_CustomPinView *)[mapView dequeueReusableAnnotationViewWithIdentifier:customPinReuseIdentifier];
+            if (!pinView) {
+                pinView = [[K_CustomPinView alloc] initWithAnnotation:annotation reuseIdentifier:customPinReuseIdentifier];
+                pinView.canShowCallout = NO;
+                pinView.draggable = NO;
+                
+            }
+            weakObjc(self);
+            pinView.clickCustomPinView = ^(CLLocationCoordinate2D coordinate, NSString *name) {
+                weakself.searchCoordinate = coordinate;
+                weakself.searchName = name;
+                //            NSLog(@"block ---- searchCoordinate...latitude:%f, longitude:%f", weakself.searchCoordinate.latitude, weakself.searchCoordinate.longitude);
+                //            NSLog(@"block ---- searchName:%@", weakself.searchName);
+            };
+            for (NSDictionary *subDic in self.dataSourcePinCoordsInfo) {
+                double latitude = [[subDic valueForKey:@"latitude"] doubleValue];
+                double longitude = [[subDic valueForKey:@"longitude"] doubleValue];
+                if (annotation.coordinate.latitude == latitude && annotation.coordinate.longitude == longitude) {
+                    
+                    pinView.portraitUrl = [NSString stringWithFormat:@""];  // 图片暂时是本地的
+                    pinView.name = [subDic valueForKey:@"name"];
+                    pinView.employeeNumber = [subDic valueForKey:@"employeeNumber"];
+                    break;
+                }
+            }
+            
+            return pinView;
+        }
+    } else {
+        /// 显示待处理大头针
+        static NSString *identify = @"PendingEventPinIdentify";
+        K_PendingEventPinView *pendingPinView = (K_PendingEventPinView *)[mapView dequeueReusableAnnotationViewWithIdentifier:identify];
+        if (!pendingPinView) {
+            pendingPinView = [[K_PendingEventPinView alloc] initWithAnnotation:annotation reuseIdentifier:identify];
             
         }
-        weakObjc(self);
-        pinView.clickCustomPinView = ^(CLLocationCoordinate2D coordinate, NSString *name) {
-            weakself.searchCoordinate = coordinate;
-            weakself.searchName = name;
-//            NSLog(@"block ---- searchCoordinate...latitude:%f, longitude:%f", weakself.searchCoordinate.latitude, weakself.searchCoordinate.longitude);
-//            NSLog(@"block ---- searchName:%@", weakself.searchName);
-        };
-        for (NSDictionary *subDic in self.dataSourcePinCoordsInfo) {
-            double latitude = [[subDic valueForKey:@"latitude"] doubleValue];
-            double longitude = [[subDic valueForKey:@"longitude"] doubleValue];
+        
+        for (NSDictionary *data in self.pendingDataInfo) {
+            double latitude = [data[@"latitude"] doubleValue];
+            double longitude = [data[@"longitude"] doubleValue];
             if (annotation.coordinate.latitude == latitude && annotation.coordinate.longitude == longitude) {
                 
-                pinView.portraitUrl = [NSString stringWithFormat:@""];  // 图片暂时是本地的
-                pinView.name = [subDic valueForKey:@"name"];
-                pinView.employeeNumber = [subDic valueForKey:@"employeeNumber"];
-                break;
+                pendingPinView.dataDic = data;
             }
         }
         
-        return pinView;
+        return pendingPinView;
     }
   
     
@@ -758,11 +793,11 @@
     
     self.title = @"轨迹巡更";
     [self addBackButton];
-//    [self initNavigationBar];
+    /// 显示保安大头针
+    self.isShowSecurity = YES;
     
     [self initMapView];
     [self initPolygonArea];
-//    [self initTipView];
     
     [self initLocationButton];
     
@@ -917,7 +952,7 @@
             }
             
             if (self.searchCoordinate.latitude == 0 && self.searchCoordinate.longitude == 0) {
-                /// 没有弹出气泡大头针  添加所有的大头针
+                /// 没有弹出气泡大头针(也就是没有正在操作的轨迹查询的大头针)  添加所有的大头针
                 [weakself.mapView addAnnotations:weakself.pinAnnotation];
             } else {
                 
@@ -968,15 +1003,81 @@
 
 #pragma mark - 显示保安
 - (void)securityClick {
+    NSLog(@"点击了保安");
+    self.isShowSecurity = YES;
+    /// 移除所有待处理大头针
+    [self.mapView removeAnnotations:self.pendingPinAnnotation];
+    [self.mapView addAnnotations:self.pinAnnotation];
+    [self initTimer];
+    
+    
     
 }
 
 #pragma mark - 显示待处理事件
 - (void)pendingClick {
+    NSLog(@"点击了待处理");
+    self.isShowSecurity = NO;
+    [self.timer invalidate];
+    /// 移除所有保安大头针标注
+    [self.mapView removeAnnotations:self.pinAnnotation];
     
+    [self getPendingEventFromServer];
+}
+
+/// 获取待处理事件位置信息
+- (void)getPendingEventFromServer {
+    weakObjc(self);
+    [K_NetWorkClient getPendingEventLocationInformationSuccess:^(id response) {
+        NSLog(@"请求待处理大头针成功");
+        NSLog(@"response:%@", response);
+        if ([response[@"code"] isEqualToString:@"200"]) {
+            NSArray *data = response[@"data"];
+            
+            for (NSDictionary *event in data) {
+                
+                [weakself.pendingDataInfo addObject:event];
+            }
+            
+            /// 大头针经纬度坐标
+            CLLocationCoordinate2D *coords = malloc(data.count*sizeof(CLLocationCoordinate2D));
+            for (NSInteger i = 0; i < data.count; i ++) {
+                
+                coords[i].latitude = [data[i][@"latitude"] doubleValue];
+                coords[i].longitude = [data[i][@"longitude"] doubleValue];
+            }
+            
+            for (NSInteger i = 0; i < data.count; i ++) {
+                MAPointAnnotation *pointAnnotation = [[MAPointAnnotation alloc] init];
+                pointAnnotation.coordinate = coords[i];
+                [weakself.pendingPinAnnotation addObject:pointAnnotation];
+            }
+            
+            [weakself.mapView addAnnotations:weakself.pendingPinAnnotation];
+            
+        }
+        
+    } failure:^(NSError *error) {
+        NSLog(@"请求待处理大头针失败");
+        
+    }];
 }
 
 #pragma mark - Lazy init
+- (NSMutableArray *)pendingDataInfo {
+    if (!_pendingDataInfo) {
+        _pendingDataInfo = [NSMutableArray array];
+    }
+    return _pendingDataInfo;
+}
+
+- (NSMutableArray *)pendingPinAnnotation {
+    if (!_pendingPinAnnotation) {
+        _pendingPinAnnotation = [NSMutableArray array];
+    }
+    return _pendingPinAnnotation;
+}
+
 - (NSMutableArray *)pinAnnotation {
     if (!_pinAnnotation) {
         _pinAnnotation = [NSMutableArray array];
@@ -1008,7 +1109,7 @@
     if (!_securityBtn) {
         _securityBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_securityBtn setImage:[UIImage imageNamed:@"保安"] forState:UIControlStateNormal];
-        [_recordEventBtn addTarget:self action:@selector(securityClick) forControlEvents:UIControlEventTouchUpInside];
+        [_securityBtn addTarget:self action:@selector(securityClick) forControlEvents:UIControlEventTouchUpInside];
     }
     return _securityBtn;
 }
@@ -1018,7 +1119,6 @@
         _pendingBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_pendingBtn setImage:[UIImage imageNamed:@"待处理"] forState:UIControlStateNormal];
         [_pendingBtn addTarget:self action:@selector(pendingClick) forControlEvents:UIControlEventTouchUpInside];
-//        [_pendingBtn setContentEdgeInsets:UIEdgeInsetsMake(5, 5, 5, 5)];
     }
     return _pendingBtn;
 }

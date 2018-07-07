@@ -158,6 +158,16 @@
                                   failure:failure];
 }
 
+/// 获取待处理位置信息
++ (void)getPendingEventLocationInformationSuccess:(void (^)(id))success
+                                          failure:(void (^)(NSError *))failure {
+    [K_NetWorkClient requestWithMethod_ST:RequestMethodTypeGet
+                                      url:@"/public/map/getEventRecord"
+                                   params:nil
+                                  success:success
+                                  failure:failure];
+}
+
 /// 获取七牛token
 + (void)getQiniuTokenSuccess:(void (^)(id))success
                      failure:(void (^)(NSError *))failure {

@@ -15,4 +15,9 @@
  */
 @property (nonatomic, strong) UIView *calloutView;
 
+/**
+ 数据字典
+ */
+@property (nonatomic, strong) NSDictionary *dataDic;
+
 @end

@@ -42,7 +42,7 @@
     if (self) {
         
         self.bounds = CGRectMake(0, 0, 60, 60);
-        UIImageView *redFlag = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 60, 60)];
+        UIImageView *redFlag = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
         redFlag.image = [UIImage imageNamed:@"小红旗"];
         [self addSubview:redFlag];
     }
