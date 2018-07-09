@@ -304,7 +304,12 @@
         } failure:^(NSError *error) {
             NSLog(@"请求七牛token失败");
         }];
+    } else {
+        /// 没有需要上传的声音文件和图片
+        [self uploadAllInfomationMethod];
     }
+    
+    
 }
 
 

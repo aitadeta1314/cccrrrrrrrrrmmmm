@@ -9,8 +9,8 @@
 #import "K_PendingEventPinView.h"
 #import "CustomCalloutView.h"
 
-#define kCalloutWidth   60.0
-#define kCalloutHeight  40.0
+#define kCalloutWidth   100.0
+#define kCalloutHeight  80.0
 
 @implementation K_PendingEventPinView
 
@@ -41,7 +41,7 @@
     self = [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier];
     if (self) {
         
-        self.bounds = CGRectMake(0, 0, 60, 60);
+        self.bounds = CGRectMake(0, 0, 30, 30);
         UIImageView *redFlag = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
         redFlag.image = [UIImage imageNamed:@"小红旗"];
         [self addSubview:redFlag];
@@ -66,12 +66,37 @@
             self.calloutView = [[CustomCalloutView alloc] initWithFrame:CGRectMake(0, 0, kCalloutWidth, kCalloutHeight)];
             self.calloutView.center = CGPointMake(CGRectGetWidth(self.bounds) / 2.f + self.calloutOffset.x,
                                                   -CGRectGetHeight(self.calloutView.bounds) / 2.f + self.calloutOffset.y);
+
             
             UIButton *eventClick = [UIButton buttonWithType:UIButtonTypeCustom];
             [eventClick setTitle:@"事件详情" forState:UIControlStateNormal];
+            eventClick.titleLabel.font = [UIFont systemFontOfSize:13];
             [eventClick addTarget:self action:@selector(eventClick:) forControlEvents:UIControlEventTouchUpInside];
+            [eventClick setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
+            [eventClick setBackgroundColor: NavigationBarBGColor];
+            eventClick.layer.cornerRadius = 3.f;
+            eventClick.layer.masksToBounds = YES;
             [self.calloutView addSubview:eventClick];
+            [eventClick mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.bottom.equalTo(self.calloutView).offset(-15);
+                make.centerX.equalTo(self.calloutView);
+                make.height.mas_equalTo(30);
+            }];
             
+            UILabel *eventDescribe = [[UILabel alloc] init];
+            [self.calloutView addSubview:eventDescribe];
+            eventDescribe.textAlignment = NSTextAlignmentCenter;
+            eventDescribe.numberOfLines = 0;
+            eventDescribe.lineBreakMode = NSLineBreakByTruncatingTail;
+            [eventDescribe setTextColor:UIColor.whiteColor];
+            eventDescribe.font = [UIFont systemFontOfSize:13];
+            eventDescribe.text = self.dataDic[@"textDescription"];
+            [eventDescribe mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.centerX.equalTo(self.calloutView);
+                make.top.equalTo(self.calloutView).offset(5);
+                make.bottom.mas_equalTo(eventClick.mas_top).offset(-5);
+                make.width.mas_equalTo(kCalloutWidth-10);
+            }];
         }
         [self addSubview:self.calloutView];
         
