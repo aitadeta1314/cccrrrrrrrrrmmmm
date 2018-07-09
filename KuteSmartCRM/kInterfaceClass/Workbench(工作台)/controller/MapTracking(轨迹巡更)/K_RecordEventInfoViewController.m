@@ -61,6 +61,17 @@
  上传者
  */
 @property (weak, nonatomic) IBOutlet UILabel *uploader;
+
+/**
+ 上传时间：标签
+ */
+@property (weak, nonatomic) IBOutlet UILabel *timeTag;
+
+/**
+ 上传时间
+ */
+@property (weak, nonatomic) IBOutlet UILabel *uploadTime;
+
 /**
  上传按钮
  */
@@ -87,6 +98,10 @@
  保存七牛图片语音地址数组
  */
 @property (nonatomic, strong) NSMutableArray *picVoiceUrlArray;
+/**
+ 事件处理页面 保存图片地址
+ */
+@property (nonatomic, strong) NSMutableArray *pictureDataArr;
 
 @end
 
@@ -96,7 +111,8 @@
     [super viewDidLoad];
     
     [self addBackButton];
-    self.title = @"事件上报";
+    
+    self.title = self.isEventDispose ? @"事件处理" : @"事件上报";
     
     self.isContainVoiceData = NO;
     
@@ -113,7 +129,11 @@
     self.recordText.layer.cornerRadius = 5.f;
     self.recordText.layer.masksToBounds = YES;
     
+    
+    
     // 语音按钮
+    self.recordBtn.enabled = self.isEventDispose ? NO : YES;
+    self.recordBtn.backgroundColor = self.isEventDispose ? RGBA(154, 154, 154, 1) : NavigationBarBGColor;
     self.recordBtn.layer.cornerRadius = 5.f;
     self.recordBtn.layer.masksToBounds = YES;
     
@@ -152,10 +172,18 @@
     
     /// 上传者
     self.uploader.text = KDISPLAYNAME;
+    self.uploader.text = self.isEventDispose ? self.eventData[@"displayName"] : KDISPLAYNAME;
     
     /// 上传按钮
     self.uploderBtn.layer.cornerRadius = 40.f;
     self.uploderBtn.layer.masksToBounds = YES;
+    
+    
+    /// 是事件处理页面
+    if (self.isEventDispose) {
+        
+        [self eventDisposeMethod];
+    }
     
     
     /// 录音下载测试
@@ -175,6 +203,57 @@
 //    CMTime audioDuration = audioAsset.duration;
 //    float audioDurationSeconds = CMTimeGetSeconds(audioDuration);
 //    self.recordTotalTime.text = [NSString stringWithFormat:@"%.0f''", audioDurationSeconds];
+    
+}
+
+
+/**
+ 事件处理
+ */
+- (void)eventDisposeMethod {
+    
+    self.recordText.text = self.eventData[@"textDescription"];
+    self.recordText.editable = NO;  // 不能编辑
+    
+    
+    /// 图片
+    for (NSInteger i = 0; i < 3; i ++) {
+        NSString *key = [NSString stringWithFormat:@"pictureDescription%ld", i+1];
+        if ([self.eventData[key] isValidString]) {
+            [self.pictureDataArr addObject:self.eventData[key]];
+        }
+    }
+    [self.imageCollectionView reloadData];
+    
+    /// 紧急状态
+    for (UIButton *btn in self.statusArray) {
+        if ([self.eventData[@"urgentStatus"] isEqualToString:@"0"]) {
+            if (btn.tag == 111) {
+                btn.selected = YES;
+            }
+        } else if ([self.eventData[@"urgentStatus"] isEqualToString:@"1"]) {
+            if (btn.tag == 222) {
+                btn.selected = YES;
+            }
+        } else {
+            if (btn.tag == 333) {
+                btn.selected = YES;
+            }
+        }
+        btn.userInteractionEnabled = NO;
+    }
+    
+    // 上传时间
+    self.uploadTime.text = self.eventData[@"createTime"];
+    self.timeTag.hidden = NO;
+    self.uploadTime.hidden = NO;
+
+    // 上传按钮
+    [self.uploderBtn setTitle:@"处理" forState:UIControlStateNormal];
+    if (![self.eventData[@"employeeNumber"] isEqualToString:KUSERNAME]) {
+        // 不是本人上报 没有权限处理 故隐藏处理按钮
+        self.uploderBtn.hidden = YES;
+    }
     
 }
 
@@ -408,6 +487,19 @@
 }
 
 #pragma mark - 懒加载
+- (NSMutableArray *)pictureDataArr {
+    if (!_pictureDataArr) {
+        _pictureDataArr = [NSMutableArray array];
+    }
+    return _pictureDataArr;
+}
+- (NSDictionary *)eventData {
+    if (!_eventData) {
+        _eventData = [NSDictionary dictionary];
+    }
+    return _eventData;
+}
+
 - (NSMutableArray *)picVoiceUrlArray {
     if (!_picVoiceUrlArray) {
         _picVoiceUrlArray = [NSMutableArray array];
@@ -465,49 +557,73 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    if(self.imageArray.count < 3)
-    {
-        return self.imageArray.count+1;
-        
+    if (self.isEventDispose) {
+        // 事件处理
+        return self.pictureDataArr.count;
+    } else {
+        // 事件上报
+        if (self.imageArray.count < 3)
+        {
+            return self.imageArray.count+1;
+            
+        }
+        else return 3;
     }
-    else
-        return 3;
     
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    static NSString *identifier = @"cell";
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
-    if(cell != nil){
-        [cell  removeFromSuperview];
+    if (self.isEventDispose) {
+        /// 事件处理
+        static NSString *identifier = @"cell";
+        UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+        if(cell != nil){
+            [cell  removeFromSuperview];
+        }
+        for (id obj in cell.contentView.subviews) {
+            [obj removeFromSuperview];
+        }
+         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, (CGRectGetWidth(self.imageCollectionView.frame)-30)/3, CGRectGetWidth(self.imageCollectionView.frame)/3-22)];
+        [imageView sd_setImageWithURL:[NSURL URLWithString:self.pictureDataArr[indexPath.row]]];
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
+        imageView.clipsToBounds = YES;
+        [cell.contentView addSubview:imageView];
+        
+        return cell;
+    } else {
+        /// 事件上报
+        static NSString *identifier = @"cell";
+        UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+        if(cell != nil){
+            [cell  removeFromSuperview];
+        }
+        for (UIButton * btn in cell.contentView.subviews) {
+            [btn removeFromSuperview];
+        }
+        if((indexPath.row == self.imageArray.count)||(self.imageArray.count == 0)){
+            UIImageView *plus = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, (CGRectGetWidth(self.imageCollectionView.frame)-30)/3, CGRectGetWidth(self.imageCollectionView.frame)/3-22)];
+            plus.image = [UIImage imageNamed:@"加号"];
+            plus.backgroundColor = [UIColor whiteColor];
+            [cell.contentView addSubview:plus];
+        }
+        else if(indexPath.row < self.imageArray.count){
+            UIImageView *littleImageview = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, (CGRectGetWidth(self.imageCollectionView.frame)-30)/3, CGRectGetWidth(self.imageCollectionView.frame)/3-22)];
+            littleImageview.tag = 2;
+            littleImageview.image = self.imageArray[indexPath.row];
+            littleImageview.contentMode = UIViewContentModeScaleAspectFill;
+            littleImageview.clipsToBounds = YES;
+            [cell.contentView addSubview:littleImageview];
+            UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+            btn.frame = CGRectMake(CGRectGetWidth(littleImageview.frame)-15, 0, 15, 15);
+            [btn setBackgroundImage:[UIImage imageNamed:@"叉号"] forState:UIControlStateNormal];
+            btn.tag = indexPath.row;
+            [btn addTarget:self action:@selector(deleteButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+            littleImageview.userInteractionEnabled = YES;
+            [cell.contentView addSubview:btn];
+            cell.backgroundColor = [UIColor whiteColor];
+        }
+        return cell;
     }
-    for (UIButton * btn in cell.contentView.subviews) {
-        [btn removeFromSuperview];
-    }
-    if((indexPath.row == self.imageArray.count)||(self.imageArray.count == 0)){
-        UIImageView *plus = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, (CGRectGetWidth(self.imageCollectionView.frame)-30)/3, CGRectGetWidth(self.imageCollectionView.frame)/3-22)];
-        plus.image = [UIImage imageNamed:@"加号"];
-        plus.backgroundColor = [UIColor whiteColor];
-        [cell.contentView addSubview:plus];
-    }
-    else if(indexPath.row < self.imageArray.count){
-        UIImageView *littleImageview = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, (CGRectGetWidth(self.imageCollectionView.frame)-30)/3, CGRectGetWidth(self.imageCollectionView.frame)/3-22)];
-        littleImageview.tag = 2;
-        littleImageview.image = self.imageArray[indexPath.row];
-        littleImageview.contentMode = UIViewContentModeScaleAspectFill;
-        littleImageview.clipsToBounds = YES;
-        [cell.contentView addSubview:littleImageview];
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake(CGRectGetWidth(littleImageview.frame)-15, 0, 15, 15);
-        [btn setBackgroundImage:[UIImage imageNamed:@"叉号"] forState:UIControlStateNormal];
-        btn.tag = indexPath.row;
-        [btn addTarget:self action:@selector(deleteButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-        littleImageview.userInteractionEnabled = YES;
-        [cell.contentView addSubview:btn];
-        cell.backgroundColor = [UIColor whiteColor];
-    }
-    return cell;
     
 }
 
@@ -527,28 +643,44 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.imageArray.count != 0 && indexPath.row<self.imageArray.count) {
-        
-        /// 显示本地图片
-        NSMutableArray *browseItemArray = [[NSMutableArray alloc]init];
-        for(int i = 0;i < [self.imageArray count]; i++)
-        {
+    if (self.isEventDispose) {
+        /// 事件处理
+        NSMutableArray *browseItemArray = [NSMutableArray array];
+        for (NSInteger i = 0; i < self.pictureDataArr.count; i ++) {
             MSSBrowseModel *browseItem = [[MSSBrowseModel alloc]init];
-            browseItem.bigImage = self.imageArray[i];
+            browseItem.bigImageUrl = self.pictureDataArr[i];// 加载网络图片大图地址
             [browseItemArray addObject:browseItem];
         }
-        MSSBrowseLocalViewController *localVC = [[MSSBrowseLocalViewController alloc] initWithBrowseItemArray:browseItemArray currentIndex:indexPath.row];
+        MSSBrowseNetworkViewController *bvc = [[MSSBrowseNetworkViewController alloc]initWithBrowseItemArray:browseItemArray currentIndex:indexPath.row];
 //        bvc.isEqualRatio = NO;// 大图小图不等比时需要设置这个属性（建议等比）
-
-        [localVC showBrowseViewController];
         
+        [bvc showBrowseViewController];
         
-        /// 查看处理的时候需要显示网络图片
-//        MSSBrowseNetworkViewController *networkVC = [[MSSBrowseNetworkViewController alloc] initWithBrowseItemArray:browseItemArray currentIndex:indexPath.row];
-//        [networkVC showBrowseViewController];
-    }
-    else {
-        [self.sheet showInView:SharedAppDelegate.window];
+    } else {
+        /// 事件上报
+        if (self.imageArray.count != 0 && indexPath.row<self.imageArray.count) {
+            
+            /// 显示本地图片
+            NSMutableArray *browseItemArray = [[NSMutableArray alloc]init];
+            for(int i = 0;i < [self.imageArray count]; i++)
+            {
+                MSSBrowseModel *browseItem = [[MSSBrowseModel alloc]init];
+                browseItem.bigImage = self.imageArray[i];
+                [browseItemArray addObject:browseItem];
+            }
+            MSSBrowseLocalViewController *localVC = [[MSSBrowseLocalViewController alloc] initWithBrowseItemArray:browseItemArray currentIndex:indexPath.row];
+            //        bvc.isEqualRatio = NO;// 大图小图不等比时需要设置这个属性（建议等比）
+            
+            [localVC showBrowseViewController];
+            
+            
+            /// 查看处理的时候需要显示网络图片
+            //        MSSBrowseNetworkViewController *networkVC = [[MSSBrowseNetworkViewController alloc] initWithBrowseItemArray:browseItemArray currentIndex:indexPath.row];
+            //        [networkVC showBrowseViewController];
+        }
+        else {
+            [self.sheet showInView:SharedAppDelegate.window];
+        }
     }
 }
 

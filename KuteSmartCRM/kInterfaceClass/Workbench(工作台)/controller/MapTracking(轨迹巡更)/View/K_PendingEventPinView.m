@@ -8,9 +8,18 @@
 
 #import "K_PendingEventPinView.h"
 #import "CustomCalloutView.h"
+#import "K_RecordEventInfoViewController.h"
 
-#define kCalloutWidth   100.0
-#define kCalloutHeight  80.0
+#define kCalloutWidth   150.0
+#define kCalloutHeight  120.0
+@interface K_PendingEventPinView()
+
+/**
+ 
+ */
+@property (nonatomic, strong) UIImageView *flag;
+
+@end
 
 @implementation K_PendingEventPinView
 
@@ -21,6 +30,16 @@
     // Drawing code
 }
 */
+
+- (void)setUrgentStatus:(NSString *)urgentStatus {
+    if ([urgentStatus isEqualToString:@"1"]) {
+        self.flag.image = [UIImage imageNamed:@"小黄旗"];
+    } else if ([urgentStatus isEqualToString:@"2"]) {
+        self.flag.image = [UIImage imageNamed:@"小红旗"];
+    } else {
+        self.flag.image = [UIImage imageNamed:@"小绿旗"];
+    }
+}
 
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event
 {
@@ -42,9 +61,9 @@
     if (self) {
         
         self.bounds = CGRectMake(0, 0, 30, 30);
-        UIImageView *redFlag = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-        redFlag.image = [UIImage imageNamed:@"小红旗"];
-        [self addSubview:redFlag];
+        self.flag = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+        
+        [self addSubview:self.flag];
     }
     return self;
 }
@@ -69,7 +88,13 @@
 
             
             UIButton *eventClick = [UIButton buttonWithType:UIButtonTypeCustom];
-            [eventClick setTitle:@"事件详情" forState:UIControlStateNormal];
+            if ([self.dataDic[@"displayName"] isEqualToString:KDISPLAYNAME]) {
+                // 本人显示事件处理
+                [eventClick setTitle:@"事件处理" forState:UIControlStateNormal];
+            } else {
+                // 非本人系显示事件详情
+                [eventClick setTitle:@"事件详情" forState:UIControlStateNormal];
+            }
             eventClick.titleLabel.font = [UIFont systemFontOfSize:13];
             [eventClick addTarget:self action:@selector(eventClick:) forControlEvents:UIControlEventTouchUpInside];
             [eventClick setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
@@ -78,25 +103,48 @@
             eventClick.layer.masksToBounds = YES;
             [self.calloutView addSubview:eventClick];
             [eventClick mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.bottom.equalTo(self.calloutView).offset(-15);
+                make.bottom.equalTo(self.calloutView).offset(-13);
                 make.centerX.equalTo(self.calloutView);
                 make.height.mas_equalTo(30);
             }];
             
-            UILabel *eventDescribe = [[UILabel alloc] init];
-            [self.calloutView addSubview:eventDescribe];
-            eventDescribe.textAlignment = NSTextAlignmentCenter;
-            eventDescribe.numberOfLines = 0;
-            eventDescribe.lineBreakMode = NSLineBreakByTruncatingTail;
-            [eventDescribe setTextColor:UIColor.whiteColor];
-            eventDescribe.font = [UIFont systemFontOfSize:13];
-            eventDescribe.text = self.dataDic[@"textDescription"];
-            [eventDescribe mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.centerX.equalTo(self.calloutView);
-                make.top.equalTo(self.calloutView).offset(5);
-                make.bottom.mas_equalTo(eventClick.mas_top).offset(-5);
-                make.width.mas_equalTo(kCalloutWidth-10);
-            }];
+            UILabel *name = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, kCalloutWidth-10, 15)];
+            [self.calloutView addSubview:name];
+            [name setTextColor:UIColor.whiteColor];
+            name.font = [UIFont systemFontOfSize:13];
+            name.text = [NSString stringWithFormat:@"姓名:%@", self.dataDic[@"displayName"]];
+            
+            UILabel *timeTag = [[UILabel alloc] initWithFrame:CGRectMake(5, CGRectGetMaxY(name.frame)+5, 35, 15)];
+            [self.calloutView addSubview:timeTag];
+            [timeTag setTextColor:UIColor.whiteColor];
+            timeTag.font = [UIFont systemFontOfSize:13];
+            timeTag.text = @"时间:";
+            
+            UILabel *time = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(timeTag.frame), CGRectGetMinY(timeTag.frame), 100, 32)];
+            [self.calloutView addSubview:time];
+            time.textAlignment = NSTextAlignmentCenter;
+            [time setTextColor:UIColor.whiteColor];
+            time.font = [UIFont systemFontOfSize:13];
+            time.numberOfLines = 2;
+            time.text = self.dataDic[@"createTime"];
+            
+            UILabel *urgency = [[UILabel alloc] initWithFrame:CGRectMake(5, CGRectGetMaxY(time.frame)+2, CGRectGetWidth(time.frame), 15)];
+            [self.calloutView addSubview:urgency];
+            [urgency setTextColor:UIColor.whiteColor];
+            urgency.font = [UIFont systemFontOfSize:13];
+            NSString *status = nil;
+            if ([self.dataDic[@"urgentStatus"] isEqualToString:@"1"]) {
+                // 重要
+                status = @"重要";
+            } else if ([self.dataDic[@"urgentStatus"] isEqualToString:@"2"]) {
+                // 紧急
+                status = @"紧急";
+            } else {
+                // 正常
+                status = @"正常";
+            }
+            urgency.text = [NSString stringWithFormat:@"紧急状态:%@", status];
+            
         }
         [self addSubview:self.calloutView];
         
@@ -112,7 +160,21 @@
 
 /// 事件详情点击
 - (void)eventClick:(UIButton *)sender {
-    NSLog(@"点击了时间详情");
+    NSLog(@"点击了事件详情");
+    K_RecordEventInfoViewController *dispostEvent = [[K_RecordEventInfoViewController alloc] initWithNibName:@"K_RecordEventInfoViewController" bundle:nil];
+    dispostEvent.isEventDispose = YES;
+    dispostEvent.eventData = self.dataDic;
+    [[self viewController].navigationController pushViewController:dispostEvent animated:YES];
+}
+
+- (UIViewController *)viewController {
+    for (UIView* next = [self superview]; next; next = next.superview) {
+        UIResponder *nextResponder = [next nextResponder];
+        if ([nextResponder isKindOfClass:[UIViewController class]]) {
+            return (UIViewController *)nextResponder;
+        }
+    }
+    return nil;
 }
 
 @end

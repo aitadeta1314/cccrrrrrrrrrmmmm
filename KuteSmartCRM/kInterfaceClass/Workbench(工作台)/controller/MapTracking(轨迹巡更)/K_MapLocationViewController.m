@@ -279,6 +279,8 @@
             if (annotation.coordinate.latitude == latitude && annotation.coordinate.longitude == longitude) {
                 
                 pendingPinView.dataDic = data;
+                pendingPinView.urgentStatus = data[@"urgentStatus"];
+                break;
             }
         }
         
@@ -868,7 +870,7 @@
         make.left.right.bottom.equalTo(view);
         make.height.mas_equalTo(40);
     }];
-    
+    self.pendingBtn.contentEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
     
 }
 

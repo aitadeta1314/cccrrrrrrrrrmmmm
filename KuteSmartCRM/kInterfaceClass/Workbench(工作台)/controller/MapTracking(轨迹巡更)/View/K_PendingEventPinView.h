@@ -19,5 +19,9 @@
  数据字典
  */
 @property (nonatomic, strong) NSDictionary *dataDic;
+/**
+ 
+ */
+@property (nonatomic,copy) NSString *urgentStatus;
 
 @end
