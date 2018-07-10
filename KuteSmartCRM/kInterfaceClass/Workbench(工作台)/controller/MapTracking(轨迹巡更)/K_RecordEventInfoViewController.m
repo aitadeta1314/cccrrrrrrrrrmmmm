@@ -350,10 +350,10 @@
 
 #pragma mark - 上传按钮 / 处理按钮
 - (IBAction)uploaderClick:(UIButton *)sender {
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     if (self.isEventDispose) {
         // 处理
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         [self disposeEventMethod];
     } else {
         // 上传
@@ -407,6 +407,7 @@
     
     
     if (self.picVoiceDataArray.count > 0) {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         [K_NetWorkClient getQiniuTokenSuccess:^(id response) {
             
             if ([response[@"code"] isEqualToString:@"0"]) {
@@ -421,8 +422,15 @@
             NSLog(@"请求七牛token失败");
         }];
     } else {
-        /// 没有需要上传的声音文件和图片
-        [self uploadAllInfomationMethod];
+        /// 没有需要上传的声音文件和图片  然后判断事件描述是否是空
+        if ([self.recordText.text isValidString]) {
+            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            [self uploadAllInfomationMethod];
+        } else {
+            // 没有文件和图片 并且事件描述为空  给予提示输入信息
+            [K_GlobalUtil HUDShowMessage:@"请输入详细信息" addedToView:self.view];
+            
+        }
     }
     
 }
