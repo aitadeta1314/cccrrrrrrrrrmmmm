@@ -185,30 +185,11 @@
         [self eventDisposeMethod];
     }
     
-    
-    /// 录音下载测试
-//    NSData *voiceData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"https://portalapp.magicmanufactory.com/FhX1DAB4QPalg30OKxv0nf7DEwtN"]];
-//    NSString *fileDirectory = [self GetPathByFileName:@"lvRecord" ofType:@"amr"];
-//    NSString *wavDirectory = [self GetPathByFileName:@"lvRecord" ofType:@"wav"];
-//
-//    BOOL isSave = [voiceData writeToFile:fileDirectory atomically:YES];
-//    if (isSave) {
-//        NSLog(@"保存下载录音成功");
-//    } else {
-//        NSLog(@"保存下载录音失败");
-//    }
-//    [VoiceConverter ConvertAmrToWav:fileDirectory wavSavePath:wavDirectory];
-//    NSURL *wavURL = [NSURL fileURLWithPath:wavDirectory];
-//    AVURLAsset* audioAsset =[AVURLAsset URLAssetWithURL:wavURL options:nil];
-//    CMTime audioDuration = audioAsset.duration;
-//    float audioDurationSeconds = CMTimeGetSeconds(audioDuration);
-//    self.recordTotalTime.text = [NSString stringWithFormat:@"%.0f''", audioDurationSeconds];
-    
 }
 
 
 /**
- 事件处理
+ 事件处理 / 事件详情
  */
 - (void)eventDisposeMethod {
     
@@ -253,6 +234,29 @@
     if (![self.eventData[@"employeeNumber"] isEqualToString:KUSERNAME]) {
         // 不是本人上报 没有权限处理 故隐藏处理按钮
         self.uploderBtn.hidden = YES;
+    }
+    
+    
+    
+    /// 录音下载
+    if ([self.eventData[@"speechDescription"] isValidString]) {
+        
+        NSData *voiceData = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.eventData[@"speechDescription"]]];
+        NSString *fileDirectory = [self GetPathByFileName:@"lvRecord" ofType:@"amr"];
+        NSString *wavDirectory = [self GetPathByFileName:@"lvRecord" ofType:@"wav"];
+    
+        BOOL isSave = [voiceData writeToFile:fileDirectory atomically:YES];
+        if (isSave) {
+            NSLog(@"保存下载录音成功");
+        } else {
+            NSLog(@"保存下载录音失败");
+        }
+        [VoiceConverter ConvertAmrToWav:fileDirectory wavSavePath:wavDirectory];
+        NSURL *wavURL = [NSURL fileURLWithPath:wavDirectory];
+        AVURLAsset* audioAsset =[AVURLAsset URLAssetWithURL:wavURL options:nil];
+        CMTime audioDuration = audioAsset.duration;
+        float audioDurationSeconds = CMTimeGetSeconds(audioDuration);
+        self.recordTotalTime.text = [NSString stringWithFormat:@"%.0f''", audioDurationSeconds];
     }
     
 }
@@ -344,9 +348,42 @@
     }
 }
 
-#pragma mark - 上传按钮
+#pragma mark - 上传按钮 / 处理按钮
 - (IBAction)uploaderClick:(UIButton *)sender {
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    if (self.isEventDispose) {
+        // 处理
+        [self disposeEventMethod];
+    } else {
+        // 上传
+        [self uploadEventDetailInfoMethod];
+    }
+    
+}
+
+/**
+ 处理事件方法
+ */
+- (void)disposeEventMethod {
+    [K_NetWorkClient dealWithEventRecordWithDic:@{@"id":self.eventData[@"id"], @"status": @"1"} Success:^(id response) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        if ([response[@"code"] isEqualToString:@"200"]) {
+            [K_GlobalUtil HUDShowMessage:@"处理成功" addedToView:SharedAppDelegate.window];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    } failure:^(NSError *error) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [K_GlobalUtil HUDShowMessage:@"处理失败" addedToView:self.view];
+        NSLog(@"处理事件失败");
+    }];
+}
+
+/**
+ 上传事件
+ */
+- (void)uploadEventDetailInfoMethod {
     /// 把图片和语音二进制数据加到一个数组中
     if (self.imageArray.count > 0) {
         
@@ -377,7 +414,7 @@
                 NSString *token = response[@"data"];
                 
                 [self uploadImageAndVoiceToken:token];
-
+                
             }
             
         } failure:^(NSError *error) {
@@ -387,7 +424,6 @@
         /// 没有需要上传的声音文件和图片
         [self uploadAllInfomationMethod];
     }
-    
     
 }
 

@@ -815,7 +815,7 @@
     [self initTimer];
     /// 开始记录轨迹路线
     [self startRecordTrack];
-    
+
     [self.view addSubview:self.recordEventBtn];
     [self.view bringSubviewToFront:self.recordEventBtn];
     [self.recordEventBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -825,6 +825,15 @@
     }];
     
     [self changeShowPendingOrSecurityView];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    /// 事件处理过后，如果显示的是待处理，更新大头针标注
+    if (!self.isShowSecurity) {
+        [self pendingClick];
+    }
 }
 
 /**
@@ -1020,9 +1029,12 @@
 - (void)pendingClick {
     NSLog(@"点击了待处理");
     self.isShowSecurity = NO;
+    [self.pendingDataInfo removeAllObjects];
     [self.timer invalidate];
     /// 移除所有保安大头针标注
     [self.mapView removeAnnotations:self.pinAnnotation];
+    /// 移除所有待处理大头针标注
+    [self.mapView removeAnnotations:self.pendingPinAnnotation];
     
     [self getPendingEventFromServer];
 }
@@ -1031,15 +1043,23 @@
 - (void)getPendingEventFromServer {
     weakObjc(self);
     [K_NetWorkClient getPendingEventLocationInformationSuccess:^(id response) {
-        NSLog(@"请求待处理大头针成功");
-        NSLog(@"response:%@", response);
+//        NSLog(@"请求待处理大头针成功");
+//        NSLog(@"response:%@", response);
+        
+        [weakself.pendingPinAnnotation removeAllObjects];
+        
         if ([response[@"code"] isEqualToString:@"200"]) {
             NSArray *data = response[@"data"];
-            
+            NSMutableArray *tempData = [NSMutableArray arrayWithArray:data];
             for (NSDictionary *event in data) {
-                
-                [weakself.pendingDataInfo addObject:event];
+                if (![event[@"status"] isEqualToString:@"1"]) {
+                    /// status字段是1的表示已经处理完成，处理完的不需要显示
+                    [weakself.pendingDataInfo addObject:event];
+                } else {
+                    [tempData removeObject:event];
+                }
             }
+            data = tempData;
             
             /// 大头针经纬度坐标
             CLLocationCoordinate2D *coords = malloc(data.count*sizeof(CLLocationCoordinate2D));
