@@ -112,17 +112,16 @@
             [self.calloutView addSubview:name];
             [name setTextColor:UIColor.whiteColor];
             name.font = [UIFont systemFontOfSize:13];
-            name.text = [NSString stringWithFormat:@"姓名:%@", self.dataDic[@"displayName"]];
+            name.text = [NSString stringWithFormat:@"上  报  人:%@", self.dataDic[@"displayName"]];
             
-            UILabel *timeTag = [[UILabel alloc] initWithFrame:CGRectMake(5, CGRectGetMaxY(name.frame)+5, 35, 15)];
+            UILabel *timeTag = [[UILabel alloc] initWithFrame:CGRectMake(5, CGRectGetMaxY(name.frame)+5, 60, 15)];
             [self.calloutView addSubview:timeTag];
             [timeTag setTextColor:UIColor.whiteColor];
             timeTag.font = [UIFont systemFontOfSize:13];
-            timeTag.text = @"时间:";
+            timeTag.text = @"上报时间:";
             
-            UILabel *time = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(timeTag.frame), CGRectGetMinY(timeTag.frame), 100, 32)];
+            UILabel *time = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(timeTag.frame), CGRectGetMinY(timeTag.frame), 90, 32)];
             [self.calloutView addSubview:time];
-            time.textAlignment = NSTextAlignmentCenter;
             [time setTextColor:UIColor.whiteColor];
             time.font = [UIFont systemFontOfSize:13];
             time.numberOfLines = 2;

@@ -793,7 +793,7 @@
 {
     [super viewDidLoad];
     
-    self.title = @"轨迹巡更";
+    self.title = @"移动巡更";
     [self addBackButton];
     /// 显示保安大头针
     self.isShowSecurity = YES;

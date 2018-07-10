@@ -112,7 +112,8 @@
     
     [self addBackButton];
     
-    self.title = self.isEventDispose ? @"事件处理" : @"事件上报";
+    NSString *title = (self.isEventDispose&&[self.eventData[@"employeeNumber"] isEqualToString:KUSERNAME])? @"事件处理" : @"事件详情";
+    self.title = self.isEventDispose ? title : @"事件上报";
     
     self.isContainVoiceData = NO;
     
